@@ -1,0 +1,346 @@
+ style{
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+/*Global*/
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/*HEADER*/
+header{
+    background: #35424a;
+    color: #ffffff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #e8491d 3px solid;
+
+}
+
+header a{
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+
+}
+
+header ul{
+    margin: 0;
+    padding: 0;
+}
+
+header li{
+    float: left;
+    display: inline;
+    padding:  0 10px 0 10px;
+
+}
+
+header #cart{
+    float: right;
+    display: inline;
+    padding-bottom: 20px;
+
+    padding-right: 30px;
+    margin-top: 15px;
+
+}
+
+header #cart img{
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 90px;
+    margin-bottom: 10px;
+}
+
+
+header .current a{
+    font-weight: bold;
+    color: #e8491d;
+}
+
+header .highlight{
+    font-weight: bold;
+    color: #e8491d;
+}
+
+
+
+body{
+
+    margin:0;
+    color: black;
+    background: #f4f4f4;
+    font:600 16px/18px 'Open Sans',sans-serif;
+
+}
+*,:after,:before{box-sizing:border-box}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+a{color:inherit;text-decoration:none}
+
+.login-wrap{
+    width:100%;
+    margin:auto;
+    max-width:525px;
+    min-height:850px;
+    position:relative;
+    background:url('../img/LoginBack.jpeg') no-repeat center;
+    color: #aaa;
+    box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.login-html{
+    width:100%;
+    height:100%;
+    position:absolute;
+    padding:90px 70px 50px 70px;
+    /*background: #35424a;*/
+
+}
+.login-html .sign-in-htm,
+.login-html .sign-up-htm{
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    position:absolute;
+    transform:rotateY(180deg);
+    backface-visibility:hidden;
+    transition:all .4s linear;
+}
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check{
+    display:none;
+}
+.login-html .tab,
+.login-form .group .label,
+.login-form .group .button{
+    text-transform:uppercase;
+}
+.login-html .tab{
+    font-size:22px;
+    margin-right:15px;
+    padding-bottom:5px;
+    margin:0 15px 10px 0;
+    display:inline-block;
+    border-bottom:2px solid transparent;
+}
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab{
+    color:#35424a;
+    border-color:#e8491d;
+}
+.login-form{
+    min-height:345px;
+    position:relative;
+    perspective:1000px;
+    transform-style:preserve-3d;
+}
+.login-form .group{
+    margin-bottom:15px;
+}
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button{
+    width:100%;
+    color:black;
+    display:block;
+}
+.login-form .group .select{
+    color: black;
+}
+.login-form .group .input,
+.login-form .group .button{
+    border:none;
+    padding:15px 20px;
+    border-radius:25px;
+    background:rgba(200, 200, 200);
+}
+.login-form .group input[data-type="password"]{
+    text-security:circle;
+    -webkit-text-security:circle;
+}
+
+
+.login-form .group .label{
+    color:black;
+    font-size:12px;
+}
+.login-form .group .button{
+    background:#aaa;
+}
+.login-form .group label .icon{
+    width:15px;
+    height:15px;
+    border-radius:2px;
+    position:relative;
+    display:inline-block;
+    background:rgba(255,255,255,.1);
+}
+.login-form .group label .icon:before,
+.login-form .group label .icon:after{
+    content:'';
+    width:10px;
+    height:2px;
+    background:#fff;
+    position:absolute;
+    transition:all .2s ease-in-out 0s;
+}
+.login-form .group label .icon:before{
+    left:3px;
+    width:5px;
+    bottom:6px;
+    transform: scale(0) rotate(0);
+}
+.login-form .group label .icon:after{
+    top:6px;
+    right:0;
+    transform: scale(0) rotate(0);
+}
+.login-form .group .check:checked + label{
+    color:black;
+}
+.login-form .group .check:checked + label .icon{
+    background:#35424a;
+}
+.login-form .group .check:checked + label .icon:before{
+    transform:scale(1) rotate(45deg);
+}
+.login-form .group .check:checked + label .icon:after{
+    transform:scale(1) rotate(-45deg);
+}
+.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
+    transform:rotate(0);
+}
+.login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
+    transform:rotate(0);
+}
+
+ .para p{
+    color: red;
+}
+
+.hr{
+    height:7px;
+    margin:60px 0 50px 0;
+    background: #e8491d;
+}
+.foot-lnk{
+    font-size: 20px;
+    text-align:center;
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+*{
+  padding: 0; margin: 0;
+  box-sizing: border-box;
+  font-family: 'Acme', sans-serif;
+  user-select: none;
+}
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(320deg, #0d6ac3, #c87ae3, #fd9101);
+}
+.box{
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 100;
+  background-color: rgba(0,0,0, 0.3);
+  box-shadow: 0 0 10px 10px rgba(0,0,0,0.1);
+  border-radius: 20px;
+}
+h1{
+  font-size: 45px;
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+img{
+  width: 30px; height: 30px;
+}
+.container{
+  width: 250px;
+  background-color: transparent;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 1000px;
+  padding: 15px;
+}
+input[type="email"], input[type="password"]{
+  width: 210px; height: 40px;
+  background-color: transparent;
+  outline: none; border: none;
+}
+input[type="email"]::placeholder, input[type="password"]::placeholder{
+  color: black;
+  font-size: 15px;
+}
+.remember{
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+}
+a{
+  text-decoration: none;
+  color: #fd9101;
+}
+input[type="submit"]{
+  background-color: black;
+  color: white;
+  font-weight: bolder;
+  border: none;
+  width: 250px;
+  height: 40px;
+  font-size: 15px;
+  cursor: pointer;
+  border: 2px solid black;
+}*/
