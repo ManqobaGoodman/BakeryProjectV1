@@ -34,7 +34,7 @@ public class ProductDAOImple implements ProductDAO {
 
     @Override
     public ArrayList<Product> viewProducts(String productType) {
-        Product p1 = new Product();
+        Product p1 = null;
         ArrayList<Product> viewProd = new ArrayList<>();
         try {
             Connection con = dbm.getConnection();
@@ -44,6 +44,7 @@ public class ProductDAOImple implements ProductDAO {
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                p1 = new Product();
                 p1.setProductId(rs.getInt("productid"));
                 p1.setNameOfProduct(rs.getString("nameofproduct"));
                 p1.setProductType(rs.getString("producttype"));
