@@ -97,7 +97,7 @@
                 <p>Sunday (Closed)</p>
             </div>
             <div class="contact">
-                <h2>Contact Us</h2>
+                <h2><span class="highlight">Contact Us</span></h2>
                 <p>012 234 8673</p>
             </div>
         </footer>
