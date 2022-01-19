@@ -15,17 +15,17 @@ public class Product {
     private String productType;
     private String nameOfProduct;
     private String productDescription;
-    private String prodictPrice;
+    private double productPrice;
     private String picture;
 
     public Product() {
     }
 
-    public Product(String productType, String nameOfProduct, String productDescription, String prodictPrice, String picture) {
+    public Product(String productType, String nameOfProduct, String productDescription, double productPrice, String picture) {
         this.productType = productType;
         this.nameOfProduct = nameOfProduct;
         this.productDescription = productDescription;
-        this.prodictPrice = prodictPrice;
+        this.productPrice = productPrice;
         this.picture = picture;
     }
 
@@ -88,15 +88,15 @@ public class Product {
     /**
      * @return the prodictPrice
      */
-    public String getProdictPrice() {
-        return prodictPrice;
+    public double getProductPrice() {
+        return productPrice;
     }
 
     /**
-     * @param prodictPrice the prodictPrice to set
+     * @param productPrice the prodictPrice to set
      */
-    public void setProdictPrice(String prodictPrice) {
-        this.prodictPrice = prodictPrice;
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
     }
 
     /**
