@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="prodpic">
 
-                    <a href="cart.jsp"><img src="./img/brownBread.jpeg"></a>
+                    <a href="description.jsp"><img src="./img/brownBread.jpeg"></a>
                     <div class="pichead">
                         <h3>Brown  <span class="highlight">Bread</span></h3>
                     </div>
@@ -51,13 +51,13 @@
                         <h4>Price: R49.99</h4>
                     </div>
                     <div class="carthead">
-                        <a href="cart.jsp"><h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3></a>
+                        <h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3>
                     </div>
                 </div>
 
                 <div class="prodpic">
 
-                    <a href="cart.jsp"><img src="./img/scbread.jpeg"></a>
+                    <a href="description.jsp"><img src="./img/scbread.jpeg"></a>
                     <div class="pichead">
                         <h3>Freshly <span class="highlight"> Made</span> Scones</h3>
                     </div>
@@ -65,13 +65,14 @@
                         <h4>Price: R59.99</h4>
                     </div>
                     <div class="carthead">
-                        <a href="cart.jsp"><h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3></a>
+                        <h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3>
+
                     </div>
                 </div>
 
                 <div class="prodpic">
 
-                    <a href="cart.jsp"><img src="./img/bread.jpeg"></a>
+                    <a href="description.jsp"><img src="./img/bread.jpeg"></a>
                     <div class="pichead">
                         <h3>Freshly  <span class="highlight">Baked</span> Bread</h3>
                     </div>
@@ -79,7 +80,8 @@
                         <h4>Price: R39.99</h4>
                     </div>
                     <div class="carthead">
-                        <a href="cart.jsp"><h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3></a>
+                        <h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3>
+
                     </div>
                 </div>
 
