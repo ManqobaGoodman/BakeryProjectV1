@@ -4,7 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/javaprogs/Ca2288/BakeryProjectV1/src/java/za/co/bigone/controller/Login.java</file>
-            <file>file:/C:/javaprogs/Ca2288/BakeryProjectV1/web/Login.jsp</file>
+            <file>file:/C:/javaprogs/Ca2288/BakeryProjectV1/web/WEB-INF/web.xml</file>
+            <file>file:/C:/javaprogs/Ca2288/BakeryProjectV1/src/java/za/co/bigone/service/LoginRegisterServiceImplementation.java</file>
             <file>file:/C:/javaprogs/Ca2288/BakeryProjectV1/src/java/za/co/bigone/DAO/PersonDAOImpl.java</file>
         </group>
     </open-files>

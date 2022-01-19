@@ -31,26 +31,24 @@ public class PersonDAOImpl implements PersonDAO {
         this.dbm = dbm;
     }
 
-    public Connection getConnectionDB() {
-        try {
-            con = DriverManager.getConnection("");
-        } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
-        }
-        return con;
-    }
+ 
 
     public Person login(String email, String password) {
+        
         Person p = null;
         try {
             // -------------  for test purposes
 
             Connection con = dbm.getConnection();
+            
+            
             PreparedStatement ps = con.prepareStatement("Select personid, firstname, lastname, title, telephonenumber, emailaddress  from person where emailaddress=? AND password = ?");
             ps.setString(1, email);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
+
             if (rs.next()) {
+                
                 p = new Person();
                 p.setPersonId(rs.getInt("personid"));
                 p.setFirstname(rs.getString("firstname"));
@@ -58,7 +56,7 @@ public class PersonDAOImpl implements PersonDAO {
                 p.setTitle(rs.getString("title"));
                 p.setEmail(rs.getString("emailaddress"));
                 p.setTelephone(rs.getString("telephonenumber"));
-                System.out.println("The name is: " + rs.getString("firstname") + " -------------------------------------------------------------");
+               
             }
             con.close();
             // ----------------------------------
@@ -80,7 +78,7 @@ public class PersonDAOImpl implements PersonDAO {
             // -------------  for test purposes
 
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO person VALUES (null,?, ?, ?,?,?,?);");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO  person (personid,firstname, lastname, title, telephonenumber, emailaddress, PASSWORD) VALUES (null,?, ?, ?,?,?,?)");
             
             ps.setString(1, firstname);
             ps.setString(2, lastname);
@@ -88,8 +86,7 @@ public class PersonDAOImpl implements PersonDAO {
             ps.setString(4, telephone);
             ps.setString(5, email);
             ps.setString(6, password);
-//            ps.setInt(7, isAdmin);
-//            ps.setInt(8, isActive);
+
             
             ps.executeUpdate();
             

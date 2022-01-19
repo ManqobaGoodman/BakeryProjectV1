@@ -1,6 +1,14 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<% 
+    String msg = (String) request.getAttribute("msg");
+    if(msg == null){
+        msg= " ";
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,9 +52,9 @@
                 <div class="login-form">
 
                     <div class="sign-in-htm">
-                        <form method="POST" action="Login" class="">
+                        <form method="GET" action="Login" class="">
                             <div class="par">
-                                <p>The Password/Email That you Have Entered  Is Incorrect</p>
+                                <p> <%= msg %></p>
                             </div>
                             <div class="group">
                                 <label for="user" class="label">Email</label>
@@ -54,7 +62,7 @@
                             </div>
                             <div class="group">
                                 <label for="pass" class="label">Password</label>
-                                <input id="pass" type="password" name="passord" class="input" data-type="password">
+                                <input id="pass" type="password" name="password" class="input" data-type="password">
                             </div>
                             <div class="group">
                                 <input id="check" type="checkbox" class="check" checked>
@@ -74,9 +82,6 @@
 
                     <div class="sign-up-htm">
                         <form method="POST" action="Login" class="">
-                            <div class="par">
-                                <p>The Password/Email That you Have Entered  Is Incorrect</p>
-                            </div>
                             <div class="group">
                                 <label for="user"  class="label">First Name</label>
                                 <input id="user" type="text" name="firstName" class="input">

@@ -5,15 +5,15 @@
     </listener>
     <context-param>
         <param-name>url</param-name>
-        <param-value>jdbc:mysql://localhost:3306/</param-value>
+        <param-value>jdbc:mysql://192.168.128.22:3306/</param-value>
     </context-param>
     <context-param>
         <param-name>user_name</param-name>
-        <param-value>root</param-value>
+        <param-value>brldb</param-value>
     </context-param>
     <context-param>
         <param-name>password</param-name>
-        <param-value>root</param-value>
+        <param-value>admin</param-value>
     </context-param>
     <context-param>
         <param-name>database</param-name>
