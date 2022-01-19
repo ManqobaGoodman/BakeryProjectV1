@@ -8,6 +8,7 @@ package za.co.bigone.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -56,14 +57,14 @@ public class ProductServlet extends HttpServlet {
         DBPoolManagerBasic dbpool = (DBPoolManagerBasic) context.getAttribute("dbconn");
         ProductService productService = new ProductServiceImplementation(dbpool);
         
-        HttpSession session = request.getSession();
+       
         
-        String productTye = request.getParameter("bread");
-        
-        ArrayList<Product> products = productService.viewProducts(productTye);
-        
-        request.setAttribute("products", products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("procutCat.jsp");
+       //Product product = productService.viewProduct("red velvet");            //(product.getProductId());
+        List<Product> productList = productService.viewProducts("bread");
+      
+       // request.setAttribute("product", product);
+       request.setAttribute("products", productList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("productCat.jsp");
         dispatcher.forward(request, response);
         
     }

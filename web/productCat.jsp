@@ -1,6 +1,15 @@
 
 
+<%@page import="java.util.List"%>
+<%@page import="za.co.bigone.model.Product"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+    //Product viewProduct = (Product) request.getAttribute("product");
+    List<Product> products = (ArrayList<Product>) request.getAttribute("products");
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -40,48 +49,26 @@
                 <h1 style="border-style: double"> Select<span class="highlight"> Product</span></h1>
             </div>
 
+
             <div class="row">
+                
+                <% for (Product viewProduct : products) {%>  
                 <div class="prodpic">
 
-                    <a href="cart.jsp"><img src="./img/brownBread.jpeg"></a>
+                    <a href="description.jsp"><img src="<%= viewProduct.getPicture()%>"></a>                    
                     <div class="pichead">
-                        <h3>Brown  <span class="highlight">Bread</span></h3>
+                        <h3> <%= viewProduct.getNameOfProduct()%> </h3>
                     </div>
                     <div class="price">
-                        <h4>Price: R49.99</h4>
+                        <h4> <%= viewProduct.getProductPrice()%></h4>
                     </div>
                     <div class="carthead">
-                        <a href="cart.jsp"><h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3></a>
+                        <h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3>
                     </div>
                 </div>
+                <%}%>
+            </div>
 
-                <div class="prodpic">
-
-                    <a href="cart.jsp"><img src="./img/scbread.jpeg"></a>
-                    <div class="pichead">
-                        <h3>Freshly <span class="highlight"> Made</span> Scones</h3>
-                    </div>
-                    <div class="price">
-                        <h4>Price: R59.99</h4>
-                    </div>
-                    <div class="carthead">
-                        <a href="cart.jsp"><h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3></a>
-                    </div>
-                </div>
-
-                <div class="prodpic">
-
-                    <a href="cart.jsp"><img src="./img/bread.jpeg"></a>
-                    <div class="pichead">
-                        <h3>Freshly  <span class="highlight">Baked</span> Bread</h3>
-                    </div>
-                    <div class="price">
-                        <h4>Price: R39.99</h4>
-                    </div>
-                    <div class="carthead">
-                        <a href="cart.jsp"><h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3></a>
-                    </div>
-                </div>
 
         </section>
 

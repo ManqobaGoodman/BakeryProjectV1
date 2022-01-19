@@ -89,28 +89,48 @@ header a:hover{
 }
 .prodc {
     width: 80%;
-    margin: auto;
+/*    margin: auto;*/
     /*text-align: center;*/
     padding-top: 50px;
     padding-bottom: 70px;
+    margin-bottom: 60px;
+    margin-top: 60px;
+    margin-left: 196px;
+    background-color: white;
 }
 .prodpic {
-    flex-basis: 32%;
+    flex-basis: 55%;
     /*border-radius: 10px;*/
-    margin-bottom: 30px;
+    
+
+    margin-bottom: 20px;
+    margin-left: 250px;
     position: relative;
     overflow: hidden;
+
 
 }
 
 .prodc img {
-   
+
     width: 100%;
     display: block;
+
 }
-  .name {
+
+.name {
+    font-size: 20px;
     float: right;
+    float: top;
+    margin-right: 610px;
+    margin-top: 55px;
+    
+}
+.marker {
     color: #e8491d;
+}
+.qty {
+    float: right;
 }
 
 

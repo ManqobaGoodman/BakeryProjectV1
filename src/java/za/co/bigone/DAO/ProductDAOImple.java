@@ -66,6 +66,8 @@ public class ProductDAOImple implements ProductDAO {
         try {
             Connection con = dbm.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM product WHERE nameofproduct = ?");
+            ps.setString(1, productName);
+            
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 p1.setProductId(rs.getInt("productid"));

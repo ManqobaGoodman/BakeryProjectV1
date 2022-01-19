@@ -33,24 +33,29 @@
             </div>
         </header>
         <section class="prodc">
-
-            <div class="row">
-                <div class="prodpic">
-                    <img src="./img/bread.jpeg">
-                    <div class="layer">
-                        <h3>Freshly Baked Bread</h3>
-                    </div>
-                    <div class="para">
-                        <p> Our Freshly Baked Bread Just For You</p>
-                    </div>
-                </div>
-            </div>
             <div class="name">
                 <h2><span class="marker">Brown</span> Bread</h2>
                 <h4>Price: 49.99</h4>
             </div>
+            <div class="row">
+                <div class="prodpic">
+                    <img src="./img/bread.jpeg">
+                </div>
+            </div>
+            <div class="qty">
+                <select dropzone="" name="dropdown">
+                    <option>Quantity</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                </select>
+            </div>
+
         </section>
-        
+
 
 
 
