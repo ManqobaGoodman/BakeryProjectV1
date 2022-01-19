@@ -69,7 +69,7 @@ header .highlight{
 }
 
 .prodc .cater{
-    
+
     font-family: sans-serif;
     color: #35424a;
     font-size: 30px;
@@ -174,4 +174,7 @@ header .highlight{
 #Foot .Footer{
     color: #ffffff;
 
+}
+#Foot .highligh{
+    color: #e8491d;
 }

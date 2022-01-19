@@ -34,33 +34,51 @@
 
             </div>
         </header>
-        
+
         <section class="prodc">
             <div class="cater">
                 <h1 style="border-style: double"> Select<span class="highlight"> Category</span></h1>
             </div>
 
             <div class="row">
-                <div class="prodpic">
-                    <div class="pichead">
-                        <h3>Baked Bread</h3>
-                    </div>
-                    <a href="bread.jsp"><img src="./img/bread.jpeg"></a>
-                </div>
 
                 <div class="prodpic">
-                    <div class="pichead">
-                        <h3>Brownie/Pies</h3>
-                    </div>
-                    <a href="brownies.jsp"><img src="./img/prod20.jpeg"></a>
-                </div>
-                <div class="prodpic">
-                    <div class="pichead">
-                        <h3>Cakes</h3>
-                    </div>
-                    <a href="brownies.jsp"><img src="./img/prod2.jpeg"></a>
+                    <form method="GET">
+                        <div class="pichead">
+                            <h3>Baked Bread</h3>
+                        </div>
+                        <a href="http://localhost:8080/BakeryProjectV1/ProductServlet"><img src="./img/bread.jpeg"></a>
+                        <input type="hidden" value="bread" name="productType">
+                    </form>
                 </div>
 
+
+
+
+                <div class="prodpic">
+                    <form method="GET">
+
+                        <div class="pichead">
+                            <h3>Brownie/Pies</h3>
+                        </div>
+                        <a href="http://localhost:8080/BakeryProjectV1/ProductServlet"><img src="./img/prod20.jpeg"></a>
+                        <input type="hidden" value="brownie/pies" name="productType">
+
+                    </form>
+                </div>
+                <div class="prodpic">
+                    <form method="GET">
+
+                        <div class="pichead">
+                            <h3>Cakes</h3>
+                        </div>
+                        <a href="http://localhost:8080/BakeryProjectV1/ProductServlet"><img src="./img/prod2.jpeg"></a>
+                        <input type="hidden" value="cake" name="productType">
+
+                    </form>
+
+                </div>
+            </div>
         </section>
 
         <footer  id="Foot">
@@ -74,7 +92,7 @@
                 <p>Sunday (Closed)</p>
             </div>
             <div class="contact">
-                <h2>Contact Us</h2>
+                <h2><span class="highligh">Contact Us</span></h2>
                 <p>012 234 8673</p>
             </div>
         </footer>

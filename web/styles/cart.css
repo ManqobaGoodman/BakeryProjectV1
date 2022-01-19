@@ -81,111 +81,6 @@ header a:hover{
     color: #35424a;
     padding-bottom: -110px;
 }
-
-.prodc .cater{
-
-    font-family: sans-serif;
-    color: #35424a;
-    font-size: 30px;
-    padding:  0 10px 0 10px;
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: -150px;
-}
-.prodc .highlight{
-    color: #e8491d;
-}
-.prodpic .pichead{
-    font-family:  fantasy;
-    font-size: 20px;
-
-}
-.row{
-    margin-top: 5%;
-    display: flex;
-    justify-content: space-between;
-}
-.prodc {
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 70px;
-}
-.prodpic{
-    flex-basis: 32%;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    position: relative;
-    overflow: hidden;
-
-
-}
-
-.prodc img{
-    width: 100%;
-    display: block;
-}
-
-.layer{
-    background: transparent;
-    height: 50%;
-    width: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: 0.5s
-}
-
-.layer:hover{
-    background: rgba(226, 0, 0, 0.7);
-}
-
-.layer h3{
-    width: 100%;
-    font-weight: 500;
-    color: #fff;
-    font-size: 26px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    opacity: 0;
-    transition: 05s;
-}
-
-.layer:hover h3{
-    bottom: 49%;
-    opacity: 1;
-
-}
-
-
-
-.prodc .para{
-    font-family:cursive;
-    padding-top: 15px;
-    font-size: 20px;
-    font-family:fantasy;
-}
-
-.prodpic .pichead{
-    font-family: sans-serif;
-    padding-bottom:  -50px;
-}
-
-.prodpic .price{
-    font-family:  sans-serif;
-    padding-bottom:   -50px;
-    
-    
-}
-
-.highlight{
-    color: #e8491d;
-}
-
-
 #Foot{
 
     /*margin-top: -30px;*/
@@ -205,7 +100,10 @@ header a:hover{
     color: #ffffff;
 
 }
+
 #Foot .highlight{
     color: #e8491d;
 }
+
+
 
