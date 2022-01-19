@@ -6,6 +6,9 @@
 package za.co.bigone.service;
 
 import java.util.ArrayList;
+import za.co.bigone.DAO.ProductDAO;
+import za.co.bigone.DAO.ProductDAOImple;
+import za.co.bigone.manager.DBPoolManagerBasic;
 import za.co.bigone.model.Product;
 
 /**
@@ -13,15 +16,24 @@ import za.co.bigone.model.Product;
  * @author Student24
  */
 public class ProductServiceImplementation implements ProductService{
+    
+    ProductDAO productDAO;
+
+    public ProductServiceImplementation(DBPoolManagerBasic dbm) {
+        this.productDAO = new ProductDAOImple(dbm);
+    }
+    
+    
 
     @Override
     public ArrayList<Product> viewProducts(String productType) {
-        return null;
+        
+        return productDAO.viewProducts(productType);
     }
 
     @Override
     public Product viewProduct(String productName) {
-        return null;
+        return productDAO.viewProduct(productName);
     }
     
 }
