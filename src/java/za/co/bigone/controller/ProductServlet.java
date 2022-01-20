@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import za.co.bigone.manager.DBPoolManagerBasic;
 import za.co.bigone.model.Product;
+import za.co.bigone.model.Producttype;
 import za.co.bigone.service.ProductService;
 import za.co.bigone.service.ProductServiceImplementation;
 
@@ -62,13 +63,11 @@ public class ProductServlet extends HttpServlet {
             System.out.println(nfe.getMessage());
         }
         List<Product> productList = productService.viewProducts(productTypeId);
-
-        for (Product product : productList) {
-            System.out.println(product.getNameOfProduct());
-        }
-
+        Producttype producttype = productService.getProducttype(productTypeId);
+        
         // request.setAttribute("product", product);
         request.setAttribute("products", productList);
+        request.setAttribute("producttype", producttype);
         RequestDispatcher dispatcher = request.getRequestDispatcher("productCat.jsp");
         dispatcher.forward(request, response);
 

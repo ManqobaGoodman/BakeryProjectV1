@@ -1,5 +1,10 @@
  
+<%@page import="za.co.bigone.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%
+   Product product = (Product) request.getAttribute("product");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,12 +38,13 @@
             </div>
         </header>
         <section class="prodc">
+            
             <div class="name">
                 <div class="size">
-                    <h2><span class="marker">Brown</span> Bread</h2>
+                    <h2><span class="marker"> <%= product.getNameOfProduct() %> </span></h2>
                 </div>
                 <div class="sizer">
-                    <h4>Price: 49.99</h4>
+                    <h4><%= product.getProductPrice() %></h4>
                 </div>
                 <div class="qty">
                     <select dropzone="" name="dropdown">
@@ -53,17 +59,17 @@
 
                 </div>
                 <div class="description">
-                    <p>This is our freshly made Brown Bread straight from the oven just for you</p>
+                    <p><%= product.getProductDescription() %></p>
 
-                    
-                    
+
+
                 </div>
                 <button class="button" value="Add To Cart">Add To Cart</button>
-                
+
             </div>
             <div class="row">
                 <div class="prodpic">
-                    <img src="./img/bread.jpeg">
+                    <img src="<%= product.getPicture() %>">
                 </div>
             </div>
 

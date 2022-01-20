@@ -7,6 +7,7 @@ package za.co.bigone.service;
 
 import java.util.ArrayList;
 import za.co.bigone.model.Product;
+import za.co.bigone.model.Producttype;
 
 /**
  *
@@ -16,5 +17,6 @@ public interface ProductService {
     
     ArrayList<Product>  viewProducts(int productTypeid);
     Product viewProduct(int productid);
+    Producttype getProducttype (int productTypeid);
     
 }

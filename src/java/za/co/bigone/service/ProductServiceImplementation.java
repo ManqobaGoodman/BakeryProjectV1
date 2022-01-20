@@ -10,6 +10,7 @@ import za.co.bigone.DAO.ProductDAO;
 import za.co.bigone.DAO.ProductDAOImple;
 import za.co.bigone.manager.DBPoolManagerBasic;
 import za.co.bigone.model.Product;
+import za.co.bigone.model.Producttype;
 
 /**
  *
@@ -35,5 +36,11 @@ public class ProductServiceImplementation implements ProductService{
     public Product viewProduct(int productid) {
         return productDAO.viewProduct(productid);
     }
+
+    @Override
+    public Producttype getProducttype(int productTypeid) {
+        return productDAO.getProducttype(productTypeid);
+    }
+    
     
 }

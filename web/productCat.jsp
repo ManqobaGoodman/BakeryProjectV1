@@ -1,3 +1,4 @@
+<%@page import="za.co.bigone.model.Producttype"%>
 <%@page import="java.util.List"%>
 <%@page import="za.co.bigone.model.Product"%>
 <%@page import="java.util.ArrayList"%>
@@ -6,6 +7,7 @@
 <%
     //Product viewProduct = (Product) request.getAttribute("product");
     List<Product> products = (ArrayList<Product>) request.getAttribute("products");
+    Producttype producttype = (Producttype) request.getAttribute("producttype");
 %>
 
 <!DOCTYPE html>
@@ -44,7 +46,7 @@
 
         <section class="prodc">
             <div class="cater">
-                <h1 style="border-style: double">Select<span class="highlight"> Product</span></h1>
+                <h1 style="border-style: double"><span class="highlight"> <%= producttype.getProductTypeDesc() %></span></h1>
             </div>
 
 
@@ -54,9 +56,10 @@
 
                 <div class="prodpic">
                     <form method="GET">
-                        <a href="http://localhost:8080/BakeryProjectV1/ProductServlet"><img src="<%= viewProduct.getPicture()%>"></a>                    
+                        <a href="http://localhost:8080/BakeryProjectV1/ProductDescServlet?productId=<%= viewProduct.getProductId() %>"><img src="<%= viewProduct.getPicture()%>"></a>   
+                        
                         <div class="pichead">
-                            <h3> <%= viewProduct.getNameOfProduct()%> </h3>
+                            <h3> <%= viewProduct.getNameOfProduct()%></h3>
                         </div>
                         <div class="price">
                             <h4> <%= viewProduct.getProductPrice()%></h4>
