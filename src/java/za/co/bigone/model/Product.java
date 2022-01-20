@@ -12,7 +12,7 @@ package za.co.bigone.model;
 public class Product {
 
     private int productId;
-    private String productType;
+    private int productTypeid;
     private String nameOfProduct;
     private String productDescription;
     private double productPrice;
@@ -21,8 +21,8 @@ public class Product {
     public Product() {
     }
 
-    public Product(String productType, String nameOfProduct, String productDescription, double productPrice, String picture) {
-        this.productType = productType;
+    public Product(int productTypeid, String nameOfProduct, String productDescription, double productPrice, String picture) {
+        this.productTypeid = productTypeid;
         this.nameOfProduct = nameOfProduct;
         this.productDescription = productDescription;
         this.productPrice = productPrice;
@@ -46,15 +46,15 @@ public class Product {
     /**
      * @return the productType
      */
-    public String getProductType() {
-        return productType;
+    public int getProductTypeid() {
+        return productTypeid;
     }
 
     /**
      * @param productType the productType to set
      */
-    public void setProductType(String productType) {
-        this.productType = productType;
+    public void setProductTypeid(int productType) {
+        this.productTypeid = productTypeid;
     }
 
     /**

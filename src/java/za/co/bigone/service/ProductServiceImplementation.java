@@ -26,14 +26,14 @@ public class ProductServiceImplementation implements ProductService{
     
 
     @Override
-    public ArrayList<Product> viewProducts(String productType) {
+    public ArrayList<Product> viewProducts(int productTypeid) {
         
-        return productDAO.viewProducts(productType);
+        return productDAO.viewProducts(productTypeid);
     }
 
     @Override
-    public Product viewProduct(String productName) {
-        return productDAO.viewProduct(productName);
+    public Product viewProduct(int productid) {
+        return productDAO.viewProduct(productid);
     }
     
 }

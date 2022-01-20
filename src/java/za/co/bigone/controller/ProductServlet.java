@@ -60,7 +60,7 @@ public class ProductServlet extends HttpServlet {
        
         
        //Product product = productService.viewProduct("red velvet");            //(product.getProductId());
-        List<Product> productList = productService.viewProducts("bread");
+        List<Product> productList = productService.viewProducts(1);
         
         for (Product product : productList) {
             System.out.println(product.getNameOfProduct());

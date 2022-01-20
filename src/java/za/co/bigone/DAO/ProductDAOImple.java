@@ -33,21 +33,21 @@ public class ProductDAOImple implements ProductDAO {
     }
 
     @Override
-    public ArrayList<Product> viewProducts(String productType) {
+    public ArrayList<Product> viewProducts(int productTypeid) {
         Product p1 = null;
         ArrayList<Product> viewProd = new ArrayList<>();
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM product WHERE producttype = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM product WHERE productTypeid = ?");
 
-            ps.setString(1, productType);
+            ps.setInt(productTypeid, productTypeid);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 p1 = new Product();
                 p1.setProductId(rs.getInt("productid"));
                 p1.setNameOfProduct(rs.getString("nameofproduct"));
-                p1.setProductType(rs.getString("producttype"));
+                p1.setProductTypeid(rs.getInt("producttypeid"));
                 p1.setProductDescription(rs.getString("productdescription"));
                 p1.setProductPrice(rs.getDouble("productprice"));
                 p1.setPicture(rs.getString("productpicture"));
@@ -62,18 +62,18 @@ public class ProductDAOImple implements ProductDAO {
     }
 
     @Override
-    public Product viewProduct(String productName) {
+    public Product viewProduct(int productid) {
         Product p1 = new Product();
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM product WHERE nameofproduct = ?");
-            ps.setString(1, productName);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM product WHERE productid = ?");
+            ps.setInt(1, productid);
             
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 p1.setProductId(rs.getInt("productid"));
                 p1.setNameOfProduct(rs.getString("nameofproduct"));
-                p1.setProductType(rs.getString("producttype"));
+                p1.setProductTypeid(rs.getInt("producttypeid"));
                 p1.setProductDescription(rs.getString("productdescription"));
                 p1.setProductPrice(rs.getDouble("productprice"));
                 p1.setPicture(rs.getString("productpicture"));

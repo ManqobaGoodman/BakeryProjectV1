@@ -13,6 +13,6 @@ import za.co.bigone.model.Product;
  * @author Student24
  */
 public interface ProductDAO {
-    ArrayList<Product>  viewProducts(String productType);
-    Product viewProduct(String productName);
+    ArrayList<Product>  viewProducts(int productTypeid);
+    Product viewProduct(int productid);
 }
