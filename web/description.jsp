@@ -50,11 +50,11 @@
                         <option>5</option>
                         <option>6</option>
                     </select>
-                    <div class="description">
-                        <p>This is our freshly made Brown Bread </p>
-                        <p>straight from the oven just for you</p>
 
-                    </div>
+                </div>
+                <div class="description">
+                    <p>This is our freshly made Brown Bread </p>
+                    <p>straight from the oven just for you</p>
                 </div>
             </div>
             <div class="row">

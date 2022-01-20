@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import sun.net.www.content.text.plain;
 import za.co.bigone.manager.DBPoolManagerBasic;
 import za.co.bigone.model.Product;
+import za.co.bigone.model.Producttype;
 
 /**
  *
@@ -88,4 +89,27 @@ public class ProductDAOImple implements ProductDAO {
         return p1;
     }
 
-}
+    @Override
+    public Producttype getProducttype(int productTypeid) {
+        Producttype p1 = new Producttype();
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM producttype WHERE productTypeId = ?");
+            ps.setInt(1, productTypeid);
+            
+            ResultSet rs = ps.executeQuery();
+    
+            if (rs.next()){
+            p1.setProductTypeId(rs.getInt("productTypeId"));
+            p1.setProductTypeDesc(rs.getString("productTypeDesc"));
+            
+            }
+            con.close();
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+        
+        return p1;
+
+    }
+}   
