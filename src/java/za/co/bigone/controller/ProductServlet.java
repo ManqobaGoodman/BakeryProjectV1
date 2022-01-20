@@ -38,8 +38,6 @@ public class ProductServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -52,35 +50,30 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         ServletContext context = request.getServletContext();
         DBPoolManagerBasic dbpool = (DBPoolManagerBasic) context.getAttribute("dbconn");
         ProductService productService = new ProductServiceImplementation(dbpool);
-        
-       
-        String productTypeIDstring = request.getParameter("productType");
-        
-        System.out.println(productTypeIDstring);
+
         int productTypeId = 0;
-        if (productTypeIDstring != null){
-           productTypeId  = Integer.parseInt(productTypeIDstring);
+        try {
+            productTypeId = Integer.parseInt(request.getParameter("productTypeId"));
+        } catch (NumberFormatException nfe) {
+            System.out.println(nfe.getMessage());
         }
-       
-        System.out.println(productTypeId);
-        List<Product> productList = productService.viewProducts(1);
-        
+        List<Product> productList = productService.viewProducts(productTypeId);
+
         for (Product product : productList) {
             System.out.println(product.getNameOfProduct());
         }
-      
-       // request.setAttribute("product", product);
-       request.setAttribute("products", productList);
+
+        // request.setAttribute("product", product);
+        request.setAttribute("products", productList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("productCat.jsp");
         dispatcher.forward(request, response);
-        
+
     }
 
-  
     /**
      * Returns a short description of the servlet.
      *

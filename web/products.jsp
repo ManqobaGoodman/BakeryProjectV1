@@ -37,45 +37,36 @@
 
         <section class="prodc">
             <div class="cater">
-                <h1 style="border-style: double"> Select<span class="highlight"> Category</span></h1>
+                <h1 style="border-style: double">Select<span class="highlight"> Category</span></h1>
             </div>
 
             <div class="row">
 
                 <div class="prodpic">
-                    <form method="GET">
                         <div class="pichead">
                             <h3>Baked Bread</h3>
                         </div>
-                        <a href="http://localhost:8080/BakeryProjectV1/ProductServlet"><img src="./img/bread.jpeg"></a>
-                        <input type="hidden" value="1" name="productType" />
-                    </form>
+                        <a href="http://localhost:8080/BakeryProjectV1/ProductServlet?productTypeId=1"><img src="./img/bread.jpeg"></a>
                 </div>
 
 
 
 
                 <div class="prodpic">
-                    <form method="GET">
 
                         <div class="pichead">
                             <h3>Brownie/Pies</h3>
                         </div>
-                        <a href="http://localhost:8080/BakeryProjectV1/ProductServlet"><img src="./img/prod20.jpeg"></a>
-                        <input type="hidden" value="2" name="productType" />
+                        <a href="http://localhost:8080/BakeryProjectV1/ProductServlet?productTypeId=2"><img src="./img/prod20.jpeg"></a>
 
-                    </form>
                 </div>
                 <div class="prodpic">
-                    <form method="GET">
 
                         <div class="pichead">
                             <h3>Cakes</h3>
                         </div>
-                        <a href="http://localhost:8080/BakeryProjectV1/ProductServlet"><img src="./img/prod2.jpeg"></a>
-                        <input type="hidden" value="3" name="productType" />
+                        <a href="http://localhost:8080/BakeryProjectV1/ProductServlet?productTypeId=3"><img src="./img/prod2.jpeg"></a>
 
-                    </form>
 
                 </div>
             </div>

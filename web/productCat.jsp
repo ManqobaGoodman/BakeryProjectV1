@@ -44,7 +44,7 @@
 
         <section class="prodc">
             <div class="cater">
-                <h1 style="border-style: double"> Select<span class="highlight"> Product</span></h1>
+                <h1 style="border-style: double">Select<span class="highlight"> Product</span></h1>
             </div>
 
 
