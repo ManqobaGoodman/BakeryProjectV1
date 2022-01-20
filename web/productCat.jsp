@@ -1,5 +1,3 @@
-
-
 <%@page import="java.util.List"%>
 <%@page import="za.co.bigone.model.Product"%>
 <%@page import="java.util.ArrayList"%>
@@ -51,21 +49,27 @@
 
 
             <div class="row">
-                
-                <% for (Product viewProduct : products) {%>  
-                <div class="prodpic">
 
-                    <a href="description.jsp"><img src="<%= viewProduct.getPicture()%>"></a>                    
-                    <div class="pichead">
-                        <h3> <%= viewProduct.getNameOfProduct()%> </h3>
-                    </div>
-                    <div class="price">
-                        <h4> <%= viewProduct.getProductPrice()%></h4>
-                    </div>
-                    <div class="carthead">
-                        <h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3>
-                    </div>
+                <% for (Product viewProduct : products) {%>  
+
+                <div class="prodpic">
+                    <form method="GET">
+                        <a href="http://localhost:8080/BakeryProjectV1/ProductServlet"><img src="<%= viewProduct.getPicture()%>"></a>                    
+                        <div class="pichead">
+                            <h3> <%= viewProduct.getNameOfProduct()%> </h3>
+                        </div>
+                        <div class="price">
+                            <h4> <%= viewProduct.getProductPrice()%></h4>
+                        </div>
+                        <div class="carthead">
+                            <h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3>
+
+                        </div>
+                        <input type="hidden" value=<%= viewProduct.getProductId()    %> name="productType">
+
+                    </form>
                 </div>
+
                 <%}%>
             </div>
 
