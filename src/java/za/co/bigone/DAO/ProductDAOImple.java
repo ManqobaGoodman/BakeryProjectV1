@@ -40,7 +40,7 @@ public class ProductDAOImple implements ProductDAO {
             Connection con = dbm.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM product WHERE productTypeid = ?");
 
-            ps.setInt(productTypeid, productTypeid);
+            ps.setInt(1, productTypeid);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

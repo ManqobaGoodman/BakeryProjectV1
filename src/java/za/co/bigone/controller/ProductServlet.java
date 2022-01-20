@@ -58,8 +58,15 @@ public class ProductServlet extends HttpServlet {
         ProductService productService = new ProductServiceImplementation(dbpool);
         
        
+        String productTypeIDstring = request.getParameter("productType");
         
-       //Product product = productService.viewProduct("red velvet");            //(product.getProductId());
+        System.out.println(productTypeIDstring);
+        int productTypeId = 0;
+        if (productTypeIDstring != null){
+           productTypeId  = Integer.parseInt(productTypeIDstring);
+        }
+       
+        System.out.println(productTypeId);
         List<Product> productList = productService.viewProducts(1);
         
         for (Product product : productList) {

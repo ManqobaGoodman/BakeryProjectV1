@@ -48,7 +48,7 @@
                             <h3>Baked Bread</h3>
                         </div>
                         <a href="http://localhost:8080/BakeryProjectV1/ProductServlet"><img src="./img/bread.jpeg"></a>
-                        <input type="hidden" value="1" name="productType">
+                        <input type="hidden" value="1" name="productType" />
                     </form>
                 </div>
 
@@ -62,7 +62,7 @@
                             <h3>Brownie/Pies</h3>
                         </div>
                         <a href="http://localhost:8080/BakeryProjectV1/ProductServlet"><img src="./img/prod20.jpeg"></a>
-                        <input type="hidden" value="2" name="productType">
+                        <input type="hidden" value="2" name="productType" />
 
                     </form>
                 </div>
@@ -73,7 +73,7 @@
                             <h3>Cakes</h3>
                         </div>
                         <a href="http://localhost:8080/BakeryProjectV1/ProductServlet"><img src="./img/prod2.jpeg"></a>
-                        <input type="hidden" value="3" name="productType">
+                        <input type="hidden" value="3" name="productType" />
 
                     </form>
 

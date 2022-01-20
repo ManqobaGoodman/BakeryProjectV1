@@ -65,10 +65,11 @@
                             <h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3>
 
                         </div>
-                        <input type="hidden" value=<%= viewProduct.getProductId()    %> name="productType">
+                        <input type="hidden" value=<%= viewProduct.getProductId()    %> name="productType" />
 
                     </form>
                 </div>
+                        
 
                 <%}%>
             </div>
