@@ -140,7 +140,7 @@ header a:hover{
 
 }
 .prodpic{
-    flex-basis: 70%;
+    flex-basis: 60%;
     /*border-radius: 10px;*/
     margin-bottom: 30px;
     position: relative;
@@ -160,45 +160,38 @@ header a:hover{
 }
 
 
-
-
-
-.name{
+.name {
     float: right;
     margin-top: 70px;
-    margin-right:  200px;
+    margin-right:120px;
+   
 }
 
-.marker{
+.marker {
     color: #e8491d; 
 }
-.size{
+.size {
     margin-right: 50px;
     font-family: sans-serif;
     font-size: 20px;
 }
-.sizer{
+.sizer {
     margin-right: 60px;
     font-family: serif;
     font-size: 20px;
 }
-.qty{
+.qty {
     margin-right: 60px;
     padding: auto;
     color: #e8491d;
 }
-.description{
+.description {
     margin-left: 20px;
     font-family: serif;
     font-size: 25px;
 }
-.button{
-    margin-right: 53px;
-
-    margin-top: 40px;
-    font-family: sans-serif;
-    font-size: 20px;
-    color: #e8491d;
+.button {
+ background-color: green;
 }
 
 

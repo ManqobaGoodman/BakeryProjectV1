@@ -1,4 +1,4 @@
-
+ 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -56,16 +56,17 @@
 
                     </div>
                 </div>
-                <button class="button" value="Add To Cart">Add To Cart</button>
             </div>
             <div class="row">
                 <div class="prodpic">
                     <img src="./img/bread.jpeg">
                 </div>
             </div>
-<!--            <div class="warnnings">
-                <h2>Warnings<p>This Products contains A lot of wheat which some may be allergic to(Stay Safe)</p></h2>
-            </div>-->
+            <button class="button" value="Add To Cart">Add To Cart</button>
+
+            <!--            <div class="warnnings">
+                            <h2>Warnings<p>This Products contains A lot of wheat which some may be allergic to(Stay Safe)</p></h2>
+                        </div>-->
 
 
         </section>
