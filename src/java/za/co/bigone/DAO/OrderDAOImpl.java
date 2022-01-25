@@ -54,7 +54,7 @@ public class OrderDAOImpl implements OrderDAO{
                 o1.setAddressid(rs.getInt("Addressid"));
                 o1.setOrderid(rs.getInt("Orderid"));
                 o1.setPersonid(rs.getInt("Personid"));
-                orderL.addAll((Collection<? extends OrderLineItem>) o1);
+                //orderL.addAll((Collection<? extends OrderLineItem>) o1);
                 
             }
             con.close();
@@ -62,6 +62,7 @@ public class OrderDAOImpl implements OrderDAO{
             System.out.println(ex.getMessage());
         }   
             return orderL;
+                
     }
 
     @Override

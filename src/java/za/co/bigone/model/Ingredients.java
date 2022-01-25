@@ -11,40 +11,41 @@ package za.co.bigone.model;
  */
 public class Ingredients {
 
-    private String IndridID;
-    private String ingridName;
+    private int IngredientID;
+    private String IngredientName;
 
     public Ingredients() {
     }
 
     /**
-     * @return the IndridID
+     * @return the IngredientID
      */
-    public String getIndridID() {
-        return IndridID;
+    public int getIngredientID() {
+        return IngredientID;
     }
 
     /**
-     * @param IndridID the IndridID to set
+     * @param IngredientID the IngredientID to set
      */
-    public void setIndridID(String IndridID) {
-        this.IndridID = IndridID;
+    public void setIngredientID(int IngredientID) {
+        this.IngredientID = IngredientID;
     }
 
     /**
-     * @return the ingridName
+     * @return the IngredientName
      */
-    public String getIngridName() {
-        return ingridName;
+    public String getIngredientName() {
+        return IngredientName;
     }
 
     /**
-     * @param ingridName the ingridName to set
+     * @param IngredientName the IngredientName to set
      */
-    public void setIngridName(String ingridName) {
-        this.ingridName = ingridName;
+    public void setIngredientName(String IngredientName) {
+        this.IngredientName = IngredientName;
     }
-    
-    
 
+    public String getIngredientName(String string) {
+        return IngredientName;
+    }
 }
