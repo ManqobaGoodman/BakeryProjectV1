@@ -15,8 +15,9 @@ import za.co.bigone.model.OrderLineItem;
  * @author student02
  */
 public interface OrderDAO {
-    List<OrderLineItem> orderLine(int productid ,int quantity) ;
-    Order orderPlace (List<OrderLineItem> orderLine,int personid,String Address ,Locale date);
-    
+
+    List<OrderLineItem> orderLine(int productid, int quantity);
+
+    Order orderPlace(List<OrderLineItem> orderLine, int personid, String Address, Locale date);
 
 }

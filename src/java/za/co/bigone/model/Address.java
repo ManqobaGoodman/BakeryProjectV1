@@ -10,17 +10,17 @@ package za.co.bigone.model;
  * @author Student24
  */
 public class Address {
-private String addressId;
+private int addressId;
 private String address1;
 private String address2;
 private String town;
-private String postalCode;
+private int postalCode;
 private String province;
 
     public Address() {
     }
 
-    public Address(String address1, String address2, String town, String postalCode, String province) {
+    public Address(String address1, String address2, String town, int postalCode, String province) {
         this.address1 = address1;
         this.address2 = address2;
         this.town = town;
@@ -31,14 +31,14 @@ private String province;
     /**
      * @return the addressId
      */
-    public String getAddressId() {
+    public int getAddressId() {
         return addressId;
     }
 
     /**
      * @param addressId the addressId to set
      */
-    public void setAddressId(String addressId) {
+    public void setAddressId(int addressId) {
         this.addressId = addressId;
     }
 
@@ -87,14 +87,14 @@ private String province;
     /**
      * @return the postalCode
      */
-    public String getPostalCode() {
+    public int getPostalCode() {
         return postalCode;
     }
 
     /**
      * @param postalCode the postalCode to set
      */
-    public void setPostalCode(String postalCode) {
+    public void setPostalCode(int postalCode) {
         this.postalCode = postalCode;
     }
 

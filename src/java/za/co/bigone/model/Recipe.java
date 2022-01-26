@@ -10,10 +10,9 @@ package za.co.bigone.model;
  * @author student02
  */
 public class Recipe {
-    
+
     private int recipeID;
-    
-    
+
     public Recipe() {
     }
 
@@ -31,9 +30,4 @@ public class Recipe {
         this.recipeID = recipeID;
     }
 
-
-   
-    
-    
-    
 }

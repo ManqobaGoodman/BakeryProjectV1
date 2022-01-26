@@ -5,17 +5,15 @@
  */
 package za.co.bigone.DAO;
 
-import java.util.ArrayList;
 import java.util.List;
-import za.co.bigone.model.OrderLineItem;
+import za.co.bigone.model.Address;
 
 /**
  *
  * @author student02
  */
-public interface OrderLineItemDAO {
-
-    List<OrderLineItem> viewOrderLineItems(int OrderLineItemid);
-
-    OrderLineItem viewOrderLineItem(int orderproductid);
+public interface AddressDAO {
+    List<Address> viewAddress ();
+    Address viewAddress1();
+    
 }

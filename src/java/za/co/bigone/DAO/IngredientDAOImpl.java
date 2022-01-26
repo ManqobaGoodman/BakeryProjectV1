@@ -22,24 +22,24 @@ public class IngredientDAOImpl implements IngredientDAO {
     DBPoolManagerBasic dbm;
     private Connection con;
     private Connection conction;
-    
+
     public IngredientDAOImpl() {
     }
-    
-     public IngredientDAOImpl(DBPoolManagerBasic dbm) {
+
+    public IngredientDAOImpl(DBPoolManagerBasic dbm) {
         this.dbm = dbm;
     }
 
     @Override
-    public ArrayList<Ingredients> viewIngredient(int IngredientID) {
+    public ArrayList<Ingredients> viewIngredient() {
         Ingredients i1 = null;
         ArrayList<Ingredients> viewIng = new ArrayList<>();
-        
+
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM ingredient WHERE Ingredientid = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM ingredient");
 
-            ps.setInt(1,1);
+           
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -47,20 +47,22 @@ public class IngredientDAOImpl implements IngredientDAO {
                 i1.setIngredientID(rs.getInt("Ingredientid"));
                 i1.getIngredientName(rs.getString("IngredientName"));
                 viewIng.add(i1);
-                
-                
+
             }
-                
-            }catch(SQLException ex){
-                System.out.println(ex.getMessage());
-            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+     
+        
         return viewIng;
+        
+        
     }
 
     @Override
     public String IngredientName(String IngredientName) {
         return null;
     }
-
 
 }
