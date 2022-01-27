@@ -69,7 +69,7 @@ public class RecipeDAOImpl implements RecipeDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 r1.setRecipeID(rs.getInt("recipeid"));
-                r1.setRecipename(rs.getString("recipename"));
+//                r1.setRecipename(rs.getString("recipename"));
             }
             con.close();
 
@@ -91,7 +91,7 @@ public class RecipeDAOImpl implements RecipeDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 r1.setRecipeID(rs.getInt("recipeid"));
-                r1.setRecipename(rs.getString("recipename"));
+//                r1.setRecipename(rs.getString("recipename"));
             }
             con.close();
 
