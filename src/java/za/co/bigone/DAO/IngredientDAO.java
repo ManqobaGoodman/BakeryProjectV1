@@ -12,7 +12,9 @@ public interface IngredientDAO {
     ArrayList<Ingredients> viewIngredient();
 
     String IngredientName(String IngredientName);
-    
+    Ingredients insetIngredient();
+    Ingredients updateIngredient();
+    Ingredients deleteIngredient();
     // boolean insetIngredeient(String name); 
     //insert,update,delete
 

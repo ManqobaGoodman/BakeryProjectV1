@@ -39,8 +39,6 @@ public class IngredientDAOImpl implements IngredientDAO {
             Connection con = dbm.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM ingredient");
 
-           
-
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 i1 = new Ingredients();
@@ -53,16 +51,83 @@ public class IngredientDAOImpl implements IngredientDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-     
-        
+
         return viewIng;
-        
-        
+
     }
 
     @Override
     public String IngredientName(String IngredientName) {
         return null;
+    }
+
+    @Override
+    public Ingredients insetIngredient() {
+        Ingredients i1 = null;
+
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO ingredient");
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                i1 = new Ingredients();
+                i1.setIngredientID(rs.getInt("Ingredientid"));
+                i1.getIngredientName(rs.getString("IngredientName"));
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return i1;
+    }
+
+    @Override
+    public Ingredients updateIngredient() {
+         Ingredients i1 = null;
+
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("UPDATE ingredient SET ingredientid =? WHERE ingredientname = ?");
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                i1 = new Ingredients();
+                i1.setIngredientID(rs.getInt("Ingredientid"));
+                i1.getIngredientName(rs.getString("IngredientName"));
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return i1;
+    }
+
+    @Override
+    public Ingredients deleteIngredient() {
+       Ingredients i1 = null;
+
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("DELETE * ingredient WHERE ingredientid = ?");
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                i1 = new Ingredients();
+                i1.setIngredientID(rs.getInt("Ingredientid"));
+                i1.getIngredientName(rs.getString("IngredientName"));
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return i1;
     }
 
 }

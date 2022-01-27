@@ -84,6 +84,60 @@ public class AddressDAOImpl implements AddressDAO {
 
         //--------------Insert new adddress---------------
     
-        //--------------Edit adddress---------------
+       
+
+    @Override
+    public Address insertAddress1() {
+         Address Addr1 = new Address();
+        
+
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO address VALUE = ?");
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Addr1.setAddress1(rs.getString("Address1"));
+                Addr1.setAddress2(rs.getString("Address2"));
+                Addr1.setAddressId(rs.getInt("AddressId"));
+                Addr1.setPostalCode(rs.getInt("PostalCode"));
+                Addr1.setProvince(rs.getString("province"));
+                Addr1.setTown(rs.getString("Town"));
+                
+            }
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return Addr1;
+    }
+         //--------------Edit adddress---------------
+    @Override
+    public Address updateAddress1() {
+         Address Addr1 = new Address();
+        
+
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("UPDATE address SET (?,?,?,?,?,?) WHERE (?,?,?,?,?,?)");
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Addr1.setAddress1(rs.getString("Address1"));
+                Addr1.setAddress2(rs.getString("Address2"));
+                Addr1.setAddressId(rs.getInt("AddressId"));
+                Addr1.setPostalCode(rs.getInt("PostalCode"));
+                Addr1.setProvince(rs.getString("province"));
+                Addr1.setTown(rs.getString("Town"));
+                
+            }
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return Addr1;
+    }
     
 }

@@ -5,14 +5,13 @@
  */
 package za.co.bigone.DAO;
 
-import za.co.bigone.model.Recipe;
+import java.time.LocalDate;
+import za.co.bigone.model.Invoice;
 
 /**
  *
  * @author student02
  */
-public interface RecipeDAO {
-    Recipe viewRecipe (int recipeid);
-    Recipe insertRecipe();
-    Recipe updateRecipe();
+public interface InvoiceDAO {
+    Invoice  viewInvoice(int invoiceid,int orderid,LocalDate invoicedate );
 }

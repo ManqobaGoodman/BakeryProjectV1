@@ -15,5 +15,7 @@ import za.co.bigone.model.Address;
 public interface AddressDAO {
     List<Address> viewAddress ();
     Address viewAddress1();
+    Address insertAddress1();
+    Address updateAddress1();
     
 }

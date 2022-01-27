@@ -39,13 +39,14 @@ public class RecipeDAOImpl implements RecipeDAO {
         Recipe r1 = new Recipe();
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT FROM recipet WHERE recipeid = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT FROM recipe WHERE recipeid = ?");
 
             ps.setInt(1, 1);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 r1.setRecipeID(rs.getInt("recipeid"));
+                r1.setRecipename(rs.getString("recipename"));
             }
             con.close();
 
@@ -54,6 +55,50 @@ public class RecipeDAOImpl implements RecipeDAO {
         }
         return r1;
 
+    }
+
+    @Override
+    public Recipe insertRecipe() {
+         Recipe r1 = new Recipe();
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO recipe VALUE = ?");
+
+            ps.setInt(1, 1);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                r1.setRecipeID(rs.getInt("recipeid"));
+                r1.setRecipename(rs.getString("recipename"));
+            }
+            con.close();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return r1;
+    }
+
+    @Override
+    public Recipe updateRecipe() {
+         Recipe r1 = null;
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("UPDATE recipe SET recipeid =? WHERE recipename = ?");
+
+            ps.setInt(1, 1);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                r1.setRecipeID(rs.getInt("recipeid"));
+                r1.setRecipename(rs.getString("recipename"));
+            }
+            con.close();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return r1;
     }
 
 }

@@ -5,14 +5,13 @@
  */
 package za.co.bigone.DAO;
 
-import za.co.bigone.model.Recipe;
+import za.co.bigone.model.Payment;
 
 /**
  *
  * @author student02
  */
-public interface RecipeDAO {
-    Recipe viewRecipe (int recipeid);
-    Recipe insertRecipe();
-    Recipe updateRecipe();
+public interface PaymentDAO {
+    Payment viewPayment (int paymentid,int invoiceid,String paymenttype);
+    
 }
