@@ -22,26 +22,27 @@ public class OrderLineItemDaoImpl implements OrderLineItemDAO {
 
     DBPoolManagerBasic dbm;
     private Connection con;
-    private Connection conction;
+   // private Connection conction;
 
     public OrderLineItemDaoImpl() {
     }
 
     /**
      *
+     * @param OrderLineItemList
      * @param OrderLineItemid
      * @return
      */
     @Override
-    public List<OrderLineItem> viewOrderLineItems(int OrderLineItemid) {
+    public List<OrderLineItem> viewOrderLineItems(List<OrderLineItem> OrderLineItemList) {
         OrderLineItem oli1 = null;
         List<OrderLineItem> viewoli = new ArrayList<>();
         try {
             Connection con = dbm.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM orderlineitem WHERE orderlineitemid = ?");
 
-            ps.setInt(1, OrderLineItemid);
-
+            //ps.setInt(1, OrderLineItemList);
+            
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 oli1 = new OrderLineItem();

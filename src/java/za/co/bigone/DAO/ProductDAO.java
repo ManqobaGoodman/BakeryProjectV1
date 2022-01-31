@@ -14,8 +14,10 @@ import za.co.bigone.model.Producttype;
  * @author Student24
  */
 public interface ProductDAO {
-    ArrayList<Product>  viewProducts(int productTypeid);
+    ArrayList<Product> viewProducts(int productTypeid);
+
     Product viewProduct(int productid);
-    Producttype getProducttype (int productTypeid);
+
+    Producttype getProducttype(int productTypeid);
    
 }

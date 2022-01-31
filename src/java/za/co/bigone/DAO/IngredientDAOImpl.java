@@ -21,7 +21,7 @@ public class IngredientDAOImpl implements IngredientDAO {
 
     DBPoolManagerBasic dbm;
     private Connection con;
-    private Connection conction;
+   // private Connection conction;
 
     public IngredientDAOImpl() {
     }
@@ -97,6 +97,7 @@ public class IngredientDAOImpl implements IngredientDAO {
                 i1 = new Ingredients();
                 i1.setIngredientID(rs.getInt("Ingredientid"));
                 i1.getIngredientName(rs.getString("IngredientName"));
+                
 
             }
 

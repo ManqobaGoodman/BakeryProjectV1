@@ -25,7 +25,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     DBPoolManagerBasic dbm;
     private Connection con;
-    private Connection conction;
+   // private Connection conction;
 
     public OrderDAOImpl() {
 

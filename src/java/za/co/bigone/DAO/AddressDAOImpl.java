@@ -23,7 +23,7 @@ public class AddressDAOImpl implements AddressDAO {
 
     DBPoolManagerBasic dbm;
     private Connection con;
-    private Connection conction;
+  //  private Connection conction;
 
     public AddressDAOImpl() {
     }

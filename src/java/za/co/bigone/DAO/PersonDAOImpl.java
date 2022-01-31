@@ -25,7 +25,7 @@ public class PersonDAOImpl implements PersonDAO {
 
     DBPoolManagerBasic dbm;
     private Connection con;
-    private Connection conction;
+    //private Connection conction;
 
     public PersonDAOImpl(DBPoolManagerBasic dbm) {
         this.dbm = dbm;

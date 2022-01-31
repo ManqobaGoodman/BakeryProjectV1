@@ -23,7 +23,7 @@ public class ProductDAOImple implements ProductDAO {
 
     DBPoolManagerBasic dbm;
     private Connection con;
-    private Connection conction;
+    //private Connection conction;
 
     public ProductDAOImple() {
 

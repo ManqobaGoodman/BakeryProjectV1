@@ -27,26 +27,23 @@ import za.co.bigone.service.ProductServiceImplementation;
 @WebServlet(name = "ProductDescServlet", urlPatterns = {"/ProductDescServlet"})
 public class ProductDescServlet extends HttpServlet {
 
-
-
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-         ServletContext context = request.getServletContext();
+
+        ServletContext context = request.getServletContext();
         DBPoolManagerBasic dbpool = (DBPoolManagerBasic) context.getAttribute("dbconn");
         ProductService productService = new ProductServiceImplementation(dbpool);
-        
+
         int productId = 0;
-        try{
+        try {
             productId = Integer.parseInt(request.getParameter("productId"));
-        }catch(NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             System.out.println(nfe.getMessage());
         }
-        
+
         System.out.println(productId);
-        
+
         Product viewProduct = productService.viewProduct(productId);
         System.out.println(viewProduct.getNameOfProduct());
         request.setAttribute("product", viewProduct);
@@ -54,7 +51,4 @@ public class ProductDescServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    
- 
-   
 }

@@ -20,7 +20,7 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     DBPoolManagerBasic dbm;
     private Connection con;
-    private Connection conction;
+    //private Connection conction;
 
     @Override
     public Payment viewPayment(int paymentid, int invoiceid, String paymenttype) {
