@@ -32,7 +32,7 @@
                                     <td>
                                         <div class="product-img">
                                             <div class="img-prdct">
-                                                <img src="./img/brownie.jpeg" width="5%">
+                                                <img src="./img/brownie.jpeg" width="5%" >
                                             </div>
                                         </div>
                                     </td>
