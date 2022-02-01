@@ -56,7 +56,7 @@ public class CartServlet extends HttpServlet {
         ProductService productService = new ProductServiceImplementation(dbpool);
         int productId = 0;
         int productTypeId = 0;
-        int quantity = 0;
+        int quantity = 1;
 
         try {
             productId = Integer.parseInt(request.getParameter("productId"));
@@ -67,24 +67,36 @@ public class CartServlet extends HttpServlet {
         }
         CartService cartService = new CartServiceImpl(dbpool);
         Product p = cartService.getProductForOrderLineItem(productId);
-        OrderLineItem orderLineItem = new OrderLineItem(p, 1);
 
         HttpSession session = request.getSession();
+
         List<OrderLineItem> orderLineItemList = (List<OrderLineItem>) session.getAttribute("cart");
         if (orderLineItemList == null) {
             orderLineItemList = new ArrayList<>();
+            session.setAttribute("cart", orderLineItemList);
         }
-        orderLineItemList.add(orderLineItem);
-        session.setAttribute("cart", orderLineItemList);
-        
-                 System.out.print(orderLineItemList);
-
+        boolean updated = false;
+        for (OrderLineItem orderLineItem : orderLineItemList) {
+            if (orderLineItem.getProduct().getProductId() == productId) {
+                orderLineItem.setQuantity(orderLineItem.getQuantity() + 1);
+                updated = true;
+                break;
+            }
+        }
+        if (!updated) {
+            orderLineItemList.add(new OrderLineItem(p, quantity));
+        }
+        System.out.print(orderLineItemList);
         List<Product> productList = productService.viewProducts(productTypeId);
         Producttype producttype = productService.getProducttype(productTypeId);
         // request.setAttribute("product", product);
-        request.setAttribute("products", productList);
-        request.setAttribute("producttype", producttype);
+
+        request.setAttribute(
+                "products", productList);
+        request.setAttribute(
+                "producttype", producttype);
         RequestDispatcher dispatcher = request.getRequestDispatcher("productCat.jsp");
+
         dispatcher.forward(request, response);
     }
 
