@@ -46,7 +46,7 @@
 
         <section class="prodc">
             <div class="cater">
-                <h1 style="border-style: double"><span class="highlight"> <%= producttype.getProductTypeDesc() %></span></h1>
+                <h1 style="border-style: double"><span class="highlight"> <%= producttype.getProductTypeDesc()%></span></h1>
             </div>
 
 
@@ -55,26 +55,27 @@
                 <% for (Product viewProduct : products) {%>  
 
                 <div class="prodpic">
-                    
-                        <a href="http://localhost:8080/BakeryProjectV1/ProductDescServlet?productId=<%= viewProduct.getProductId() %>"><img src="<%= viewProduct.getPicture()%>"></a>   
-                        
-                        <div class="pichead">
-                            <h3> <%= viewProduct.getNameOfProduct()%></h3>
-                        </div>
-                        <div class="price">
-                            <h4> <%= viewProduct.getProductPrice()%></h4>
-                        </div>
-                        <form method="POST" action="CartServlet">
+
+                    <a href="http://localhost:8080/BakeryProjectV1/ProductDescServlet?productId=<%= viewProduct.getProductId()%>"><img src="<%= viewProduct.getPicture()%>"></a>   
+
+                    <div class="pichead">
+                        <h3> <%= viewProduct.getNameOfProduct()%></h3>
+                    </div>
+                    <div class="price">
+                        <h4> <%= viewProduct.getProductPrice()%></h4>
+                    </div>
+                    <form method="POST" action="CartServlet">
                         <div class="carthead">
                             <!--<h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3> -->
-                            <button type="submit">Add To Cart</button>
+                            <button class="btn" type="submit">Add To Cart</button>
                         </div>
-                        <input type="hidden" value=<%= viewProduct.getProductId()    %> name="productId" />
-                        <input type="hidden" value=<%= viewProduct.getProductTypeid()    %> name="productTypeId" />
+                        <input type="hidden" value=<%= viewProduct.getProductId()%> name="productId" />
+                        <input type="hidden" value=<%= viewProduct.getProductTypeid()%> name="productTypeId" />
 
                     </form>
+
                 </div>
-                        
+
 
                 <%}%>
             </div>

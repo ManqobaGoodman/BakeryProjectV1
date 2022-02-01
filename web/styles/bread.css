@@ -113,24 +113,29 @@ header a:hover{
     padding-bottom: 70px;
 }
 .prodpic{
-    flex-basis: 32%;
+    flex-basis: 55%;
     border-radius: 10px;
     margin-bottom: 30px;
+    /*margin-right: -35px;*/
+    margin-left: 42px;
     position: relative;
     overflow: hidden;
+    align-items: center;
 
 
 }
 
 .prodc img{
-    width: 100%;
+    width: 80%;
     display: block;
+    height: 70%;
+
 }
 
 .layer{
     background: transparent;
-    height: 50%;
-    width: 50%;
+    height: 10%;
+    width: 10%;
     position: absolute;
     top: 0;
     left: 0;
@@ -142,20 +147,20 @@ header a:hover{
 }
 
 .layer h3{
-    width: 100%;
-    font-weight: 500;
+    width: 20%;
+    font-weight: 50;
     color: #fff;
-    font-size: 26px;
+    font-size: 10px;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 15%;
+    transform: translateX(-10%);
     position: absolute;
     opacity: 0;
-    transition: 05s;
+    transition: 0.5s;
 }
 
 .layer:hover h3{
-    bottom: 49%;
+    bottom: 10%;
     opacity: 1;
 
 }
@@ -172,15 +177,35 @@ header a:hover{
 .prodpic .pichead{
     font-family: sans-serif;
     padding-bottom:  -50px;
+    margin-right: 90px;
+
 }
 
 .prodpic .price{
     font-family:  sans-serif;
     padding-bottom:   -50px;
-    
-    
+    margin-right: 95px;
+
 }
 
+.btn{
+    font-family: "Roboto",sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    background: #35424a;
+    width: 190px;
+    padding: 20px;
+    margin-right: 87px;
+    margin-bottom: 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 5px;
+    border-color:  #e8491d;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
 .highlight{
     color: #e8491d;
 }
