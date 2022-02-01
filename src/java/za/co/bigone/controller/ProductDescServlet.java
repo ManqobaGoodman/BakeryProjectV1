@@ -41,11 +41,10 @@ public class ProductDescServlet extends HttpServlet {
         } catch (NumberFormatException nfe) {
             System.out.println(nfe.getMessage());
         }
-
-        System.out.println(productId);
-
+        
+      
         Product viewProduct = productService.viewProduct(productId);
-        System.out.println(viewProduct.getNameOfProduct());
+       
         request.setAttribute("product", viewProduct);
         RequestDispatcher dispatcher = request.getRequestDispatcher("description.jsp");
         dispatcher.forward(request, response);

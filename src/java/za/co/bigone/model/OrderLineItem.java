@@ -16,10 +16,13 @@ public class OrderLineItem {
     private int orderproductid;
 
     public OrderLineItem() {
-    
-    
-    
+
     }
+
+    public OrderLineItem(int productid) {
+        this.productid = productid;
+    }
+    
 
     /**
      * @return the orderlineid
