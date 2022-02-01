@@ -1,12 +1,7 @@
-body{
-    font: 15px/1.5 Arial, Helvetica, sans-serif;
-    padding: 0;
-    margin: 0;
-    background-color: #f4f4f4;
-}
+
 
 /*Global*/
-.container{
+.container1{
     width: 80%;
     margin: auto;
     overflow: hidden;
@@ -42,7 +37,7 @@ header li{
 
 }
 
-header #cart{
+header #cart1{
     float: right;
     display: inline;
     padding-right: 30px;
@@ -50,7 +45,7 @@ header #cart{
 
 }
 
-header #cart img{
+header #cart1 img{
     float: left;
     width: 30px;
     height: 30px;
