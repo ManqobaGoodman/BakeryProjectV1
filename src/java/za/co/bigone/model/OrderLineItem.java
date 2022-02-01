@@ -1,29 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package za.co.bigone.model;
 
-/**
- *
- * @author student02
- */
+import java.util.Objects;
+
 public class OrderLineItem {
     private int orderlineid;
-    private int productid;
+    private Product product;
     private int quantity;
-    private int orderproductid;
 
     public OrderLineItem() {
-
+      
     }
 
-    public OrderLineItem(int productid) {
-        this.productid = productid;
+    public OrderLineItem(int orderlineid, Product product, int quantity) {
+        this.orderlineid = orderlineid;
+        this.product = product;
+        this.quantity = quantity;
     }
+
+   public OrderLineItem(Product product, int quantity) {
+       this(0,product, quantity);
+   }
     
-
+    
     /**
      * @return the orderlineid
      */
@@ -39,17 +37,17 @@ public class OrderLineItem {
     }
 
     /**
-     * @return the productid
+     * @return the product
      */
-    public int getProductid() {
-        return productid;
+    public Product getProduct() {
+        return product;
     }
 
     /**
-     * @param productid the productid to set
+     * @param product the product to set
      */
-    public void setProductid(int productid) {
-        this.productid = productid;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     /**
@@ -66,19 +64,30 @@ public class OrderLineItem {
         this.quantity = quantity;
     }
 
-    /**
-     * @return the orderproductid
-     */
-    public int getOrderproductid() {
-        return orderproductid;
+    @Override
+    public String toString() {
+        return "OrderLineItem{" + "orderlineid=" + orderlineid + ", product=" + product + ", quantity=" + quantity + '}';
     }
 
-    /**
-     * @param orderproductid the orderproductid to set
-     */
-    public void setOrderproductid(int orderproductid) {
-        this.orderproductid = orderproductid;
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 73 * hash + Objects.hashCode(this.product);
+        return hash;
     }
-    
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final OrderLineItem other = (OrderLineItem) obj;
+        return !Objects.equals(this.product, other.product);    }
+
 }

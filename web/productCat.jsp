@@ -55,7 +55,7 @@
                 <% for (Product viewProduct : products) {%>  
 
                 <div class="prodpic">
-                    <form method="GET">
+                    
                         <a href="http://localhost:8080/BakeryProjectV1/ProductDescServlet?productId=<%= viewProduct.getProductId() %>"><img src="<%= viewProduct.getPicture()%>"></a>   
                         
                         <div class="pichead">
@@ -64,11 +64,13 @@
                         <div class="price">
                             <h4> <%= viewProduct.getProductPrice()%></h4>
                         </div>
+                        <form method="POST" action="CartServlet">
                         <div class="carthead">
-                            <h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3>
-
+                            <!--<h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3> -->
+                            <button type="submit">Add To Cart</button>
                         </div>
-                        <input type="hidden" value=<%= viewProduct.getProductId()    %> name="productType" />
+                        <input type="hidden" value=<%= viewProduct.getProductId()    %> name="productId" />
+                        <input type="hidden" value=<%= viewProduct.getProductTypeid()    %> name="productTypeId" />
 
                     </form>
                 </div>

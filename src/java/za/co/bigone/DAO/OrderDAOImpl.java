@@ -49,12 +49,12 @@ public class OrderDAOImpl implements OrderDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                o1 = new OrderLineItem();
-                o1.setOrderlineid(rs.getInt("Orderlineid"));
-                o1.setOrderproductid(rs.getInt("orderproductid"));
-                o1.setProductid(rs.getInt("productid"));
-                o1.setQuantity(rs.getInt("quantity"));
-                orderL.add(o1);
+//                o1 = new OrderLineItem();
+//                o1.setOrderlineid(rs.getInt("Orderlineid"));
+//                o1.setOrderproductid(rs.getInt("orderproductid"));
+//                o1.setProductid(rs.getInt("productid"));
+//                o1.setQuantity(rs.getInt("quantity"));
+//                orderL.add(o1);
 
             }
             con.close();

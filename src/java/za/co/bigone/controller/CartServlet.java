@@ -50,7 +50,7 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         ServletContext context = request.getServletContext();
         DBPoolManagerBasic dbpool = (DBPoolManagerBasic) context.getAttribute("dbconn");
         ProductService productService = new ProductServiceImplementation(dbpool);
@@ -61,46 +61,31 @@ public class CartServlet extends HttpServlet {
         try {
             productId = Integer.parseInt(request.getParameter("productId"));
             productTypeId = Integer.parseInt(request.getParameter("productTypeId"));
-            System.out.println(productTypeId);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        CartService cartService = new CartServiceImpl(dbpool);
+        Product p = cartService.getProductForOrderLineItem(productId);
+        OrderLineItem orderLineItem = new OrderLineItem(p, 1);
 
-       
-        CartService cartService = new CartServiceImpl();
-        OrderLineItem orderLineItem = new OrderLineItem(productId);
-
-        if (orderLineItem != null) {
-            HttpSession session = request.getSession();
-            List<OrderLineItem> orderLineItemList = (List<OrderLineItem>) session.getAttribute("cart");
-            if (orderLineItemList == null) {
-                orderLineItemList = new ArrayList<>();
-            }
-            System.out.println(productId);
-            orderLineItemList.add(orderLineItem);
-            session.setAttribute("cart", orderLineItemList);
-
-            for (OrderLineItem orderLineItem1 : orderLineItemList) {
-                System.out.print(orderLineItem1.getProductid() + " ");
-            }
-            System.out.println("");
-            
+        HttpSession session = request.getSession();
+        List<OrderLineItem> orderLineItemList = (List<OrderLineItem>) session.getAttribute("cart");
+        if (orderLineItemList == null) {
+            orderLineItemList = new ArrayList<>();
         }
+        orderLineItemList.add(orderLineItem);
+        session.setAttribute("cart", orderLineItemList);
+        
+                 System.out.print(orderLineItemList);
 
         List<Product> productList = productService.viewProducts(productTypeId);
-        for (Product product : productList) {
-            System.out.println(product.getNameOfProduct());
-        }
         Producttype producttype = productService.getProducttype(productTypeId);
-        
         // request.setAttribute("product", product);
         request.setAttribute("products", productList);
         request.setAttribute("producttype", producttype);
         RequestDispatcher dispatcher = request.getRequestDispatcher("productCat.jsp");
         dispatcher.forward(request, response);
-
-
     }
 
     /**

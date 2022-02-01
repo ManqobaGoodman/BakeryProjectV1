@@ -53,7 +53,7 @@ public class Product {
     /**
      * @param productType the productType to set
      */
-    public void setProductTypeid(int productType) {
+    public void setProductTypeid(int productTypeid) {
         this.productTypeid = productTypeid;
     }
 

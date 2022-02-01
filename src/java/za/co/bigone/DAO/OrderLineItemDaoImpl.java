@@ -11,8 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import za.co.bigone.manager.DBPoolManagerBasic;
 import za.co.bigone.model.OrderLineItem;
+import za.co.bigone.model.Product;
 
 /**
  *
@@ -20,11 +23,13 @@ import za.co.bigone.model.OrderLineItem;
  */
 public class OrderLineItemDaoImpl implements OrderLineItemDAO {
 
-    DBPoolManagerBasic dbm;
+    private DBPoolManagerBasic dbm;
     private Connection con;
-   // private Connection conction;
+    private PreparedStatement ps;
+    private ResultSet rs;
 
-    public OrderLineItemDaoImpl() {
+    public OrderLineItemDaoImpl(DBPoolManagerBasic dbpool) {
+        dbm = dbpool;
     }
 
     /**
@@ -34,53 +39,81 @@ public class OrderLineItemDaoImpl implements OrderLineItemDAO {
      * @return
      */
     @Override
-    public List<OrderLineItem> viewOrderLineItems(List<OrderLineItem> OrderLineItemList) {
-        OrderLineItem oli1 = null;
+    public List<OrderLineItem> viewOrderLineItems(int orderId) {
         List<OrderLineItem> viewoli = new ArrayList<>();
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM orderlineitem WHERE orderlineitemid = ?");
-
-            //ps.setInt(1, OrderLineItemList);
-            
-            ResultSet rs = ps.executeQuery();
+            ps = con.prepareStatement(""
+                    + "SELECT nameofproduct,productdescription,productprice,productpicture,quantity,orderlineitemid \n"
+                    + "FROM orderlineitem AS oli, product AS p WHERE oli.orderid=? AND oli.productid=p.productid");
+            ps.setInt(1, orderId);
+            rs = ps.executeQuery();
             while (rs.next()) {
-                oli1 = new OrderLineItem();
-                oli1.setOrderlineid(rs.getInt("orderlineid"));
-                oli1.setOrderproductid(rs.getInt("orderproductid"));
-                oli1.setProductid(rs.getInt("productid"));
-                oli1.setQuantity(rs.getInt("quantity"));
+                Product p = new Product();
+                p.setNameOfProduct(rs.getString("nameofproduct"));
+                p.setProductDescription(rs.getString("productdescription"));
+                p.setProductPrice(rs.getDouble("productprice"));
+                p.setPicture(rs.getString("productpicture"));
+                OrderLineItem oli1 = new OrderLineItem(rs.getInt("orderlineitemid"),p,rs.getInt("quantity") );
                 viewoli.add(oli1);
             }
-            con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        }finally{
+            closeStreams();
         }
         return viewoli;
     }
 
     @Override
-    public OrderLineItem viewOrderLineItem(int orderproductid) {
+    public OrderLineItem viewOrderLineItem(int orderlineitemid) {
         OrderLineItem oli1 = new OrderLineItem();
         try {
-            Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM orderlineitem WHERE orderproductid = ?");
+            con = dbm.getConnection();
+             ps = con.prepareStatement(""
+                    + "SELECT nameofproduct,productdescription,productprice,productpicture,quantity,orderlineitemid \n"
+                    + "FROM orderlineitem AS oli, product AS p WHERE oli.orderlineitemid=? AND oli.productid=p.productid");
 
-            ps.setInt(1, orderproductid);
-
-            ResultSet rs = ps.executeQuery();
+            ps.setInt(1, orderlineitemid);
+            rs = ps.executeQuery();
             if (rs.next()) {
-                oli1.setOrderlineid(rs.getInt("orderlineid"));
-                oli1.setOrderproductid(rs.getInt("orderproductid"));
-                oli1.setProductid(rs.getInt("productid"));
-                oli1.setQuantity(rs.getInt("quantity"));
-
+                Product p = new Product();
+                p.setNameOfProduct(rs.getString("nameofproduct"));
+                p.setProductDescription(rs.getString("productdescription"));
+                p.setProductPrice(rs.getDouble("productprice"));
+                p.setPicture(rs.getString("productpicture"));
+                oli1 = new OrderLineItem(rs.getInt("orderlineitemid"),p,rs.getInt("quantity") );
             }
-            con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        }finally{
+            closeStreams();
         }
         return oli1;
     }
+    
+    private void closeStreams(){
+    if(rs!=null){
+        try {
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Resultset failed to close");
+        }
+    }
+    if(ps!=null){
+        try {
+            ps.close();
+        } catch (SQLException ex) {
+            System.out.println("Prepared failed to close");
+        }
+    }
+    if(con!=null){
+        try {
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println("Connection failed to close");
+        }
+    }
+}
 
 }

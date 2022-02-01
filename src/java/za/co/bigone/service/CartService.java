@@ -7,13 +7,14 @@ package za.co.bigone.service;
 
 import java.util.List;
 import za.co.bigone.model.OrderLineItem;
+import za.co.bigone.model.Product;
 
 /**
  *
  * @author Student24
  */
 public interface CartService {
-    
+    Product getProductForOrderLineItem(int productId);
     List<OrderLineItem> addCart(List<OrderLineItem> list, OrderLineItem orderLineItem);
     
 }
