@@ -107,7 +107,7 @@
                                         </strong>
                                         
                                         <!--<button style= border-radius: 3px; "margin-top: 10px; margin-right: -4.5px; font-size: 15px; font-family: sans-serif"type="submit"><span class="highlight">Check</span>-Out</button>-->
-                                        <button>Check Out</button>
+                                        <a href="CheckOut.jsp"<button>Check Out</button></a>
                                     
                                     
                                     </td>
