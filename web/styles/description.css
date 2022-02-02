@@ -140,7 +140,7 @@ header a:hover{
 
 }
 .prodpic{
-    flex-basis: 70%;
+    flex-basis: 30%;
     /*border-radius: 10px;*/
     margin-bottom: 30px;
     position: relative;
@@ -196,12 +196,23 @@ header a:hover{
 .des{
     margin-top: 10px;
 }
-.button {
-    float: right;
-    font-size: 30px;
-    margin-right:  350px;
-    margin-top: 50px;
-    color: red;
+.btn{
+    font-family: "Roboto",sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    background: #35424a;
+    width: 190px;
+    padding: 20px;
+    margin-right: 87px;
+    margin-bottom: 25px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #e8491d;
+    border-radius: 5px;
+    border-color:  #e8491d;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 

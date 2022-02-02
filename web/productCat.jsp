@@ -16,6 +16,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Bread/Pies</title>
         <link rel="stylesheet"  href="./styles/bread.css"> 
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     </head>
     <body>
@@ -67,7 +68,8 @@
                     <form method="POST" action="CartServlet">
                         <div class="carthead">
                             <!--<h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3> -->
-                            <button class="btn" type="submit">Add To Cart</button>
+                           <button class="btn" type="submit">Add To Cart</button>
+                        
                         </div>
                         <input type="hidden" value=<%= viewProduct.getProductId()%> name="productId" />
                         <input type="hidden" value=<%= viewProduct.getProductTypeid()%> name="productTypeId" />

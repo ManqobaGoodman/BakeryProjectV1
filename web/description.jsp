@@ -61,10 +61,8 @@
                 <div class="description">
                     <p><%= product.getProductDescription() %></p>
 
-
-
                 </div>
-                <button class="button" value="Add To Cart">Add To Cart</button>
+                <button class="btn" value="Add To Cart">Add To Cart</button>
 
             </div>
             <div class="row">
