@@ -11,12 +11,6 @@ body{
     margin: auto;
     overflow: hidden;
 }
-.container1{
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    font-size: 30px;
-}
 
 /*HEADER*/
 header{
@@ -38,8 +32,7 @@ header a{
 
 header ul{
     margin: 0;
-    padding: 0; 
-  
+    padding: 0;
 }
 
 header li{
@@ -88,8 +81,44 @@ header a:hover{
     color: #35424a;
     padding-bottom: -110px;
 }
+#Foot{
 
-/*-------------------------------CheckOut----------------------------*/
+    margin-top: 90px;
+    background-color: #35424a;
+    padding-top: 30px;
+    min-height: 70px;
+    border-top:  #e8491d 3px solid;
+
+}
+
+#Foot .footer{
+    color: #e8491d;
+    font-family: serif;
+}
+
+#Foot .Footer{
+    color: #ffffff;
+
+}
+
+#Foot .highlight{
+    color: #e8491d;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 *{
@@ -101,8 +130,9 @@ header a:hover{
 }
 
 .bod{
+    margin: 20px auto;
     height: 50vh;
-    margin-right: 100px;
+    /*margin-right: 100px;*/
     width: 100%;
     display: flex;
     justify-content: center;
@@ -170,8 +200,9 @@ header a:hover{
     margin-bottom: 2.5rem;
     font-weight: 500;
     opacity: 0.8;
-    margin-top: 470px;
+    /*margin-top: 30px;*/
     margin-left: 6px;
+    margin-bottom: 50px;
 }
 .checkout-form{
     display: flex;
@@ -186,8 +217,9 @@ header a:hover{
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     width: 100%;
+    /*margin-top: 500px;*/
 }
 
 label{
@@ -233,6 +265,8 @@ input[type="button"]{
     border-radius: 5px;
     cursor: pointer;
     margin-top: 50px;
+    margin-left: 445px;
+
 }
 input[type="button"]:hover{
     background-color: rgb(4 , 88 ,167)
@@ -242,6 +276,39 @@ input[type="button"]:hover{
     margin-right: 5px;
 }
 
+/*--------------button--------------*/
+
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+button{
+    display: block; 
+    height: 60px;
+    width: 250px;
+    background-color: #35424a;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    right: 0;
+    place-items: center;
+    font-family: "Poppins" ,sans-serif;
+    color: #e8491d;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 3px;
+    border-radius: 5px;
+    margin-left: 790px;
+}
+
+.href{
+    color: #e8491d;
+}
 
 
 
@@ -249,13 +316,7 @@ input[type="button"]:hover{
 
 
 
-
-
-
-
-
-
-
+/*---------------Table----------------------*/
 *{
     margin: 0;
     padding: 0;
@@ -263,8 +324,16 @@ input[type="button"]:hover{
 i{
     margin-right: 10px;
 }
+.wid{
+    width: 62%;
+    margin-left: 405px;
+}
 table{
-    margin-top: 80px;
+    /*margin-top: 600px;*/
+    /*margin-bottom: -500px;*/
+    width: 100%;
+
+
 }
 input:focus,
 button:focus,
@@ -311,37 +380,8 @@ button:focus,
     width: 50px;
     height: 50px;
     background-color: #5161ce;
-     border-radius: 4px;;
+    border-radius: 4px;;
 }
 .img-prdct img{
     width: 20%;
-}
-
-
-
-
-
-/*Footer*/
-#Foot{
-
-    margin-top: 580px;
-    background-color: #35424a;
-    padding-top: 30px;
-    min-height: 70px;
-    border-top:  #e8491d 3px solid;
-
-}
-
-#Foot .footer{
-    color: #e8491d;
-    font-family: serif;
-}
-
-#Foot .Footer{
-    color: #ffffff;
-
-}
-
-#Foot .highlight{
-    color: #e8491d;
 }

@@ -1,0 +1,128 @@
+
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" href="./styles/payment.css">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <div id="branding">
+                    <div id="cart">
+                        <a href="cart.jsp"><img src="./img/shopp.png"></a>
+                        <li class="current"><a href="cart.jsp">View Cart</a></li>
+                    </div>
+                    <h1 style="border-style: groove">Mrs <span class="highlight"> Pats</span> Cake</h1>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a href="index.jsp">Home</a></li> 
+                        <li><a href="about.jsp">About us</a></li> 
+                        <li> <a href="products.jsp">Products</a></li>
+                        <li><a href="contact.jsp">Contact us</a></li>
+                        <li><a href="Login.jsp">Login/Register</a></li>
+
+                    </ul>
+                </nav>
+
+            </div>
+        </header>
+
+
+
+
+
+
+
+
+        <section class="bodd">
+        <div class="bank">
+            <h1>Confirm Your Payment</h1>
+            <div class="first-row">
+                <div class="Owner">
+                    <h3>Owner</h3>
+                    <div class="input-field">
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="cvv">
+                    <h3>CVV</h3>
+                    <div class="input-field">
+                        <input type="password">
+                    </div>
+                </div>
+            </div>
+            <div class="second-row">
+                <div class="card-number">
+                    <h3>Card-Number</h3>
+                    <div class="input-field">
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="third-row">
+                <h3>Card-Number</h3>
+                <div class="selection">
+                    <div class="date">
+                        <select name="month" id="months">
+                            <option value="Jan">Jan</option>
+                            <option value="Feb">Feb</option>
+                            <option value="Mar">Mar</option>
+                            <option value="Apr">Apr</option>
+                            <option value="May">May</option>
+                            <option value="Jun">Jun</option>
+                            <option value="Jul">Jul</option>
+                            <option value="Aug">Aug</option>
+                            <option value="Sep">Sep</option>
+                            <option value="Oct">Oct</option>
+                            <option value="Nov">Nov</option>
+                            <option value="Dec">Dec</option>
+                        </select>
+                        <select name="years" id="years">
+                            <option value="2022"></option>
+                            <option value="2021"></option>
+                            <option value="2020"></option>
+                            <option value="2019"></option>
+                            <option value="2018"></option>
+                        </select>
+                    </div>
+                    <div class="cards">
+                        <img src="./img/master.jpg" width="10%" alt="">
+                        <img src="./img/paypal.jpg" width="10%" alt="">
+                        <img src="./img/visa.jpg" width="10%" malt="">
+                    </div>
+                </div>
+            </div>
+            <a class="link" href="payment.jsp">Confirm</a>
+        </div>
+
+        </section>
+
+
+
+
+
+
+        <footer  id="Foot">
+            <div class="footer">
+                <h2>Hours : </h2>
+            </div>
+            <div class="Footer">
+                <p>
+                    Monday-Friday (08h00-14h00)</p>
+                <p> Saturday (08h00-13h00)</p>
+                <p>Sunday (Closed)</p>
+            </div>
+            <div class="contact">
+                <h2><span class="highlight">Contact Us</span></h2>
+                <p>012 234 8673</p>
+            </div>
+        </footer>
+    </body>
+</html>

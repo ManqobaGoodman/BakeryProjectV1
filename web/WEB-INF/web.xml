@@ -5,7 +5,7 @@
     </listener>
     <context-param>
         <param-name>url</param-name>
-        <param-value>jdbc:mysql://192.168.128.199:3306/</param-value>
+        <param-value>jdbc:mysql://192.168.128.16:3306/</param-value>
     </context-param>
     <context-param>
         <param-name>user_name</param-name>

@@ -136,23 +136,43 @@ button:focus,
     background-color: #5161ce;
     color: #fff;
 }
-/*.img-prdct{
-    width: 50px;
-    height: 50px;
-    background-color: #5161ce;
-     border-radius: 4px;;
-}*/
+
 .img-prdct img{
     width: 20%;
 }
+.boton button{
+    display: block; 
+    height: 40px;
+    width: 170px;
+    background-color: #35424a;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    right: 0;
+    place-items: center;
+    font-family: "Poppins" ,sans-serif;
+    color: #e8491d;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 3px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 20px;
+    /*margin-left: 790px;*/
+}
 
+.href{
+    color: #e8491d;
+}
 
 
 
 
 #Foot{
 
-    /*margin-top: -30px;*/
+    margin-top: 60px;
     background-color: #35424a;
     padding-top: 30px;
     min-height: 70px;
