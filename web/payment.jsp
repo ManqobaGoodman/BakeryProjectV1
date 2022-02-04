@@ -71,25 +71,25 @@
                 <div class="selection">
                     <div class="date">
                         <select name="month" id="months">
-                            <option value="Jan">Jan</option>
-                            <option value="Feb">Feb</option>
-                            <option value="Mar">Mar</option>
-                            <option value="Apr">Apr</option>
-                            <option value="May">May</option>
-                            <option value="Jun">Jun</option>
-                            <option value="Jul">Jul</option>
-                            <option value="Aug">Aug</option>
-                            <option value="Sep">Sep</option>
-                            <option value="Oct">Oct</option>
-                            <option value="Nov">Nov</option>
-                            <option value="Dec">Dec</option>
+                            <option value="01">Jan</option>
+                            <option value="02">Feb</option>
+                            <option value="03">Mar</option>
+                            <option value="04">Apr</option>
+                            <option value="05">May</option>
+                            <option value="06">Jun</option>
+                            <option value="07">Jul</option>
+                            <option value="08">Aug</option>
+                            <option value="09">Sep</option>
+                            <option value="10">Oct</option>
+                            <option value="11">Nov</option>
+                            <option value="12">Dec</option>
                         </select>
                         <select name="years" id="years">
-                            <option value="2022"></option>
-                            <option value="2021"></option>
-                            <option value="2020"></option>
-                            <option value="2019"></option>
-                            <option value="2018"></option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
                         </select>
                     </div>
                     <div class="cards">
@@ -99,7 +99,7 @@
                     </div>
                 </div>
             </div>
-            <a class="link" href="payment.jsp">Confirm</a>
+            <a class="link">Confirm</a>
         </div>
 
         </section>

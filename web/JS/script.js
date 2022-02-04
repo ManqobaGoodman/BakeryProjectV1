@@ -30,9 +30,11 @@ var minusBtn = $(".cart-qty-minus");
 var incrementQty = plusBtn.click(function (){
     var $n = $(this).parent(".button-container").find(".qty");
     $n.val(Number($n.val())+1);
+   
         update_amounts();
-        });
         
+        });
+     
         
         var decrementQty = minusBtn.click( function (){
            var $n = $(this).parent(".button-container").find(".qty");

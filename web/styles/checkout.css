@@ -324,17 +324,7 @@ button{
 i{
     margin-right: 10px;
 }
-.wid{
-    width: 62%;
-    margin-left: 405px;
-}
-table{
-    /*margin-top: 600px;*/
-    /*margin-bottom: -500px;*/
-    width: 100%;
 
-
-}
 input:focus,
 button:focus,
 .form-control:focus{
@@ -376,12 +366,33 @@ button:focus,
     background-color: #5161ce;
     color: #fff;
 }
-.img-prdct{
-    width: 50px;
-    height: 50px;
-    background-color: #5161ce;
-    border-radius: 4px;;
-}
+
 .img-prdct img{
     width: 20%;
+}
+.boton button{
+    display: block; 
+    height: 40px;
+    width: 170px;
+    background-color: #35424a;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    right: 0;
+    place-items: center;
+    font-family: "Poppins" ,sans-serif;
+    color: #e8491d;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 3px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 20px;
+    /*margin-left: 790px;*/
+}
+
+.href{
+    color: #e8491d;
 }

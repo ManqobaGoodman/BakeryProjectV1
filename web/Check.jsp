@@ -70,12 +70,11 @@
 
                     </section>
 
-                    <div class="wid">   
-                        <table id="myTable" class="table">
+                    <table id="myTable" class="table">
                             <thead>
                                 <tr>
                                     <th>Product</th>
-
+                                    <th>Name</th>
                                     <th>Qty</th>
                                     <th>Price</th>
                                     <th class="text-right"><span id="amount" class="amount">Amount</span></th>
@@ -83,15 +82,21 @@
                             </thead>
                             <tbody>
                                 <tr>
-
+                                    <td>
+                                        <div class="product-img">
+                                            <div class="img-prdct">
+                                                <img src="./img/brownie.jpeg" width="5%" >
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>
                                         <p>Chocolate Brownie</p>
                                     </td>
                                     <td>
                                         <div class="button-container">
-
+                                            <button class="cart-qty-plus" type="button" value="+">+</button>
                                             <input type="text" name="qty" min="0" class="qty form-control" value="0"/>
-
+                                            <button class="cart-qty-minus" type="button" value="+">-</button>
                                         </div>
                                     </td>
                                     <td>
@@ -100,7 +105,56 @@
                                     <td align="right">R <span id="amount" class="amount">0</span>
                                     </td>
                                 </tr>
-
+                                <!--------------------Product2---------------------->
+                                <tr>
+                                    <td>
+                                        <div class="product-img">
+                                            <div class="img-prdct">
+                                                <img src="./img/bread.jpeg" width="5%">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p>Fresh Bread</p>
+                                    </td>
+                                    <td>
+                                        <div class="button-container">
+                                            <button class="cart-qty-plus" type="button" value="+">+</button>
+                                            <input type="text" name="qty" min="0" class="qty form-control" value="0"/>
+                                            <button class="cart-qty-minus" type="button" value="+">-</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="text" value="125" class="price form-control" disabled>
+                                    </td>
+                                    <td align="right">R <span id="amount" class="amount">0</span>
+                                    </td>
+                                </tr>
+                                <!-------------------Prodyct 3---------------------------------->
+                                <tr>
+                                    <td>
+                                        <div class="product-img">
+                                            <div class="img-prdct">
+                                                <img src="./img/cake.jpg" width="5%">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <p>Chocolate Cake</p>
+                                    </td>
+                                    <td>
+                                        <div class="button-container">
+                                            <button class="cart-qty-plus" type="button" value="+">+</button>
+                                            <input type="text" name="qty" min="0" class="qty form-control" value="0"/>
+                                            <button class="cart-qty-minus" type="button" value="+">-</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <input type="text" value="250" class="price form-control" disabled>
+                                    </td>
+                                    <td align="right">R <span id="amount" class="amount">0</span>
+                                    </td>
+                                </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -112,110 +166,13 @@
                                 </tr>
                             </tfoot>
                         </table>
-
-
-                        <button> <a href="payment.jsp" class="href">Complete purchase</a></button>
-
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <footer  id="Foot">
-                        <div class="footer">
-                            <h2>Hours : </h2>
-                        </div>
-                        <div class="Footer">
-                            <p>
-                                Monday-Friday (08h00-14h00)</p>
-                            <p> Saturday (08h00-13h00)</p>
-                            <p>Sunday (Closed)</p>
-                        </div>
-                        <div class="contact">
-                            <h2><span class="highlight">Contact Us</span></h2>
-                            <p>012 234 8673</p>
-                        </div>
-                    </footer>
-
-                    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-                    <script>
-
-                        $(document).ready(function () {
-                            update_amounts();
-                            $(".qty, .price").on("keyup keypress blur change",
-                                    function (e) {
-                                        update_amounts();
-                                    });
-                        });
-
-                        function update_amounts() {
-                            var sum = 0.0;
-                            $("#myTable > tbody > tr").each(function () {
-                                var qty = $(this).find(".qty").val();
-                                var price = $(this).find(".price").val();
-                                var amount = (qty * price)
-                                sum += amount;
-                                $(this).find(".amount").text("" + amount);
-
-                            });
-                            $(".total").text(sum);
-                        }
-
-
-
-
-                        var incrementQty;
-                        var decrementQty;
-                        var plusBtn = $(".cart-qty-plus");
-                        var minusBtn = $(".cart-qty-minus");
-                        var incrementQty = plusBtn.click(function () {
-                            var $n = $(this).parent(".button-container").find(".qty");
-                            $n.val(Number($n.val()) + 1);
-                            update_amounts();
-                        });
-
-
-                        var decrementQty = minusBtn.click(function () {
-                            var $n = $(this).parent(".button-container").find(".qty");
-                            var QtyVal = Number($n.val());
-                            if (QtyVal > 0) {
-                                $n.val(QtyVal - 1);
-
-                            }
-                            update_amounts();
-
-                        });
-                    </script>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="./JS/script.js"></script>
 
                     </body>
                     </html>

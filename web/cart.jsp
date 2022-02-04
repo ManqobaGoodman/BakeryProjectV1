@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>About us</title>
+        <title>View-Cart</title>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="./styles/newcart.css">
@@ -95,15 +95,15 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="4"></td>
+                                    <td colspan="3"></td>
                                     <td align="right">
-                                        <strong>Total = R <span id="total" class="total">0</span>
+                                        <strong>Total = R<span id="total" class="total">0</span>
                                         </strong>
 
                                        
                                         <!--<button style= border-radius: 3px; "margin-top: 10px; margin-right: -4.5px; font-size: 15px; font-family: sans-serif"type="submit"><span class="highlight">Check</span>-Out</button>-->
                                         <div class="boton">
-                                        <button> <a href="Check.jsp" class="href">Check-Out</a></button>
+                                        <button> <a href="checkPayment.jsp" class="href">Check-Out</a></button>
                                         </div>
 
                                     </td>

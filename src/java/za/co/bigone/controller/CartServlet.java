@@ -91,10 +91,8 @@ public class CartServlet extends HttpServlet {
         Producttype producttype = productService.getProducttype(productTypeId);
         // request.setAttribute("product", product);
 
-        request.setAttribute(
-                "products", productList);
-        request.setAttribute(
-                "producttype", producttype);
+        request.setAttribute("products", productList);
+        request.setAttribute("producttype", producttype);
         RequestDispatcher dispatcher = request.getRequestDispatcher("productCat.jsp");
 
         dispatcher.forward(request, response);
