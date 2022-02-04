@@ -1,10 +1,13 @@
 
 
+<%@page import="za.co.bigone.model.Person"%>
 <%@page import="java.util.List"%>
 <%@page import="za.co.bigone.model.OrderLineItem"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     List<OrderLineItem> orderLineItemList = (List<OrderLineItem>) session.getAttribute("cart");
+    Person person = (Person) session.getAttribute("person");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -47,18 +50,18 @@
                     <form action="" class="checkout-form">
                         <div class="input-line">
                             <label for="name">Name</label>
-                            <input type="text" name="name" id="name" placeholder="Your name and Surname" disabled>
+                            <input type="text" name="name" id="name" value="<%= person.getFirstname() + " " + person.getLastname()%>" disabled>
                         </div>
                         <div class="input-line">
                             <label for="email">E-mail</label>
-                            <input type="text" name="email" id="email" placeholder="Your e-mail address" disabled>
-                        </div>
-                        <div class="input-line">
+                            <input type="text" name="email" id="email" value="<%= person.getEmail()%>"disabled>
+                                   </div>
+                                   <div class="input-line">
                             <label for="number">Contact-Number</label>
-                            <input type="text" name="number" id="number" placeholder="Your Contact-Number" disabled>
-                        </div>
+                            <input type="text" name="number" id="number" value="<%= person.getTelephone()%>" disabled>
+                                   </div>
 
-                        <div class="input-container">
+                                   <div class="input-container">
 
                             <div class="input-line">
                                 <label for="address">Address</label>
@@ -159,6 +162,11 @@
                 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
                 <script src="./JS/script.js"></script>
+                <script>
+                    function myFunction() {
+                        location.replace("/Login.jsp")
+                    }
+                </script>
 
                 </body>
                 </html>

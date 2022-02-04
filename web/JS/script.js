@@ -27,6 +27,7 @@ var incrementQty;
 var decrementQty;
 var plusBtn = $(".cart-qty-plus");
 var minusBtn = $(".cart-qty-minus");
+
 var incrementQty = plusBtn.click(function (){
     var $n = $(this).parent(".button-container").find(".qty");
     $n.val(Number($n.val())+1);
