@@ -1,4 +1,5 @@
 
+<%@page import="za.co.bigone.model.Person"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="za.co.bigone.model.OrderLineItem"%>
@@ -20,13 +21,15 @@
     </head>
     <body>
         <header>
-            <div class="container1">
+            <div class="container">
                 <div id="branding">
-                    <div id="cart1">
+
+                    <div id="cart">
                         <a href="cart.jsp"><img src="./img/shopp.png"></a>
                         <li class="current"><a href="cart.jsp">View Cart</a></li>
                     </div>
                     <h1 style="border-style: groove">Mrs <span class="highlight"> Pats</span> Cake</h1>
+
                 </div>
 
                 <nav>
@@ -35,13 +38,36 @@
                         <li><a href="about.jsp">About us</a></li> 
                         <li> <a href="products.jsp">Products</a></li>
                         <li><a href="contact.jsp">Contact us</a></li>
-                        <li><a href="Login.jsp">Login/Register</a></li>
+                            <% Person p = (Person) session.getAttribute("person");
+                                if (p == null) {
+                            %>
 
+                        <li><a href="Login.jsp">Login/Register</a></li> 
+
+                        <%
+                            }
+                        %>
+                        <%
+                            if (p != null) {
+                        %>
+                        <div class="dropdown">
+                            <button class="dropbtn">MyAccount</button>
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                                <a href="#">Order</a>
+                                <a href="#">LogOut</a>
+                            </div>
+                        </div>
+
+                        <%
+                            }
+                        %>
                     </ul>
                 </nav>
 
             </div>
         </header>
+
 
         <div class="container-fluid mt-5">
             <h2 class="mb-5 text-center">Shopping Cart</h2>
@@ -59,8 +85,11 @@
                                     <th class="text-right"><span id="amount" class="amount">Remove</span></th>
                                 </tr>
                             </thead>
+
                             <form method="">
                                 <tbody>
+
+
                                     <%
                                         if (orderLineItemList != null) {
                                             for (OrderLineItem orderLineItem : orderLineItemList) {
@@ -74,6 +103,7 @@
                                                     <img src="<%= orderLineItem.getProduct().getPicture()%>" width="15%" >
                                                 </div>
                                             </div>
+
                                         </td>
                                         <td>
                                             <p><%= orderLineItem.getProduct().getNameOfProduct()%></p>
@@ -85,12 +115,16 @@
                                                 <button class="cart-qty-minus" type="button" value="+">-</button>
                                             </div>
 
+                                            </div>
                                         </td>
+
                                         <td>
                                             <input type="text" value="<%= orderLineItem.getProduct().getProductPrice()%>" class="price form-control" disabled>
+
                                         </td>
                                         <td align="right">R <span id="amount" class="amount">0</span>
                                         </td>
+
                                         <td class="src">
                                             <a href="#"><img src="./img/bin.jpg" width="8%" style="float: right; margin-right: 18px;"></a>
                                         </td>
@@ -100,6 +134,7 @@
                                         }%>
 
 
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -107,6 +142,14 @@
                                         <td align="right">
                                             <strong>Total = R<span id="total" class="total">0</span>
                                             </strong>
+
+
+
+                                            <!--<button style= border-radius: 3px; "margin-top: 10px; margin-right: -4.5px; font-size: 15px; font-family: sans-serif"type="submit"><span class="highlight">Check</span>-Out</button>-->
+                                            <div class="boton">
+                                                <button> <a href="http://localhost:8080/BakeryProjectV1/ConfirmationServlet" class="href">Check-Out</a></button>
+                                            </div>
+
 
 
                                             <!--<button style= border-radius: 3px; "margin-top: 10px; margin-right: -4.5px; font-size: 15px; font-family: sans-serif"type="submit"><span class="highlight">Check</span>-Out</button>-->
@@ -119,6 +162,13 @@
 
                                 </tfoot>
                             </form>
+
+                            </td>
+                            </tr>
+
+                            </tfoot>
+
+
 
 
                         </table>
@@ -145,5 +195,25 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="./JS/script.js"></script>
+        <script type="text/javascript">
+            function () {
+                var productId = $('#productId').val();
+                var quantity = $('#quantity').val();
+                [
+                        var jsonData
+                {
+                prodyuctId: productId;
+                        quantity: quantity;
+                }
+                ]
+
+                $.ajax(){
+                url: 'ConfirmationServlet',
+                        type: 'POST',
+                        data: 'para=' + myVar, //sending json data
+                        dataType: 'json',
+                }
+            }
+        </script>
     </body>
 </html>
