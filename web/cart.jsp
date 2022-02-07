@@ -50,74 +50,77 @@
                     <div class="table-responsive">
                         <table id="myTable" class="table">
                             <thead>
-                                <tr>
+                                <tr class="move">
                                     <th>Product</th>
                                     <th>Name</th>
                                     <th>Qty</th>
                                     <th>Price</th>
-                                    <th class="text-right"><span id="amount" class="amount">Amount</span></th>
+                                    <td style="">Amount</td>
+                                    <th class="text-right"><span id="amount" class="amount">Remove</span></th>
                                 </tr>
                             </thead>
                             <form method="">
                                 <tbody>
-                                <%
-                                    if (orderLineItemList != null) {
-                                        for (OrderLineItem orderLineItem : orderLineItemList) {
+                                    <%
+                                        if (orderLineItemList != null) {
+                                            for (OrderLineItem orderLineItem : orderLineItemList) {
 
 
-                                %>
-                                <tr>
-                                    <td>
-                                        <div class="product-img">
-                                            <div class="img-prdct">
-                                                <img src="<%= orderLineItem.getProduct().getPicture()%>" width="5%" >
+                                    %>
+                                    <tr>
+                                        <td>
+                                            <div class="product-img">
+                                                <div class="img-prdct">
+                                                    <img src="<%= orderLineItem.getProduct().getPicture()%>" width="15%" >
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p><%= orderLineItem.getProduct().getNameOfProduct()%></p>
-                                    </td>
-                                    <td>
-                                        <div class="button-container">
-                                            <button class="cart-qty-plus" type="button" value="+">+</button>
-                                            <input type="text" name="quantity" min="0" max="5" class="qty form-control" value="<%= orderLineItem.getQuantity()%>"/>
-                                            <button class="cart-qty-minus" type="button" value="+">-</button>
-                                        </div>
-                                          
-                                    </td>
-                                    <td>
-                                        <input type="text" value="<%= orderLineItem.getProduct().getProductPrice()%>" class="price form-control" disabled>
-                                    </td>
-                                    <td align="right">R <span id="amount" class="amount">0</span>
-                                    </td>
-                                </tr>
-                                <% }
+                                        </td>
+                                        <td>
+                                            <p><%= orderLineItem.getProduct().getNameOfProduct()%></p>
+                                        </td>
+                                        <td>
+                                            <div class="button-container">
+                                                <button class="cart-qty-plus" type="button" value="+">+</button>
+                                                <input type="text" name="quantity" min="0" max="10" class="qty form-control" value="<%= orderLineItem.getQuantity()%>"/>
+                                                <button class="cart-qty-minus" type="button" value="+">-</button>
+                                            </div>
 
-                                   
-                                    }%>
+                                        </td>
+                                        <td>
+                                            <input type="text" value="<%= orderLineItem.getProduct().getProductPrice()%>" class="price form-control" disabled>
+                                        </td>
+                                        <td align="right">R <span id="amount" class="amount">0</span>
+                                        </td>
+                                        <td class="src">
+                                            <a href="#"><img src="./img/bin.jpg" width="8%" style="float: right; margin-right: 18px;"></a>
+                                        </td>
+                                    </tr>
+                                    <% }
+
+                                        }%>
 
 
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="3"></td>
-                                    <td align="right">
-                                        <strong>Total = R<span id="total" class="total">0</span>
-                                        </strong>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5"></td>
+                                        <td align="right">
+                                            <strong>Total = R<span id="total" class="total">0</span>
+                                            </strong>
 
-                                       
-                                        <!--<button style= border-radius: 3px; "margin-top: 10px; margin-right: -4.5px; font-size: 15px; font-family: sans-serif"type="submit"><span class="highlight">Check</span>-Out</button>-->
-                                        <div class="boton">
-                                        <button> <a href="checkPayment.jsp" class="href">Check-Out</a></button>
-                                        </div>
 
-                                    </td>
-                                </tr>
-                                
-                            </tfoot>
+                                            <!--<button style= border-radius: 3px; "margin-top: 10px; margin-right: -4.5px; font-size: 15px; font-family: sans-serif"type="submit"><span class="highlight">Check</span>-Out</button>-->
+                                            <div class="boton">
+                                                <button> <a href="checkPayment.jsp" class="href">Check-Out</a></button>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                </tfoot>
                             </form>
-                            
-                           
+
+
                         </table>
                     </div>
                 </div>
