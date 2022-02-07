@@ -81,8 +81,6 @@
                                         <div class="button-container">
                                             <button class="cart-qty-plus" type="button" value="+">+</button>
                                             <input type="text" name="quantity" min="0" max="5" class="qty form-control" value="<%= orderLineItem.getQuantity()%>"/>
-                                            
-                                            <input type="text" min="0" max="5" class="qty form-control" value="<%= orderLineItem.getQuantity()%>"/>
                                             <button class="cart-qty-minus" type="button" value="+">-</button>
                                         </div>
                                           
