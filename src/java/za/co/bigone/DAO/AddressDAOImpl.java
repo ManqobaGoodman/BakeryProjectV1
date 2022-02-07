@@ -25,7 +25,8 @@ public class AddressDAOImpl implements AddressDAO {
     private Connection con;
   //  private Connection conction;
 
-    public AddressDAOImpl() {
+    public AddressDAOImpl(DBPoolManagerBasic dbm) {
+        this.dbm = dbm;
     }
     //---------------------View all addresses-------------------------------
     @Override
@@ -56,23 +57,23 @@ public class AddressDAOImpl implements AddressDAO {
     }
      //---------------------View one address-------------------------------
     @Override
-    public Address viewAddress1() {
+    public Address viewAddress1(int addressId) {
             Address Addr1 = new Address();
         
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM addressid VALUE = ?");
-
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Address where addressid = ?");
+            ps.setInt(1, addressId);
+            
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                Addr1.setAddress1(rs.getString("Address1"));
-                Addr1.setAddress2(rs.getString("Address2"));
                 Addr1.setAddressId(rs.getInt("AddressId"));
-                Addr1.setPostalCode(rs.getInt("PostalCode"));
-                Addr1.setProvince(rs.getString("province"));
+                Addr1.setAddress1(rs.getString("Address1"));
                 Addr1.setTown(rs.getString("Town"));
+                Addr1.setPostalCode(rs.getInt("PostalCode"));
+                
                 
             }
             con.close();
@@ -87,25 +88,21 @@ public class AddressDAOImpl implements AddressDAO {
        
 
     @Override
-    public Address insertAddress1() {
+    public Address insertAddress1(int peronId, String address1,String town, int postalCode) {
          Address Addr1 = new Address();
+         
         
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO address VALUE = ?");
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                Addr1.setAddress1(rs.getString("Address1"));
-                Addr1.setAddress2(rs.getString("Address2"));
-                Addr1.setAddressId(rs.getInt("AddressId"));
-                Addr1.setPostalCode(rs.getInt("PostalCode"));
-                Addr1.setProvince(rs.getString("province"));
-                Addr1.setTown(rs.getString("Town"));
-                
-            }
+            PreparedStatement ps = con.prepareStatement("INSERT INTO address (addressid,personid,addr1,town,postalcode) VALUE (null,?,?,?,? )");
+            
+            ps.setInt(1, peronId);
+            ps.setString(2, address1);
+            ps.setString(3, town);
+            ps.setInt(4, postalCode);
+            ps.executeUpdate();
+            
             con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

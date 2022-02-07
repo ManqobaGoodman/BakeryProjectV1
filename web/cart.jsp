@@ -58,8 +58,8 @@
                                     <th class="text-right"><span id="amount" class="amount">Amount</span></th>
                                 </tr>
                             </thead>
-                            <form method="">
-                                <tbody>
+
+                            <tbody>
                                 <%
                                     if (orderLineItemList != null) {
                                         for (OrderLineItem orderLineItem : orderLineItemList) {
@@ -83,17 +83,18 @@
                                             <input type="text" name="quantity" min="0" max="5" class="qty form-control" value="<%= orderLineItem.getQuantity()%>"/>
                                             <button class="cart-qty-minus" type="button" value="+">-</button>
                                         </div>
-                                          
+
                                     </td>
                                     <td>
                                         <input type="text" value="<%= orderLineItem.getProduct().getProductPrice()%>" class="price form-control" disabled>
+                                        <input type="hiden" name="productId" value="<%= orderLineItem.getProduct().getProductId()%>" class="price form-control" disabled>
                                     </td>
                                     <td align="right">R <span id="amount" class="amount">0</span>
                                     </td>
                                 </tr>
-                                <% }
+                                <%
+                                        }
 
-                                   
                                     }%>
 
 
@@ -105,19 +106,19 @@
                                         <strong>Total = R<span id="total" class="total">0</span>
                                         </strong>
 
-                                       
+
                                         <!--<button style= border-radius: 3px; "margin-top: 10px; margin-right: -4.5px; font-size: 15px; font-family: sans-serif"type="submit"><span class="highlight">Check</span>-Out</button>-->
                                         <div class="boton">
-                                        <button> <a href="checkPayment.jsp" class="href">Check-Out</a></button>
+                                            <button> <a href="http://localhost:8080/BakeryProjectV1/ConfirmationServlet" class="href">Check-Out</a></button>
                                         </div>
 
                                     </td>
                                 </tr>
-                                
+
                             </tfoot>
-                            </form>
-                            
-                           
+
+
+
                         </table>
                     </div>
                 </div>
@@ -142,5 +143,25 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="./JS/script.js"></script>
+        <script type="text/javascript">
+            function () {
+                var productId = $('#productId').val();
+                var quantity = $('#quantity').val();
+                [
+                        var jsonData
+                {
+                prodyuctId: productId;
+                quantity: quantity;
+                }
+                ]
+
+                $.ajax(){
+                         url: 'ConfirmationServlet',
+                        type: 'POST',
+                        data: 'para=' + myVar, //sending json data
+                        dataType: 'json',
+                }
+            }
+        </script>
     </body>
 </html>
