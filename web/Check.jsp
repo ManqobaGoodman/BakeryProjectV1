@@ -1,4 +1,5 @@
 
+<%@page import="za.co.bigone.model.Person"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,14 +10,16 @@
 
     </head>
     <body>
-        <header>
+         <header>
             <div class="container">
                 <div id="branding">
+
                     <div id="cart">
                         <a href="cart.jsp"><img src="./img/shopp.png"></a>
                         <li class="current"><a href="cart.jsp">View Cart</a></li>
                     </div>
                     <h1 style="border-style: groove">Mrs <span class="highlight"> Pats</span> Cake</h1>
+
                 </div>
 
                 <nav>
@@ -25,14 +28,35 @@
                         <li><a href="about.jsp">About us</a></li> 
                         <li> <a href="products.jsp">Products</a></li>
                         <li><a href="contact.jsp">Contact us</a></li>
-                        <li><a href="Login.jsp">Login/Register</a></li>
+                            <% Person p = (Person) session.getAttribute("person");
+                                if (p == null) {
+                            %>
+                        
+                            <li><a href="Login.jsp">Login/Register</a></li> 
+                        
+                        <%
+                            }
+                        %>
+                        <%
+                            if (p != null) {
+                        %>
+                        <div class="dropdown">
+                            <button class="dropbtn">MyAccount</button>
+                            <div class="dropdown-content">
+                                <a href="#">Profile</a>
+                                <a href="#">Order</a>
+                                <a href="#">LogOut</a>
+                            </div>
+                        </div>
 
+                        <%
+                            }
+                        %>
                     </ul>
                 </nav>
 
             </div>
         </header>
-
 
 
 

@@ -3,7 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-   Product product = (Product) request.getAttribute("product");
+    Product product = (Product) request.getAttribute("product");
 %>
 <!DOCTYPE html>
 <html>
@@ -38,28 +38,40 @@
             </div>
         </header>
         <section class="prodc">
-            
+
             <div class="name">
                 <div class="size">
-                    <h2><span class="marker"> <%= product.getNameOfProduct() %> </span></h2>
+                    <h2><span class="marker"> <%= product.getNameOfProduct()%> </span></h2>
                 </div>
                 <div class="sizer">
-                    <h4><%= product.getProductPrice() %></h4>
+                    <h4><%= product.getProductPrice()%></h4>
                 </div>
-                <div class="qty">
-                    <select dropzone="" name="dropdown">
-                        <option>Quantity</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                    </select>
 
+
+
+
+
+
+                <div class="button-container">
+                    <button class="cart-qty-plus" type="button" value="+">+</button>
+                    <input type="text" name="quantity" min="0" max="5" class="qty form-control"/>
+                    <button class="cart-qty-minus" type="button" value="+">-</button>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div class="description">
-                    <p><%= product.getProductDescription() %></p>
+                    <p><%= product.getProductDescription()%></p>
 
                 </div>
                 <button class="btn" value="Add To Cart">Add To Cart</button>
@@ -67,7 +79,7 @@
             </div>
             <div class="row">
                 <div class="prodpic">
-                    <img src="<%= product.getPicture() %>">
+                    <img src="<%= product.getPicture()%>">
                 </div>
             </div>
 
@@ -97,5 +109,9 @@
                 <p>012 234 8673</p>
             </div>
         </footer>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="./JS/script.js"></script>
+
     </body>
 </html>
