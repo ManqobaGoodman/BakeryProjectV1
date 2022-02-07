@@ -107,7 +107,6 @@ button:focus,
 .table tr,
 .table tr td{
     vertical-align: middle;
- 
 }
 .button-container{
     display: flex;
@@ -143,7 +142,7 @@ button:focus,
 }
 .boton button{
     display: block; 
-    height: 50px;
+    height: 40px;
     width: 170px;
     background-color: #35424a;
     position: absolute;
@@ -160,14 +159,13 @@ button:focus,
     letter-spacing: 3px;
     border-radius: 5px;
     margin-left: 10px;
-    margin-top: 10px;
-    margin-left: 520px;
+    margin-top: 20px;
+    /*margin-left: 790px;*/
 }
 
 .href{
     color: #e8491d;
 }
-
 
 
 

@@ -12,7 +12,7 @@ function update_amounts(){
     $("#myTable > tbody > tr").each(function (){
         var qty = $(this).find(".qty").val();
         var price = $(this).find(".price").val();
-        var amount = (qty*price);
+        var amount = (qty*price)
         sum+=amount;
         $(this).find(".amount").text(""+amount);
     
@@ -30,12 +30,9 @@ var minusBtn = $(".cart-qty-minus");
 
 var incrementQty = plusBtn.click(function (){
     var $n = $(this).parent(".button-container").find(".qty");
-    if (Number($n.val()) <= 9) {
-        $n.val(Number($n.val()) + 1);
-        
-        update_amounts();  
-    }
-    
+    $n.val(Number($n.val())+1);
+   
+        update_amounts();
         
         });
      
@@ -43,7 +40,7 @@ var incrementQty = plusBtn.click(function (){
         var decrementQty = minusBtn.click( function (){
            var $n = $(this).parent(".button-container").find(".qty");
            var QtyVal = Number($n.val());
-           if(QtyVal > 1){
+           if(QtyVal > 0){
                $n.val(QtyVal-1);
                
            }
