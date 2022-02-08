@@ -58,27 +58,20 @@
             </div>
         </header>
 
-
-
-
-
-
-
-
         <section class="bodd">
             <div class="bank">
                 <h1>Confirm Your Payment</h1>
                 <div class="first-row">
                     <div class="Owner">
-                        <h3>Owner</h3>
+                        <h3>Card Holder</h3>
                         <div class="input-field">
-                            <input type="text">
+                            <input type="text" name="owner" >
                         </div>
                     </div>
                     <div class="cvv">
                         <h3>CVV</h3>
                         <div class="input-field">
-                            <input type="password">
+                            <input type="text" maxlength="3" name="cvv">
                         </div>
                     </div>
                 </div>
@@ -86,7 +79,7 @@
                     <div class="card-number">
                         <h3>Card-Number</h3>
                         <div class="input-field">
-                            <input type="text">
+                            <input type="text" name="cardNumber" maxlength="16" required>
                         </div>
                     </div>
                 </div>
@@ -124,7 +117,7 @@
                         </div>
                     </div>
                 </div>
-                <a class="link">Confirm</a>
+                <a href="http://localhost:8080/BakeryProjectV1/payment" class="link">Confirm</a>
             </div>
 
         </section>

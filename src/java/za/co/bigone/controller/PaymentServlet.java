@@ -17,18 +17,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import za.co.bigone.manager.DBPoolManagerBasic;
-import za.co.bigone.model.Address;
 import za.co.bigone.model.OrderLineItem;
 import za.co.bigone.model.Person;
 import za.co.bigone.service.AddressService;
 import za.co.bigone.service.AddressServiceImplement;
+import za.co.bigone.service.PaymentServceImp;
+import za.co.bigone.service.PaymentService;
 
 /**
  *
  * @author Student24
  */
-@WebServlet(name = "ConfirmationServlet", urlPatterns = {"/ConfirmationServlet"})
-public class ConfirmationServlet extends HttpServlet {
+@WebServlet(name = "payment", urlPatterns = {"/payment"})
+public class PaymentServlet extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -39,30 +56,37 @@ public class ConfirmationServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         ServletContext context = request.getServletContext();
         DBPoolManagerBasic dbpool = (DBPoolManagerBasic) context.getAttribute("dbconn");
-        AddressService addressService = new AddressServiceImplement(dbpool);
-
+        PaymentService paymentService = new PaymentServceImp(dbpool);
         HttpSession session = request.getSession();
-        List<OrderLineItem> orderLineItemList = (List<OrderLineItem>) session.getAttribute("cart");
-
-        //loop through cart and see if qty is the same in not update to new qty
         Person person = (Person) session.getAttribute("person");
-
-        if (person == null) {
-            String msg = "Please Login or Register before Purchase";
-            request.setAttribute("msg", msg);
+        List<OrderLineItem> lineitems = (List<OrderLineItem>) (OrderLineItem) session.getAttribute("cart");
+        
+        String cardHolder = request.getParameter("");
+        int cvv = 0;
+        int cardNum =0;
+        
+        try {
+            cvv = Integer.parseInt(request.getParameter(""));
+            cardNum = Integer.parseInt(request.getParameter(""));
+        } catch (Exception e) {
+            System.out.println("Error: "+ e.getMessage());
+        }
+        
+        boolean isPayment = paymentService.confirmPayment(person, lineitems);
+        
+        if (isPayment){
+            
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Login.jsp");
             requestDispatcher.forward(request, response);
         }
-        Address getAddress = addressService.viewAddress1(person.getPersonId());
-        request.setAttribute("getAddress", getAddress);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("confirmation.jsp");
-        dispatcher.forward(request, response);
-
+        
+        
+        
+        
     }
 
     /**

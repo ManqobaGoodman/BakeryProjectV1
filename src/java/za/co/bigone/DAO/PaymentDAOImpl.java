@@ -35,7 +35,7 @@ public class PaymentDAOImpl implements PaymentDAO {
             if (rs.next()) {
                 pay1.setInvoiceid(rs.getInt("invoiceid"));
                 pay1.setPaymentid(rs.getInt("paymentid"));
-                pay1.setPaymenttype(rs.getString("paymenttype"));
+
 
             }
             con.close();

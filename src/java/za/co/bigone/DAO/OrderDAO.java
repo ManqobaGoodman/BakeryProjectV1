@@ -20,7 +20,7 @@ public interface OrderDAO {
 
     Order orderPlace(List<OrderLineItem> orderLine, int personid, String Address, Locale date);
     
-    int lastinvoice ();
+    int lastOderId ();
     
     Order createOrder (int lastid , int addressid ,int personid);
     

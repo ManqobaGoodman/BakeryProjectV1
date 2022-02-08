@@ -89,19 +89,15 @@
                             <input type="text" name="number" id="number" value="<%= person.getTelephone()%>" disabled>
                         </div>
                         <%
-                            if (address != null) {
+                            if (address == null) {
                         %>
-
                         <div class="input-container">
 
                             <div class="input-line">
                                 <label for="address">Address</label>
                                 <input type="text" name="address" id="address" placeholder="Your Address">
                             </div>
-                            <div class="input-line">
-                                <label for="street">Street Address</label>
-                                <input type="text" name="street" id="address" placeholder="Your Street Name">
-                            </div>
+
 
                             <div class="input-line">
                                 <label for="town">Town/City</label>
@@ -111,10 +107,33 @@
                                 <label for="postCode">Postal-Code</label>
                                 <input type="text" name="postCode" id="address" placeholder="Your Postal-Code">
                             </div>
-                            <%
-                                }
-                            %>
                         </div>
+
+                        <%
+                        } else {
+
+                        %>
+
+
+                        <div class="input-container">
+
+                            <div class="input-line">
+                                <label for="address">Address</label>
+                                <input type="text" name="address" id="address" value="<%= address.getAddress1()%>" >
+                            </div>
+
+                            <div class="input-line">
+                                <label for="town">Town/City</label>
+                                <input type="text" name="town" id="address" value="<%= address.getTown()%>">
+                            </div>
+                            <div class="input-line">
+                                <label for="postCode">Postal-Code</label>
+                                <input type="text" name="postCode" id="address" value="<%= address.getPostalCode()%>">
+                            </div>
+                        </div>
+                        <%
+                            }
+                        %>
                     </form>
             </section>
 

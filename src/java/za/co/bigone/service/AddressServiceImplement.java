@@ -21,8 +21,8 @@ public class AddressServiceImplement  implements AddressService{
     }
 
     @Override
-    public Address viewAddress1(int addressId) {
-        return addressDAO.viewAddress1(addressId);
+    public Address viewAddress1(int personId) {
+        return addressDAO.viewAddress1(personId);
     }
 
     @Override

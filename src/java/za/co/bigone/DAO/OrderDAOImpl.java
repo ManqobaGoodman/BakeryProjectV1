@@ -72,7 +72,7 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public int lastinvoice() {
+    public int lastOderId() {
 
         int lastid = 0;
         try {

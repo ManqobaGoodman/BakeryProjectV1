@@ -152,10 +152,6 @@
 
 
 
-                                            <!--<button style= border-radius: 3px; "margin-top: 10px; margin-right: -4.5px; font-size: 15px; font-family: sans-serif"type="submit"><span class="highlight">Check</span>-Out</button>-->
-                                            <div class="boton">
-                                                <button> <a href="checkPayment.jsp" class="href">Check-Out</a></button>
-                                            </div>
 
                                         </td>
                                     </tr>
@@ -196,23 +192,34 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="./JS/script.js"></script>
         <script type="text/javascript">
-            function () {
+            function jsonString() {
                 var productId = $('#productId').val();
                 var quantity = $('#quantity').val();
-                [
-                        var jsonData
-                {
-                prodyuctId: productId;
-                        quantity: quantity;
-                }
-                ]
+                var obj = new Object();
+                obj.prodyuctId = 1;
+                obj.quantity =2;
+//convert object to json string
+                var string = JSON.stringify(obj);
+//convert string to Json Object
+                console.log(JSON.parse(string));
 
-                $.ajax(){
-                url: 'ConfirmationServlet',
-                        type: 'POST',
-                        data: 'para=' + myVar, //sending json data
-                        dataType: 'json',
-                }
+
+
+//                
+//                var productId = $('#productId').val();
+//                var quantity = $('#quantity').val();
+//                var jsonData="[{
+//                'prodyuctId':' " + productId+ "',
+//                'quantity':'" + quantity;
+//                }
+//                ]
+//
+//                $.ajax(){
+//                         url: 'ConfirmationServlet',
+//                        type: 'POST',
+//                        data: 'para=' + myVar, //sending json data
+//                        dataType: 'json',
+//                }
             }
         </script>
     </body>

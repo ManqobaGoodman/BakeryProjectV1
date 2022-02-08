@@ -12,7 +12,7 @@ package za.co.bigone.model;
 public class Payment {
     private int paymentid;
     private int invoiceid;
-    private String paymenttype;
+    
 
     public Payment() {
     }
@@ -45,19 +45,7 @@ public class Payment {
         this.invoiceid = invoiceid;
     }
 
-    /**
-     * @return the paymenttype
-     */
-    public String getPaymenttype() {
-        return paymenttype;
-    }
 
-    /**
-     * @param paymenttype the paymenttype to set
-     */
-    public void setPaymenttype(String paymenttype) {
-        this.paymenttype = paymenttype;
-    }
     
     
     

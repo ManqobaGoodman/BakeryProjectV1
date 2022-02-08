@@ -6,15 +6,14 @@
 package za.co.bigone.service;
 
 import java.util.List;
-import za.co.bigone.model.Address;
+import za.co.bigone.model.OrderLineItem;
+import za.co.bigone.model.Payment;
+import za.co.bigone.model.Person;
 
 /**
  *
  * @author Student24
  */
-public interface AddressService {
-   
-    Address viewAddress1(int personId);
-    Address insertAddress1(int peronId, String address1,String town, int postalCode);
-    Address updateAddress1();
+public interface PaymentService {
+    boolean confirmPayment(Person person, List<OrderLineItem> lineitems);
 }
