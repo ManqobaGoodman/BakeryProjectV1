@@ -59,51 +59,43 @@
                         %>
                     </ul>
                 </nav>
-
             </div>
         </header>
 
-        <section class="prodc">
 
-            <div class="name">
-                <div class="size">
-                    <h2><span class="marker"> <%= product.getNameOfProduct()%> </span></h2>
-                </div>
-                <div class="sizer">
-                    <h4><%= product.getProductPrice()%></h4>
-                </div>
-                <div class="qty">
-                    <select dropzone="" name="dropdown">
-                        <option>Quantity</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                    </select>
 
-                </div>
-                <div class="description">
-                    <p><%= product.getProductDescription()%></p>
 
-                </div>
-                <button class="btn" value="Add To Cart">Add To Cart</button>
 
+
+
+
+        <section class="about-us">
+
+            <div class="row">
+
+
+                <div class="aboutUs-col">
+                    <img src="images/meeting.jpg" />
+                </div>
+                <div class="aboutUs-col">
+                    <h1>We Are The World's Largest University</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. </p>
+
+                    <a href="" class="hero-btn red-btn">EXPLORE NOW</a>
+                </div>
             </div>
+        </section>
+
+<!--        <section class="prodc">
+
+
             <div class="row">
                 <div class="prodpic">
                     <img src="<%= product.getPicture()%>">
                 </div>
             </div>
 
-
-            <!--            <div class="warnnings">
-                            <h2>Warnings<p>This Products contains A lot of wheat which some may be allergic to(Stay Safe)</p></h2>
-                        </div>-->
-
-
-        </section>
+        </section>-->
 
 
 
@@ -125,3 +117,30 @@
         </footer>
     </body>
 </html>
+
+
+
+
+<!--                <div class="description">
+                    <p><%= product.getProductDescription()%></p>
+
+                </div>-->
+
+
+<!--                <div class="sizer">
+                    <h4><%= product.getProductPrice()%></h4>
+                </div>-->
+
+<!--                <div class="size">
+                    <h2><span class="marker"> <%= product.getNameOfProduct()%> </span></h2>
+                </div>-->
+
+
+<!--            <div class="name">
+
+
+
+
+                <button class="btn" value="Add To Cart">Add To Cart</button>
+
+            </div>-->

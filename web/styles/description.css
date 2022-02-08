@@ -141,7 +141,7 @@ header a:hover{
 
 
 /*showcase*/
-#showcase{
+/*#showcase{
     width: 100%;
     min-height: 100vh;
     background: url('../img/bakery.jpg');
@@ -159,7 +159,7 @@ header a:hover{
     padding: 10px;
     margin-bottom: 70px;
 }
-/*products*/
+products
 #products{
     margin-top: 80px;
     margin-bottom: 80px;
@@ -168,7 +168,7 @@ header a:hover{
 #products .Box{
     float: left;
     display: inline;
-    /*alignment-adjust: central;*/
+    alignment-adjust: central;
     text-align: center;
     width: 40%;
     padding: 10px;
@@ -192,7 +192,7 @@ header a:hover{
 }
 .prodpic{
     flex-basis: 30%;
-    /*border-radius: 10px;*/
+    border-radius: 10px;
     margin-bottom: 30px;
     position: relative;
     overflow: hidden;
@@ -264,7 +264,7 @@ header a:hover{
     border-color:  #e8491d;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+}*/
 
 
 /*Footer*/
@@ -291,3 +291,15 @@ header a:hover{
 #Foot .highlight{
     color: #e8491d;
 }
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------Picture/Description-----*/
