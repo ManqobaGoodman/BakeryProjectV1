@@ -54,12 +54,12 @@ public class OrderLineItemDaoImpl implements OrderLineItemDAO {
                 p.setProductDescription(rs.getString("productdescription"));
                 p.setProductPrice(rs.getDouble("productprice"));
                 p.setPicture(rs.getString("productpicture"));
-                OrderLineItem oli1 = new OrderLineItem(rs.getInt("orderlineitemid"),p,rs.getInt("quantity") );
+                OrderLineItem oli1 = new OrderLineItem(rs.getInt("orderlineitemid"), p, rs.getInt("quantity"));
                 viewoli.add(oli1);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }finally{
+        } finally {
             closeStreams();
         }
         return viewoli;
@@ -70,7 +70,7 @@ public class OrderLineItemDaoImpl implements OrderLineItemDAO {
         OrderLineItem oli1 = new OrderLineItem();
         try {
             con = dbm.getConnection();
-             ps = con.prepareStatement(""
+            ps = con.prepareStatement(""
                     + "SELECT nameofproduct,productdescription,productprice,productpicture,quantity,orderlineitemid \n"
                     + "FROM orderlineitem AS oli, product AS p WHERE oli.orderlineitemid=? AND oli.productid=p.productid");
 
@@ -82,38 +82,62 @@ public class OrderLineItemDaoImpl implements OrderLineItemDAO {
                 p.setProductDescription(rs.getString("productdescription"));
                 p.setProductPrice(rs.getDouble("productprice"));
                 p.setPicture(rs.getString("productpicture"));
-                oli1 = new OrderLineItem(rs.getInt("orderlineitemid"),p,rs.getInt("quantity") );
+                oli1 = new OrderLineItem(rs.getInt("orderlineitemid"), p, rs.getInt("quantity"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }finally{
+        } finally {
             closeStreams();
         }
         return oli1;
     }
-    
-    private void closeStreams(){
-    if(rs!=null){
-        try {
-            rs.close();
-        } catch (SQLException ex) {
-            System.out.println("Resultset failed to close");
-        }
-    }
-    if(ps!=null){
-        try {
-            ps.close();
-        } catch (SQLException ex) {
-            System.out.println("Prepared failed to close");
-        }
-    }
-    if(con!=null){
-        try {
-            con.close();
-        } catch (SQLException ex) {
-            System.out.println("Connection failed to close");
-        }
-    }
-}
 
+    private void closeStreams() {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                System.out.println("Resultset failed to close");
+            }
+        }
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException ex) {
+                System.out.println("Prepared failed to close");
+            }
+        }
+        if (con != null) {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println("Connection failed to close");
+            }
+        }
+    }
+
+    @Override
+    public int[] insertOrderLineItem(int orderid, List<OrderLineItem> orderLineIems) {
+        int[] insertOLI = new int [1];
+
+        try {
+           
+
+            for (OrderLineItem orderLineIem : orderLineIems) {
+                ps = con.prepareStatement(" INSERT INTO orderlineitem VALUES (null,?,?,?);  ");
+                ps.setInt(1, orderid);
+                ps.setInt(2, orderLineIem.getProduct().getProductId());
+                ps.setInt(3, orderLineIem.getQuantity());
+                ps.addBatch();
+            }
+
+            insertOLI = ps.executeBatch();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+        return insertOLI;
+
+    }
 }

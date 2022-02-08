@@ -11,4 +11,5 @@ import za.co.bigone.model.OrderLineItem;
 public interface OrderLineItemDAO {
    List<OrderLineItem> viewOrderLineItems(int orderId);
    OrderLineItem viewOrderLineItem(int orderlineitemid);
+   int[] insertOrderLineItem(int orderid,List<OrderLineItem>orderLineIems);
 }
