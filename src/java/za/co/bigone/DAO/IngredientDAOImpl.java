@@ -21,7 +21,7 @@ public class IngredientDAOImpl implements IngredientDAO {
 
     DBPoolManagerBasic dbm;
     private Connection con;
-   // private Connection conction;
+    // private Connection conction;
 
     public IngredientDAOImpl() {
     }
@@ -31,17 +31,18 @@ public class IngredientDAOImpl implements IngredientDAO {
     }
 
     @Override
-    public ArrayList<Ingredients> viewIngredient() {
+    public ArrayList<Ingredients> viewIngredient(int recipeid) {
         Ingredients i1 = null;
         ArrayList<Ingredients> viewIng = new ArrayList<>();
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM ingredient");
-
+            PreparedStatement ps = con.prepareStatement("SELECT i.ingredientname, r.quantityofingredient FROM  recipeingredient AS r, ingredient AS i WHERE r.ingredientid=i.ingredientid AND r.recipeid = ?");
+                
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 i1 = new Ingredients();
+               
                 i1.setIngredientID(rs.getInt("Ingredientid"));
                 i1.getIngredientName(rs.getString("IngredientName"));
                 viewIng.add(i1);
@@ -54,11 +55,6 @@ public class IngredientDAOImpl implements IngredientDAO {
 
         return viewIng;
 
-    }
-
-    @Override
-    public String IngredientName(String IngredientName) {
-        return null;
     }
 
     @Override
@@ -86,7 +82,7 @@ public class IngredientDAOImpl implements IngredientDAO {
 
     @Override
     public Ingredients updateIngredient() {
-         Ingredients i1 = null;
+        Ingredients i1 = null;
 
         try {
             Connection con = dbm.getConnection();
@@ -97,7 +93,6 @@ public class IngredientDAOImpl implements IngredientDAO {
                 i1 = new Ingredients();
                 i1.setIngredientID(rs.getInt("Ingredientid"));
                 i1.getIngredientName(rs.getString("IngredientName"));
-                
 
             }
 
@@ -110,11 +105,11 @@ public class IngredientDAOImpl implements IngredientDAO {
 
     @Override
     public Ingredients deleteIngredient() {
-       Ingredients i1 = null;
+        Ingredients i1 = null;
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("DELETE * ingredient WHERE ingredientid = ?");
+            PreparedStatement ps = con.prepareStatement("DELETE * ingredient WHERE recipeid = ?");
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -129,6 +124,37 @@ public class IngredientDAOImpl implements IngredientDAO {
         }
 
         return i1;
+    }
+
+    
+        public IngredientDAOImpl(String ingredientname) {
+        Ingredients i1 = null;
+
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * ingredient WHERE ingredientid = ?");
+           
+            ps.setString(1, ingredientname);
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+               // i1 = new Ingredients();
+                //i1.setIngredientID(rs.getInt("Ingredientid"));
+                i1.getIngredientName(rs.getString("IngredientName"));
+
+            }
+            con.close();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        
+    }
+
+    @Override
+    public Ingredients IngredientName(String ingredientname) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

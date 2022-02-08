@@ -9,11 +9,14 @@ import za.co.bigone.model.Ingredients;
  */
 public interface IngredientDAO {
 
-    ArrayList<Ingredients> viewIngredient();
+    ArrayList<Ingredients> viewIngredient(int recipeid);
 
-    String IngredientName(String IngredientName);
+    Ingredients IngredientName(String ingredientname);
+
     Ingredients insetIngredient();
+
     Ingredients updateIngredient();
+
     Ingredients deleteIngredient();
     // boolean insetIngredeient(String name); 
     //insert,update,delete

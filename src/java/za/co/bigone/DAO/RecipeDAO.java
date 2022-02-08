@@ -12,7 +12,12 @@ import za.co.bigone.model.Recipe;
  * @author student02
  */
 public interface RecipeDAO {
-    Recipe viewRecipe (int recipeid);
+
+    Recipe viewRecipe(int recipeid);
+
+    Recipe getRecipeName(String recipename);
+
     Recipe insertRecipe();
+
     Recipe updateRecipe();
 }

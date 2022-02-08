@@ -39,9 +39,9 @@ public class RecipeDAOImpl implements RecipeDAO {
         Recipe r1 = new Recipe();
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT FROM recipe WHERE recipeid = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT recipename FROM recipe WHERE recipeid = ?");
 
-            ps.setInt(1, 1);
+            ps.setInt(1, recipeid);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -99,6 +99,29 @@ public class RecipeDAOImpl implements RecipeDAO {
             System.out.println(ex.getMessage());
         }
         return r1;
+    }
+
+    @Override
+    public Recipe getRecipeName(String recipename) {
+        Recipe r1 = null ;
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM recipe WHERE recipeid = ? ;");
+
+            ps.setString(1, recipename);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                r1.setRecipename(rs.getString("recipename"));
+//                r1.setRecipename(rs.getString("recipename"));
+            }
+            con.close();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return r1;
+        
     }
 
 }

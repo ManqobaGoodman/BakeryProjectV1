@@ -42,10 +42,10 @@ public class AddressDAOImpl implements AddressDAO {
 
             while (rs.next()) {
                 Addr1.setAddress1(rs.getString("Address1"));
-                Addr1.setAddress2(rs.getString("Address2"));
+                
                 Addr1.setAddressId(rs.getInt("AddressId"));
                 Addr1.setPostalCode(rs.getInt("PostalCode"));
-                Addr1.setProvince(rs.getString("province"));
+                
                 Addr1.setTown(rs.getString("Town"));
                 viewAddr.add(Addr1);
             }
@@ -123,10 +123,8 @@ public class AddressDAOImpl implements AddressDAO {
 
             if (rs.next()) {
                 Addr1.setAddress1(rs.getString("Address1"));
-                Addr1.setAddress2(rs.getString("Address2"));
                 Addr1.setAddressId(rs.getInt("AddressId"));
                 Addr1.setPostalCode(rs.getInt("PostalCode"));
-                Addr1.setProvince(rs.getString("province"));
                 Addr1.setTown(rs.getString("Town"));
                 
             }

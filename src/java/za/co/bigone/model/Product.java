@@ -5,6 +5,8 @@
  */
 package za.co.bigone.model;
 
+import za.co.bigone.DAO.RecipeDAO;
+
 /**
  *
  * @author Student24
@@ -17,6 +19,10 @@ public class Product {
     private String productDescription;
     private double productPrice;
     private String picture;
+    private int recipeid;
+    private String ingredientName;
+    private String recipeName;
+    
 
     public Product() {
     }
@@ -27,6 +33,9 @@ public class Product {
         this.productDescription = productDescription;
         this.productPrice = productPrice;
         this.picture = picture;
+        this.recipeid = recipeid;
+        this.ingredientName = ingredientName;
+        this.recipeName = recipeName;
     }
 
     /**
@@ -111,6 +120,48 @@ public class Product {
      */
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    /**
+     * @return the recipeid
+     */
+    public int getRecipeid() {
+        return recipeid;
+    }
+
+    /**
+     * @param recipeid the recipeid to set
+     */
+    public void setRecipeid(int recipeid) {
+        this.recipeid = recipeid;
+    }
+
+    /**
+     * @return the ingredientName
+     */
+    public String getIngredientName() {
+        return ingredientName;
+    }
+
+    /**
+     * @param ingredientName the ingredientName to set
+     */
+    public void setIngredientName(String ingredientName) {
+        this.ingredientName = ingredientName;
+    }
+
+    /**
+     * @return the recipeName
+     */
+    public String getRecipeName() {
+        return recipeName;
+    }
+
+    /**
+     * @param recipeName the recipeName to set
+     */
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
     }
      
 }

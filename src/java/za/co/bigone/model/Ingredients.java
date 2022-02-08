@@ -5,16 +5,26 @@
  */
 package za.co.bigone.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Student24
  */
 public class Ingredients {
 
+  
     private int IngredientID;
     private String IngredientName;
+    ArrayList<Ingredients> viewIngredients;
+    
 
     public Ingredients() {
+    }
+
+    public Ingredients(int IngredientID, String IngredientName) {
+        this.IngredientID = IngredientID;
+        this.IngredientName = IngredientName;
     }
 
     /**
@@ -45,7 +55,8 @@ public class Ingredients {
         this.IngredientName = IngredientName;
     }
 
-    public String getIngredientName(String string) {
+    public String getIngredientName(String IngredientName) {
         return IngredientName;
     }
+
 }

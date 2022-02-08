@@ -25,7 +25,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     DBPoolManagerBasic dbm;
     private Connection con;
-   // private Connection conction;
+    // private Connection conction;
 
     public OrderDAOImpl() {
 
@@ -69,6 +69,54 @@ public class OrderDAOImpl implements OrderDAO {
     public Order orderPlace(List<OrderLineItem> orderLine, int personid, String Address, Locale date) {
 
         return null;
+    }
+
+    @Override
+    public int lastinvoice() {
+
+        int lastid = 0;
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT lastid FROM lastinvoiceid WHERE keyid = orderid");
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                lastid = rs.getInt("lastid");
+
+            }
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return lastid;
+
+    }
+
+    @Override
+    public Order createOrder(int lastid,  int addressid, int personid) {
+        Order createOrder = null;
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO ordertable VALUES (?,?,?,CURDATE(),'n');");
+            ps.setInt(1, lastid);
+            ps.setInt(2,addressid);
+            ps.setInt(3, personid);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                createOrder.setOrderid(rs.getInt("orderid"));
+                createOrder.setOrderlineid(rs.getInt("orderlineid"));
+                createOrder.setPersonid(rs.getInt("personid"));
+                createOrder.setAddressid(rs.getInt("addressid"));
+                
+
+            }
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return createOrder;
+
     }
 
 }

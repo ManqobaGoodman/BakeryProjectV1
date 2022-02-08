@@ -20,5 +20,7 @@ public interface ProductService {
     Product viewProduct(int productid);
 
     Producttype getProducttype(int productTypeid);
+    
+    
 
 }

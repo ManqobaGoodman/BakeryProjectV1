@@ -19,5 +19,11 @@ public interface OrderDAO {
     List<OrderLineItem> orderLine(int productid, int quantity);
 
     Order orderPlace(List<OrderLineItem> orderLine, int personid, String Address, Locale date);
-
+    
+    int lastinvoice ();
+    
+    Order createOrder (int lastid , int addressid ,int personid);
+    
+    
+    
 }

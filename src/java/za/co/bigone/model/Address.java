@@ -10,22 +10,23 @@ package za.co.bigone.model;
  * @author Student24
  */
 public class Address {
-private int addressId;
-private String address1;
-private String address2;
-private String town;
-private int postalCode;
-private String province;
+
+    private int addressId;
+    private String address1;
+//private String address2;
+    private String town;
+    private int postalCode;
+//private String province;
 
     public Address() {
     }
 
     public Address(String address1, String address2, String town, int postalCode, String province) {
         this.address1 = address1;
-        this.address2 = address2;
+        //this.address2 = address2;
         this.town = town;
         this.postalCode = postalCode;
-        this.province = province;
+        //this.province = province;
     }
 
     /**
@@ -54,20 +55,6 @@ private String province;
      */
     public void setAddress1(String address1) {
         this.address1 = address1;
-    }
-
-    /**
-     * @return the address2
-     */
-    public String getAddress2() {
-        return address2;
-    }
-
-    /**
-     * @param address2 the address2 to set
-     */
-    public void setAddress2(String address2) {
-        this.address2 = address2;
     }
 
     /**
@@ -101,18 +88,14 @@ private String province;
     /**
      * @return the province
      */
-    public String getProvince() {
-        return province;
-    }
-
-    /**
-     * @param province the province to set
-     */
-    public void setProvince(String province) {
-        this.province = province;
-    }
-    
-    
-
-
+//    public String getProvince() {
+//        return province;
+//    }
+//
+//    /**
+//     * @param province the province to set
+//     */
+//    public void setProvince(String province) {
+//        this.province = province;
+//    }
 }

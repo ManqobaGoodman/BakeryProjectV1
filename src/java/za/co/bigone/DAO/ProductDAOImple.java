@@ -12,8 +12,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import sun.net.www.content.text.plain;
 import za.co.bigone.manager.DBPoolManagerBasic;
+import za.co.bigone.model.Ingredients;
 import za.co.bigone.model.Product;
 import za.co.bigone.model.Producttype;
+import za.co.bigone.model.Recipe;
 
 /**
  *
@@ -52,6 +54,8 @@ public class ProductDAOImple implements ProductDAO {
                 p1.setProductDescription(rs.getString("productdescription"));
                 p1.setProductPrice(rs.getDouble("productprice"));
                 p1.setPicture(rs.getString("productpicture"));
+                p1.setRecipeid(rs.getInt("recipeid"));
+                //p1.setIngredientName(rs.getString("ingredientname"));
                 viewProd.add(p1);
             }
             con.close();
@@ -69,7 +73,7 @@ public class ProductDAOImple implements ProductDAO {
             Connection con = dbm.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM product WHERE productid = ?");
             ps.setInt(1, productid);
-            
+
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 p1.setProductId(rs.getInt("productid"));
@@ -78,7 +82,8 @@ public class ProductDAOImple implements ProductDAO {
                 p1.setProductDescription(rs.getString("productdescription"));
                 p1.setProductPrice(rs.getDouble("productprice"));
                 p1.setPicture(rs.getString("productpicture"));
-
+                p1.setRecipeid(rs.getInt("recipeid"));
+                p1.setIngredientName(rs.getString("ingredientname"));
             }
             con.close();
 
@@ -96,20 +101,23 @@ public class ProductDAOImple implements ProductDAO {
             Connection con = dbm.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT * FROM producttype WHERE productTypeId = ?");
             ps.setInt(1, productTypeid);
-            
+
             ResultSet rs = ps.executeQuery();
-    
-            if (rs.next()){
-            p1.setProductTypeId(rs.getInt("productTypeId"));
-            p1.setProductTypeDesc(rs.getString("productTypeDesc"));
-            
+
+            if (rs.next()) {
+                p1.setProductTypeId(rs.getInt("productTypeId"));
+                p1.setProductTypeDesc(rs.getString("productTypeDesc"));
+
             }
             con.close();
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         return p1;
 
     }
-}   
+
+    
+
+}
