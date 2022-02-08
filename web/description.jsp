@@ -10,8 +10,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>About us</title>
+        <title>Description-page</title>
         <link rel="stylesheet"  href="./styles/description.css"> 
+
+        
+        
+        
+        
+        
 
     </head>
     <body>
@@ -75,27 +81,35 @@
 
 
                 <div class="aboutUs-col">
-                    <img src="images/meeting.jpg" />
+                    <img src="./img/bread.jpeg" />
                 </div>
                 <div class="aboutUs-col">
-                    <h1>We Are The World's Largest University</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. </p>
+                    <h1>Freshly <span class="highlight">baked</span> bread</h1>
+                    <p>Our quality bread will have a slightly glossy finish on the inside and a crispy crunch on the outside.This will be the best bread you will ever eat and it taste better then your mothers bread so eat it. So Please enjoy our Home Baked bread Which we have freshly baked for you</p>
 
-                    <a href="" class="hero-btn red-btn">EXPLORE NOW</a>
+                    <div class="button-container">
+                        <button class="cart-qty-plus" type="button" value="+">+</button>
+                        <input type="text" name="quantity" min="0" max="10" class="qty form-control"/>
+                        <button class="cart-qty-minus" type="button" value="+">-</button>
+                    </div>
+
+                    <div class="name">
+                        <button class="btn" value="Add To Cart">Add To Cart</button>
+                    </div>
                 </div>
             </div>
         </section>
 
-<!--        <section class="prodc">
-
-
-            <div class="row">
-                <div class="prodpic">
-                    <img src="<%= product.getPicture()%>">
-                </div>
-            </div>
-
-        </section>-->
+        <!--        <section class="prodc">
+        
+        
+                    <div class="row">
+                        <div class="prodpic">
+                            <img src="<%= product.getPicture()%>">
+                        </div>
+                    </div>
+        
+                </section>-->
 
 
 
@@ -115,6 +129,9 @@
                 <p>012 234 8673</p>
             </div>
         </footer>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="./JS/script.js"></script>
     </body>
 </html>
 
@@ -136,11 +153,3 @@
                 </div>-->
 
 
-<!--            <div class="name">
-
-
-
-
-                <button class="btn" value="Add To Cart">Add To Cart</button>
-
-            </div>-->

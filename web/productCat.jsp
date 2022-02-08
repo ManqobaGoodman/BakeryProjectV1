@@ -15,7 +15,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Bread/Pies</title>
+        <title>Products</title>
         <link rel="stylesheet"  href="./styles/bread.css"> 
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 

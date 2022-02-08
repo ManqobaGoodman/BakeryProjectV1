@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>About us</title>
+        <title>Check-Out</title>
         <link rel="stylesheet"  href="./styles/checkout.css"> 
 
     </head>

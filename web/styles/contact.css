@@ -138,6 +138,96 @@ header a:hover{
     background-color: #35424a;
 }
 
+
+
+
+/*--------------contact us----------*/
+.location{
+    width: 80%;
+    margin: auto;
+    padding: 80px 0;
+}
+
+.location iframe{
+    width: 100%;
+}
+
+/*.contact-us{
+    width:80%;
+    margin: auto;
+}*/
+
+.contact-col{
+    flex-basis:48%;
+    margin-bottom: 80px;
+    margin-top: -365px;
+
+}
+
+.contact-coll div{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+.contact-coll div .fa{
+    font-size: 28px;
+    color: #f44336;
+    margin: 10px;
+    margin-right: 193px;
+
+
+}
+
+.contact-coll div p{
+    padding:0;
+}
+
+
+.contact-coll{
+    margin-top: 110px;
+}
+.contact-coll h5{
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 400;
+    color: #555;
+}
+
+.contact-col input, .contact-col textarea{
+    width: 57%;
+    padding: 15px;
+    margin-top: -5px;
+    margin-bottom: 30px;
+    margin-left: 630px;
+    outline: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.boton button{
+    display: block; 
+    height: 40px;
+    width: 400px;
+    background-color: #35424a;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    right: 0;
+    place-items: center;
+    font-family: "Poppins" ,sans-serif;
+    color: #f4f4f4;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 3px;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: -65px;
+    margin-left: 800px;
+}
+
 #Foot{
 
     /*margin-top: -30px;*/
