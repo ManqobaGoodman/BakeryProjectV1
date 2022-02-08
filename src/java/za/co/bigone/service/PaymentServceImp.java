@@ -10,6 +10,8 @@ import za.co.bigone.DAO.AddressDAO;
 import za.co.bigone.DAO.AddressDAOImpl;
 import za.co.bigone.DAO.OrderDAO;
 import za.co.bigone.DAO.OrderDAOImpl;
+import za.co.bigone.DAO.OrderLineItemDAO;
+import za.co.bigone.DAO.OrderLineItemDaoImpl;
 import za.co.bigone.manager.DBPoolManagerBasic;
 import za.co.bigone.model.Address;
 import za.co.bigone.model.Order;
@@ -26,10 +28,12 @@ public class PaymentServceImp implements PaymentService{
 
     OrderDAO orderDAO;
     AddressDAO addressDAO;
+    OrderLineItemDAO orderLineItemDAO;
 
     public PaymentServceImp(DBPoolManagerBasic dbm) {
         this.orderDAO = new OrderDAOImpl(dbm);
         this.addressDAO = new AddressDAOImpl(dbm);
+        this.orderLineItemDAO = new OrderLineItemDaoImpl(dbm);
     }
     
 
@@ -38,11 +42,12 @@ public class PaymentServceImp implements PaymentService{
         boolean isPayment = false;
        int lastid = orderDAO.lastOderId();
         Address address = addressDAO.viewAddress1(person.getPersonId());
-       lastid++;
+        lastid++;
         Order order = orderDAO.createOrder(lastid,address.getAddressId(), person.getPersonId());
         
         if(order != null){
-            isPayment =true;
+                isPayment =true;
+
         }
         return isPayment;
     }

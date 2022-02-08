@@ -48,6 +48,10 @@ public class ConfirmationServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         List<OrderLineItem> orderLineItemList = (List<OrderLineItem>) session.getAttribute("cart");
+        
+        for (OrderLineItem orderLineItem : orderLineItemList) {
+            System.out.println(orderLineItem.getProduct().getNameOfProduct());
+        }
 
         //loop through cart and see if qty is the same in not update to new qty
         Person person = (Person) session.getAttribute("person");
@@ -59,6 +63,8 @@ public class ConfirmationServlet extends HttpServlet {
             requestDispatcher.forward(request, response);
         }
         Address getAddress = addressService.viewAddress1(person.getPersonId());
+        
+       
         request.setAttribute("getAddress", getAddress);
         RequestDispatcher dispatcher = request.getRequestDispatcher("confirmation.jsp");
         dispatcher.forward(request, response);

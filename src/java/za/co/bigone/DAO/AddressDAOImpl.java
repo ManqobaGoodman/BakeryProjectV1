@@ -57,22 +57,24 @@ public class AddressDAOImpl implements AddressDAO {
     }
      //---------------------View one address-------------------------------
     @Override
-    public Address viewAddress1(int addressId) {
-            Address Addr1 = new Address();
+    public Address viewAddress1(int personid) {
+            Address ddr1 = null;
         
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM Address where addressid = ?");
-            ps.setInt(1, addressId);
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Address where personid = ?");
+            ps.setInt(1, personid);
             
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                Addr1.setAddressId(rs.getInt("AddressId"));
-                Addr1.setAddress1(rs.getString("Address1"));
-                Addr1.setTown(rs.getString("Town"));
-                Addr1.setPostalCode(rs.getInt("PostalCode"));
+                ddr1 = new Address();
+                
+                ddr1.setAddressId(rs.getInt("addressid"));
+                ddr1.setAddress1(rs.getString("Address1"));
+                ddr1.setTown(rs.getString("Town"));
+                ddr1.setPostalCode(rs.getInt("PostalCode"));
                 
                 
             }
@@ -80,7 +82,7 @@ public class AddressDAOImpl implements AddressDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return Addr1;
+        return ddr1;
     }
 
         //--------------Insert new adddress---------------
