@@ -13,8 +13,15 @@ import za.co.bigone.model.Invoice;
  * @author student02
  */
 public interface InvoiceDAO {
-    Invoice  viewInvoice(int invoiceid,int orderid,LocalDate invoicedate );
+
+    Invoice viewInvoice(int orderid);
+
     int lastInvoiceID();
-    Invoice createInvoice(int invoiceid , int orderid , LocalDate invoicedate);
+
+    boolean createInvoice(int invoiceid, int orderid);
+
+    public boolean updateLastOrderId(int invoiceId);
     
+    int lastInvoiceId();
+
 }

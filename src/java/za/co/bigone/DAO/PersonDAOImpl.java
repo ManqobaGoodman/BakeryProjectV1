@@ -22,7 +22,7 @@ import za.co.bigone.model.Person;
  * @author Student24
  */
 public class PersonDAOImpl implements PersonDAO {
-
+    
     DBPoolManagerBasic dbm;
     private Connection con;
     //private Connection conction;
@@ -30,9 +30,7 @@ public class PersonDAOImpl implements PersonDAO {
     public PersonDAOImpl(DBPoolManagerBasic dbm) {
         this.dbm = dbm;
     }
-
- 
-
+    
     public Person login(String email, String password) {
         
         Person p = null;
@@ -41,12 +39,11 @@ public class PersonDAOImpl implements PersonDAO {
 
             Connection con = dbm.getConnection();
             
-            
             PreparedStatement ps = con.prepareStatement("Select personid, firstname, lastname, title, telephonenumber, emailaddress  from person where emailaddress=? AND password = ?");
             ps.setString(1, email);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
-
+            
             if (rs.next()) {
                 
                 p = new Person();
@@ -56,7 +53,7 @@ public class PersonDAOImpl implements PersonDAO {
                 p.setTitle(rs.getString("title"));
                 p.setEmail(rs.getString("emailaddress"));
                 p.setTelephone(rs.getString("telephonenumber"));
-               
+                
             }
             con.close();
             // ----------------------------------
@@ -65,7 +62,7 @@ public class PersonDAOImpl implements PersonDAO {
         }
         return p;
     }
-
+    
     @Override
     public Person register(String firstname, String lastname, String title, String telephone, String email, String password) {
         Person p = null;
@@ -86,13 +83,12 @@ public class PersonDAOImpl implements PersonDAO {
             ps.setString(4, telephone);
             ps.setString(5, email);
             ps.setString(6, password);
-
             
             ps.executeUpdate();
             
             ps = con.prepareStatement("Select personid, firstname, lastname, title, telephonenumber, emailaddress  from person where emailaddress=?");
             ps.setString(1, email);
-            ResultSet rs = ps.executeQuery(); 
+            ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 p = new Person();
                 p.setPersonId(rs.getInt("personid"));
@@ -105,13 +101,13 @@ public class PersonDAOImpl implements PersonDAO {
                 System.out.println("The name is: " + rs.getString("firstname") + " -------------------------------------------------------------");
             }
             con.close();
-          
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return p;
     }
-
+    
     @Override
     public boolean isPersonAvailable(String email) {
         boolean isAvailable = false;
@@ -122,11 +118,11 @@ public class PersonDAOImpl implements PersonDAO {
             Connection con = dbm.getConnection();
             PreparedStatement ps = con.prepareStatement("Select emailaddress  from person where emailaddress=?");
             ps.setString(1, email);
-           
+            
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-               
-               available = rs.getString("emailaddress");
+                
+                available = rs.getString("emailaddress");
                 if (email.equalsIgnoreCase(email)) {
                     isAvailable = true;
                 }
@@ -139,5 +135,34 @@ public class PersonDAOImpl implements PersonDAO {
             System.out.println(ex.getMessage());
         }
         return isAvailable;
+    }
+    
+    @Override
+    public Person getPerson(int personid) {
+        Person p = null ;
+        
+        try {
+            
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT firstname ,lastname,title,emailaddress,telephonenumber FROM person WHERE personid=?;");
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                p = new Person();
+                p.setPersonId(rs.getInt("personid"));
+                p.setFirstname(rs.getString("firstname"));
+                p.setLastname(rs.getString("lastname"));
+                p.setTitle(rs.getString("title"));
+                p.setEmail(rs.getString("emailaddress"));
+                p.setTelephone(rs.getString("telephonenumber"));
+                
+            }
+            con.close();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return p;
+        
     }
 }

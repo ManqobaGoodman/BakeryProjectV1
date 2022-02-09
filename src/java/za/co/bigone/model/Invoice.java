@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Invoice {
     private int invoiceid;
     private int orderid;
-    private LocalDate invoicedate;
+    private String invoicedate;
 
     public Invoice() {
     }
@@ -50,14 +50,14 @@ public class Invoice {
     /**
      * @return the invoicedate
      */
-    public LocalDate getInvoicedate() {
+    public String getInvoicedate() {
         return invoicedate;
     }
 
     /**
      * @param invoicedate the invoicedate to set
      */
-    public void setInvoicedate(LocalDate invoicedate) {
+    public void setInvoicedate(String invoicedate) {
         this.invoicedate = invoicedate;
     }
     

@@ -88,8 +88,8 @@
                     <p><%= product.getProductDescription()%></p>
                     
                      <div class="sizer">
-                    <h4>R<%= product.getProductPrice()%></h4>
-                </div>
+                    <h4>R<%= product.getProductPrice()%>0</h4>
+                   </div>
 
                     <div class="button-container">
                         <button class="cart-qty-plus" type="button" value="+">+</button>

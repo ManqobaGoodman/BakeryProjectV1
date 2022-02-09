@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import za.co.bigone.manager.DBPoolManagerBasic;
 import za.co.bigone.model.Invoice;
 
@@ -21,13 +23,15 @@ public class InvoiceDAOImpl implements InvoiceDAO {
 
     DBPoolManagerBasic dbm;
     private Connection con;
+    PreparedStatement ps;
     //private Connection conction;
 
-    public InvoiceDAOImpl() {
+    public InvoiceDAOImpl(DBPoolManagerBasic dbpool) {
+        dbm = dbpool;
     }
 
     @Override
-    public Invoice viewInvoice(int invoiceid, int orderid, LocalDate invoicedate) {
+    public Invoice viewInvoice(int orderid) {
         Invoice inv = null;
 
         try {
@@ -37,10 +41,11 @@ public class InvoiceDAOImpl implements InvoiceDAO {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
+                inv = new Invoice();
                 inv.setInvoiceid(rs.getInt("invoiceid"));
                 inv.setOrderid(rs.getInt("orderid"));
-                inv.setInvoicedate(invoicedate);
-                //inv.setInvoicedate(rs.("invoicedate"));
+                inv.setInvoicedate("invoicedate");
+
             }
             con.close();
 
@@ -55,7 +60,7 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         int lastid = 0;
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT lastid FROM lastinvoiceid WHERE keyid = orderid");
+            PreparedStatement ps = con.prepareStatement("SELECT lastid FROM lastinvoiceid WHERE keyid = invoiceid");
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -70,26 +75,66 @@ public class InvoiceDAOImpl implements InvoiceDAO {
     }
 
     @Override
-    public Invoice createInvoice(int invoiceid, int orderid, LocalDate invoicedate) {
-        Invoice inv = null;
+    public boolean createInvoice(int invoiceid, int orderid) {
+        boolean inv = false;
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO invoice VALUES (null,?,CURDATE())");
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                inv.setInvoiceid(rs.getInt("invoiceid"));
-                inv.setOrderid(rs.getInt("orderid"));
-                inv.setInvoicedate(invoicedate);
-                
-            }
+            PreparedStatement ps = con.prepareStatement("INSERT INTO invoice VALUES (?,?,CURDATE())");
+            
+            ps.setInt(1, invoiceid);
+            ps.setInt(2, orderid);
+            
+            inv = ps.executeUpdate() >0;
             con.close();
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return inv;
+       return inv;
     }
+
+    @Override
+    public boolean updateLastOrderId(int invoiceId) {
+         boolean retVal = false;
+        try {
+            con = dbm.getConnection();
+            ps = con.prepareStatement("UPDATE lastidtable SET lastid=? WHERE keyid='invoiceid'");
+            ps.setInt(1, invoiceId);
+            retVal = ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return retVal;
+    
+    }
+
+    @Override
+    public int lastInvoiceId() {
+        
+        int lastid = 0;
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT lastid FROM lastidtable WHERE keyid = 'invoiceid'");
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                lastid = rs.getInt("lastid");
+
+            }
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return lastid;
+    }
+
 }
