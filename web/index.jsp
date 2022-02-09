@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="prodpic">
-                    <a href="http://localhost:8080/BakeryProjectV1/ProductServlet?productTypeId=2"><img src="./img/brownie.jpeg"></a>
+                    <a href="http://localhost:8080/BakeryProjectV1/ProductServlet?productTypeId=2"><img src="./img/prod20.jpeg"></a>
                     <div class="layer">
                         <h3>Chocolate Brownie</h3>
                     </div>

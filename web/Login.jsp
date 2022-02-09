@@ -58,11 +58,11 @@
                             </div>
                             <div class="group">
                                 <label for="user" class="label">Email</label>
-                                <input id="user" type="text" name="email" class="input">
+                                <input id="user" type="text" name="email" class="input" required>
                             </div>
                             <div class="group">
                                 <label for="pass" class="label">Password</label>
-                                <input id="pass" type="password" name="password" class="input" data-type="password">
+                                <input id="pass" type="password" name="password" class="input" data-type="password" required>
                             </div>
                             <div class="group">
                                 <input id="check" type="checkbox" class="check" checked>
@@ -84,15 +84,15 @@
                         <form method="POST" action="Login" class="">
                             <div class="group">
                                 <label for="user"  class="label">First Name</label>
-                                <input id="user" type="text" name="firstName" class="input">
+                                <input id="user" type="text" name="firstName" class="input" required>
                             </div>
                             <div class="group">
                                 <label for="user" class="label">Last Name</label>
-                                <input id="user" type="text" name="lastname" class="input">
+                                <input id="user" type="text" name="lastname" class="input" required>
                             </div>
                             <div class="group">
                                 <label for="user" class="label">Username</label>
-                                <select name="title" class="input">
+                                <select name="title" class="input" required>
                                     <option value="Mr">Mr</option>
                                     <option value="Mrs">Mrs</option>
                                     <option value="Miss">Miss</option>
@@ -102,19 +102,19 @@
 
                                 <div class="group">
                                     <label for="user" class="label">Telephone Number</label>
-                                    <input id="user" type="text" name="telephone" class="input">
+                                    <input id="user" type="text" name="telephone" class="input" required>
                                 </div>
                                 <div class="group">
                                     <label for="pass" class="label">Email Address</label>
-                                    <input id="pass" type="email" name="email" class="input">
+                                    <input id="pass" type="email" name="email" class="input" required>
                                 </div>
                                 <div class="group">
                                     <label for="pass" class="label">Password</label>
-                                    <input id="pass" type="password" name="password" class="input" data-type="password">
+                                    <input id="pass" type="password" name="password" class="input" data-type="password" required>
                                 </div>
                                 <div class="group">
                                     <label for="pass" class="label">Repeat Password</label>
-                                    <input id="pass" type="password" name="password1" class="input" data-type="password">
+                                    <input id="pass" type="password" name="password1" class="input" data-type="password" required>
                                 </div>
                                 <div class="group">
                                     <input type="submit" class="button" value="Register">

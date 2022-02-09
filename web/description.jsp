@@ -104,17 +104,7 @@
             </div>
         </section>
 
-        <!--        <section class="prodc">
         
-        
-                    <div class="row">
-                        <div class="prodpic">
-                            <img src="<%= product.getPicture()%>">
-                        </div>
-                    </div>
-        
-                </section>-->
-
 
 
 

@@ -6,7 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>About us</title>
-        <link rel="stylesheet"  href="./styles/contact.css"> 
+        <link rel="stylesheet"  href="./styles/about.css"> 
 
     </head>
     <body>
@@ -54,9 +54,36 @@
                         %>
                     </ul>
                 </nav>
-
             </div>
         </header>
+
+        <section class="about-us">
+            <div class="row">
+                <div class="aboutUs-col">
+                    <img src="./img/theShop.jpeg" />
+                </div>
+                <div class="aboutUs-col">
+                    <h1>We Are The World's Largest University</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. </p>
+                    <a href="" class="hero-btn red-btn">EXPLORE NOW</a>
+                </div>
+            </div>
+        </section>
+        <section class="bottom">
+            <h4>About Us</h4>
+            <p> Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.<br> Nam eget dui. Etiam rhoncus. Maecenas tempus</p>
+            <div class="icons">
+                <i class="fa fa-facebook-square"></i>
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-address-book-o"></i>
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-linkedin"></i>
+            </div>
+            <p>Made By <i class="fa fa-heart-o"></i> Ornnament</p>
+        </section>
+
+
+
 
         <footer  id="Foot">
             <div class="footer">
