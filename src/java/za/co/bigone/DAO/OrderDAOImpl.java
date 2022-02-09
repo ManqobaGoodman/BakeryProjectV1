@@ -150,8 +150,7 @@ public class OrderDAOImpl implements OrderDAO {
                 order = new Order();
                 order.setOrderid(rs.getInt("orderid"));
                 order.setPersonid(rs.getInt("personid"));
-                order.getOrderdate();
-                
+         
             }
             con.close();
             
@@ -159,6 +158,33 @@ public class OrderDAOImpl implements OrderDAO {
             System.out.println(ex.getMessage());
         }
         return order;
+    }
+
+    @Override
+    public Order getPerson(int personid) {
+        Order person = null ;
+        
+        try {
+            
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT orderid,addressid ,personid,orderdate,delivered FROM order WHERE personid=?;");
+            
+            ps.setInt(1, personid);
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                person = new Order();
+                person.setOrderid(rs.getInt("orderid"));
+                person.setPersonid(rs.getInt("personid"));
+     
+                
+            }
+            con.close();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return person;
     }
 
 }
