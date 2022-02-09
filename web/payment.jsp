@@ -61,64 +61,66 @@
         <section class="bodd">
             <div class="bank">
                 <form action="http://localhost:8080/BakeryProjectV1/payment" method="POST">
-                <h1>Confirm Your Payment</h1>
-                <div class="first-row">
-                    <div class="Owner">
-                        <h3>Card Holder</h3>
-                        <div class="input-field">
-                            <input type="text" name="owner" >
+                    <h1>Confirm Your Payment</h1>
+                    <div class="first-row">
+                        <div class="Owner">
+                            <h3>Card Holder</h3>
+                            <div class="input-field">
+                                <input type="text" name="owner"  required>
+                            </div>
+                        </div>
+                        <div class="cvv">
+                            <h3>CVV</h3>
+                            <div class="input-field">
+                                <input type="text" maxlength="3" name="cvv" required>
+                            </div>
                         </div>
                     </div>
-                    <div class="cvv">
-                        <h3>CVV</h3>
-                        <div class="input-field">
-                            <input type="text" maxlength="3" name="cvv">
+                    <div class="second-row">
+                        <div class="card-number">
+                            <h3>Card-Number</h3>
+                            <div class="input-field">
+                                <input type="text" name="cardNumber" maxlength="16" required>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="second-row">
-                    <div class="card-number">
-                        <h3>Card-Number</h3>
-                        <div class="input-field">
-                            <input type="text" name="cardNumber" maxlength="16" required>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="third-row">
-                    <h3>Card-Number</h3>
-                    <div class="selection">
-                        <div class="date">
-                            <select name="month" id="months">
-                                <option value="01">Jan</option>
-                                <option value="02">Feb</option>
-                                <option value="03">Mar</option>
-                                <option value="04">Apr</option>
-                                <option value="05">May</option>
-                                <option value="06">Jun</option>
-                                <option value="07">Jul</option>
-                                <option value="08">Aug</option>
-                                <option value="09">Sep</option>
-                                <option value="10">Oct</option>
-                                <option value="11">Nov</option>
-                                <option value="12">Dec</option>
-                            </select>
-                            <select name="years" id="years">
-                                <option value="2022">2022</option>
-                                <option value="2023">2023</option>
-                                <option value="2024">2024</option>
-                                <option value="2025">2025</option>
-                                <option value="2026">2026</option>
-                            </select>
-                        </div>
-                        <div class="cards">
-                            <img src="./img/master.jpg" width="10%" alt="">
-                            <img src="./img/paypal.jpg" width="10%" alt="">
-                            <img src="./img/visa.jpg" width="10%" malt="">
+                    <div class="third-row">
+                        <h3>Card-Number</h3>
+                        <div class="selection">
+                            <div class="date">
+                                <select name="month" id="months">
+                                    <option value="01">Jan</option>
+                                    <option value="02">Feb</option>
+                                    <option value="03">Mar</option>
+                                    <option value="04">Apr</option>
+                                    <option value="05">May</option>
+                                    <option value="06">Jun</option>
+                                    <option value="07">Jul</option>
+                                    <option value="08">Aug</option>
+                                    <option value="09">Sep</option>
+                                    <option value="10">Oct</option>
+                                    <option value="11">Nov</option>
+                                    <option value="12">Dec</option>
+                                </select>
+                                <select name="years" id="years">
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                </select>
+                            </div>
+                            <div class="cards">
+                                <img src="./img/master.jpg" width="10%" alt="">
+                                <img src="./img/paypal.jpg" width="10%" alt="">
+                                <img src="./img/visa.jpg" width="10%" malt="">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <button type="submit">Confirm</button>
+                    <div class="boton">
+                        <button>Confirm</button>
+                    </div>
                 </form>
             </div>
 

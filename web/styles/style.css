@@ -217,9 +217,9 @@ header a:hover{
 }
 
 .layer{
-    background: #35424a;
-    height: 50%;
-    width: 50%;
+    background: transparent;
+    height: 30%;
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -227,20 +227,20 @@ header a:hover{
 }
 
 .layer:hover{
-    background: rgba(226, 0, 0, 0.7);
+    background: transparent;
 }
 
 .layer h3{
     width: 100%;
     font-weight: 500;
-    color: #fff;
-    font-size: 26px;
+    color: #ffffff;
+    font-size: 35px;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
     opacity: 0;
-    transition: 05s;
+    transition: 03s;
 }
 
 .layer:hover h3{

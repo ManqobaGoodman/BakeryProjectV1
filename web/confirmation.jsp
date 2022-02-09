@@ -70,12 +70,11 @@
 
             </div>
         </header>
-
         <div class="container-fluid mt-5">
             <section class="bod">
                 <div class="form-container">
                     <h2 class="form-title">Payment details</h2>
-                    <form action="" class="checkout-form">
+                    <form action="payment.jsp" class="checkout-form">
                         <div class="input-line">
                             <label for="name">Name</label>
                             <input type="text" name="name" id="name" value="<%= person.getFirstname() + " " + person.getLastname()%>" disabled>
@@ -95,17 +94,17 @@
 
                             <div class="input-line">
                                 <label for="address">Address</label>
-                                <input type="text" name="address" id="address" placeholder="Your Address">
+                                <input type="text" name="address" id="address" placeholder="Your Address" required>
                             </div>
 
 
                             <div class="input-line">
                                 <label for="town">Town/City</label>
-                                <input type="text" name="town" id="address" placeholder="Your Town/City">
+                                <input type="text" name="town" id="address" placeholder="Your Town/City" required>
                             </div>
                             <div class="input-line">
                                 <label for="postCode">Postal-Code</label>
-                                <input type="text" name="postCode" id="address" placeholder="Your Postal-Code">
+                                <input type="text" name="postCode" id="address" placeholder="Your Postal-Code" required>
                             </div>
                         </div>
 
@@ -134,69 +133,65 @@
                         <%
                             }
                         %>
+                        <div class="boton">
+                            <button>Complete-Payment</button>
+                        </div>
                     </form>
             </section>
-
-
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="table-responsive">
-                        <table id="myTable" class="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Qty</th>
-                                    <th>Price</th>
-                                    <th class="text-right"><span id="amount" class="amount">Amount</span></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <%
-                                    for (OrderLineItem orderLineItem : orderLineItemList) {
 
-                                %>
-                                <tr>
-                                    <td>
-                                        <p><%= orderLineItem.getProduct().getNameOfProduct()%></p>
-                                    </td>
-                                    <td>
-                                        <div class="button-container">
-
-                                            <input type="text" name="qty" min="0" max="5" class="qty form-control" value="<%= orderLineItem.getQuantity()%>" disabled/>
-
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <input style="margin-bottom: 48px;"type="text" value="<%= orderLineItem.getProduct().getProductPrice()%>" class="price form-control" disabled>
-                                    </td>
-                                    <td align="right">R <span id="amount" class="amount">0</span>
-                                    </td>
-                                </tr>
-                                <%
-                                    }
-                                %>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="3"></td>
-                                    <td align="right">
-                                        <strong>Total = R <span id="total" class="total">0</span>
-                                        </strong>
-
-                                        <div class="boton">
-                                            <button> <a href="payment.jsp" class="href">Complete-Payment</a></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
                     </div>
                 </div>
-
-
             </div>
         </div>
+        <table id="myTable" class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th class="text-right"><span id="amount" class="amount">Amount</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                    for (OrderLineItem orderLineItem : orderLineItemList) {
 
+                %>
+                <tr>
+                    <td>
+                        <p><%= orderLineItem.getProduct().getNameOfProduct()%></p>
+                    </td>
+                    <td>
+                        <div class="button-container">
+
+                            <input type="text" name="qty" min="0" max="5" class="qty form-control" value="<%= orderLineItem.getQuantity()%>" disabled/>
+
+                        </div>
+                    </td>
+                    <td>
+                        <input style="margin-bottom: 48px;"type="text" value="<%= orderLineItem.getProduct().getProductPrice()%>" class="price form-control" disabled>
+                    </td>
+                    <td align="right">R <span id="amount" class="amount">0</span>
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"></td>
+                    <td align="right">
+                        <strong>Total = R <span id="total" class="total">0</span>
+                        </strong>
+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
         <footer  id="Foot">
             <div class="footer">
                 <h2>Hours : </h2>

@@ -86,7 +86,7 @@
                                 </tr>
                             </thead>
 
-                            <form method="">
+                            
                                 <tbody>
 
 
@@ -133,8 +133,6 @@
 
                                         }%>
 
-
-
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -149,10 +147,6 @@
                                             <div class="boton">
                                                 <button> <a href="http://localhost:8080/BakeryProjectV1/ConfirmationServlet" class="href">Check-Out</a></button>
                                             </div>
-
-
-
-
                                         </td>
                                     </tr>
 
@@ -163,10 +157,6 @@
                             </tr>
 
                             </tfoot>
-
-
-
-
                         </table>
                     </div>
                 </div>
