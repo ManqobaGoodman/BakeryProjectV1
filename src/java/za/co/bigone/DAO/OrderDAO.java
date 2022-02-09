@@ -25,5 +25,7 @@ public interface OrderDAO {
     boolean createOrder(int lastid, int addressid, int personid);
 
     public boolean updateLastOrderId(int orderId);
+    
+    Order getOrder(int orderid);
 
 }

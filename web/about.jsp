@@ -63,15 +63,20 @@
                     <img src="./img/theShop.jpeg" />
                 </div>
                 <div class="aboutUs-col">
-                    <h1>We Are The World's Largest University</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. </p>
-                    <a href="" class="hero-btn red-btn">EXPLORE NOW</a>
+                    <h1>TO PIE FOR</h1>
+                    <p>I am Mrs Pat Cake ,I am a 97 year old women that had Covid 7 times ,due to the fact that I give my cake to everyone,hence the need for a website that will help customers view all products and place orders .From humble yet solid foundations, we’ve expanded into more than just a bakery.
+                        We’re now a bakery, a caterer and a food market.
+                        Many things have changed but one thing has remained the same. The love and passion that is present in every single delicious cake and experience we create.
+                        In celebration of Industry’s evolution and the deep pride we feel for what it has become, we have upgraded our logo to reflect our ownership of the brand.
+                        It honours the past, present and future in a design that we believe is authentic, real and expressive of who we are.
+                        We’d love to hear your thoughts</p>
+
                 </div>
             </div>
         </section>
         <section class="bottom">
-            <h4>About Us</h4>
-            <p> Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.<br> Nam eget dui. Etiam rhoncus. Maecenas tempus</p>
+            <h4>Social Media</h4>
+            <p> Please subscribe and follow me for updates on new products</p>
             <div class="icons">
                 <i class="fa fa-facebook-square"></i>
                 <i class="fa fa-twitter"></i>
@@ -79,7 +84,7 @@
                 <i class="fa fa-instagram"></i>
                 <i class="fa fa-linkedin"></i>
             </div>
-            <p>Made By <i class="fa fa-heart-o"></i> Ornnament</p>
+
         </section>
 
 

@@ -97,9 +97,16 @@
                         <button class="cart-qty-minus" type="button" value="+">-</button>
                     </div>
 
-                    <div class="name">
-                        <button class="btn" value="Add To Cart">Add To Cart</button>
-                    </div>
+                     <form method="POST" action="CartServlet">
+                        <div class="carthead">
+                            <!--<h3 style="border-style: ridge"><span class="highlight">Add To Cart</span></h3> -->
+                            <button class="btn" type="submit">Add To Cart</button>
+
+                        </div>
+                        <input type="hidden" value=<%= product.getProductId()%> name="productId" />
+                        <input type="hidden" value=<%= product.getProductTypeid()%> name="productTypeId" />
+
+                    </form>
                 </div>
             </div>
         </section>
