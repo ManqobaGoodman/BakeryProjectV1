@@ -14,4 +14,7 @@ import za.co.bigone.model.Invoice;
  */
 public interface InvoiceDAO {
     Invoice  viewInvoice(int invoiceid,int orderid,LocalDate invoicedate );
+    int lastInvoiceID();
+    Invoice createInvoice(int invoiceid , int orderid , LocalDate invoicedate);
+    
 }

@@ -49,4 +49,47 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         }
         return inv;
     }
+
+    @Override
+    public int lastInvoiceID() {
+        int lastid = 0;
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT lastid FROM lastinvoiceid WHERE keyid = orderid");
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                lastid = rs.getInt("lastid");
+
+            }
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return lastid;
+    }
+
+    @Override
+    public Invoice createInvoice(int invoiceid, int orderid, LocalDate invoicedate) {
+        Invoice inv = null;
+
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO invoice VALUES (null,?,CURDATE())");
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                inv.setInvoiceid(rs.getInt("invoiceid"));
+                inv.setOrderid(rs.getInt("orderid"));
+                inv.setInvoicedate(invoicedate);
+                
+            }
+            con.close();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return inv;
+    }
 }

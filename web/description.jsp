@@ -81,11 +81,15 @@
 
 
                 <div class="aboutUs-col">
-                    <img src="./img/bread.jpeg" />
+                     <img src="<%= product.getPicture()%>">
                 </div>
                 <div class="aboutUs-col">
-                    <h1>Freshly <span class="highlight">baked</span> bread</h1>
-                    <p>Our quality bread will have a slightly glossy finish on the inside and a crispy crunch on the outside.This will be the best bread you will ever eat and it taste better then your mothers bread so eat it. So Please enjoy our Home Baked bread Which we have freshly baked for you</p>
+                    <h2><span class="marker"> <%= product.getNameOfProduct()%> </span></h2>
+                    <p><%= product.getProductDescription()%></p>
+                    
+                     <div class="sizer">
+                    <h4>R<%= product.getProductPrice()%></h4>
+                </div>
 
                     <div class="button-container">
                         <button class="cart-qty-plus" type="button" value="+">+</button>
