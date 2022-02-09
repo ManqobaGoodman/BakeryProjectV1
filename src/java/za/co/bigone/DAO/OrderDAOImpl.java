@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import za.co.bigone.manager.DBPoolManagerBasic;
 import za.co.bigone.model.Order;
 import za.co.bigone.model.OrderLineItem;
@@ -25,6 +27,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     DBPoolManagerBasic dbm;
     private Connection con;
+    PreparedStatement ps;
     // private Connection conction;
 
     public OrderDAOImpl() {
@@ -77,7 +80,8 @@ public class OrderDAOImpl implements OrderDAO {
         int lastid = 0;
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT lastid FROM lastinvoiceid WHERE keyid = orderid");
+            PreparedStatement ps = con.prepareStatement("SELECT lastid FROM lastidtable WHERE keyid = 'orderid'");
+
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
@@ -93,30 +97,41 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public Order createOrder(int lastid,  int addressid, int personid) {
-        Order createOrder = null;
+    public boolean createOrder(int lastid, int addressid, int personid) {
+        boolean retVal = false;
         try {
             Connection con = dbm.getConnection();
             PreparedStatement ps = con.prepareStatement("INSERT INTO ordertable VALUES (?,?,?,CURDATE(),'n');");
             ps.setInt(1, lastid);
-            ps.setInt(2,addressid);
+            ps.setInt(2, addressid);
             ps.setInt(3, personid);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                createOrder.setOrderid(rs.getInt("orderid"));
-                createOrder.setOrderlineid(rs.getInt("orderlineid"));
-                createOrder.setPersonid(rs.getInt("personid"));
-                createOrder.setAddressid(rs.getInt("addressid"));
-                
-
-            }
+            retVal = ps.executeUpdate() > 0;
             con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return createOrder;
+        return retVal;
+    }
 
+    @Override
+    public boolean updateLastOrderId(int orderId) {
+        boolean retVal = false;
+        try {
+            con = dbm.getConnection();
+            ps = con.prepareStatement("UPDATE lastidtable SET lastid=? WHERE keyid='orderid'");
+            ps.setInt(1, orderId);
+            retVal = ps.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {
+                ps.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return retVal;
     }
 
 }

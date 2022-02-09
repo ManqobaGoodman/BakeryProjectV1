@@ -83,7 +83,7 @@ public class ProductDAOImple implements ProductDAO {
                 p1.setProductPrice(rs.getDouble("productprice"));
                 p1.setPicture(rs.getString("productpicture"));
                 p1.setRecipeid(rs.getInt("recipeid"));
-                p1.setIngredientName(rs.getString("ingredientname"));
+                
             }
             con.close();
 

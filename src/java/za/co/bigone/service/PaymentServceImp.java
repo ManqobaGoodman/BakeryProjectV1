@@ -14,6 +14,7 @@ import za.co.bigone.DAO.OrderLineItemDAO;
 import za.co.bigone.DAO.OrderLineItemDaoImpl;
 import za.co.bigone.manager.DBPoolManagerBasic;
 import za.co.bigone.model.Address;
+import za.co.bigone.model.Card;
 import za.co.bigone.model.Order;
 import za.co.bigone.model.OrderLineItem;
 import za.co.bigone.model.Payment;
@@ -29,27 +30,41 @@ public class PaymentServceImp implements PaymentService{
     OrderDAO orderDAO;
     AddressDAO addressDAO;
     OrderLineItemDAO orderLineItemDAO;
+    DBPoolManagerBasic dbm;
 
     public PaymentServceImp(DBPoolManagerBasic dbm) {
         this.orderDAO = new OrderDAOImpl(dbm);
         this.addressDAO = new AddressDAOImpl(dbm);
         this.orderLineItemDAO = new OrderLineItemDaoImpl(dbm);
+        this.dbm=dbm;
     }
+    
+    
+    
     
 
     @Override
-    public boolean confirmPayment(Person person, List<OrderLineItem> lineitems) {
-        boolean isPayment = false;
-       int lastid = orderDAO.lastOderId();
-        Address address = addressDAO.viewAddress1(person.getPersonId());
-        lastid++;
-        Order order = orderDAO.createOrder(lastid,address.getAddressId(), person.getPersonId());
-        
-        if(order != null){
-                isPayment =true;
-
-        }
-        return isPayment;
+    public boolean confirmPayment(Card card, int amount) {
+     // return ((int)(Math.random()*amount))%2==0;
+     return true;
     }
     
+    public boolean createOrder(Person person, List<OrderLineItem> lineitems){
+        boolean retVal=false;
+        int lastid = orderDAO.lastOderId();
+        Address address = addressDAO.viewAddress1(person.getPersonId());
+        lastid+=1;
+        orderDAO.updateLastOrderId(lastid);
+        if(orderDAO.createOrder(lastid,address.getAddressId(), person.getPersonId())){
+            OrderLineItemDAO olidao=new OrderLineItemDaoImpl(dbm);
+            
+            
+            
+            for (OrderLineItem lineitem : lineitems) {
+             olidao.insertOrderLineItem(lastid, lineitem.getProduct().getProductId(), lineitem.getQuantity());
+            }
+            retVal=true;
+        }
+        return retVal;
+    } 
 }

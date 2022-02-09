@@ -60,6 +60,7 @@
 
         <section class="bodd">
             <div class="bank">
+                <form action="http://localhost:8080/BakeryProjectV1/payment" method="POST">
                 <h1>Confirm Your Payment</h1>
                 <div class="first-row">
                     <div class="Owner">
@@ -117,7 +118,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="http://localhost:8080/BakeryProjectV1/payment" class="link">Confirm</a>
+                <button type="submit">Confirm</button>
+                </form>
             </div>
 
         </section>

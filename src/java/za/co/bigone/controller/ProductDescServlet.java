@@ -42,8 +42,8 @@ public class ProductDescServlet extends HttpServlet {
         ServletContext context = request.getServletContext();
         DBPoolManagerBasic dbpool = (DBPoolManagerBasic) context.getAttribute("dbconn");
         ProductService productService = new ProductServiceImplementation(dbpool);
-        RecipeService recipeService = new RecipeServiceImplementation(dbpool);
-        IngredientsService ingredientService = new IngredientsServiceImplementation(dbpool);
+//        RecipeService recipeService = new RecipeServiceImplementation(dbpool);
+//        IngredientsService ingredientService = new IngredientsServiceImplementation(dbpool);
 
         int productId = 0;
         try {
@@ -68,13 +68,13 @@ public class ProductDescServlet extends HttpServlet {
         }
         
         Product viewProduct = productService.viewProduct(productId);
-        Recipe viewRecipe = recipeService.viewRecipe(recipeId);
+        //Recipe viewRecipe = recipeService.viewRecipe(recipeId);
 //        IngredientsService viewIngredient = (IngredientsService) IngredientsServiceImplementation.viewIngredient(ingredientid);
-        ArrayList<Ingredients> viewIngredient =ingredientService.viewIngredient(recipeId);
+        //ArrayList<Ingredients> viewIngredient =ingredientService.viewIngredient(recipeId);
 
-        request.setAttribute("recipe", viewRecipe);
+        //request.setAttribute("recipe", viewRecipe);
         request.setAttribute("product", viewProduct);
-        request.setAttribute("ingredient", viewIngredient);
+        //request.setAttribute("ingredient", viewIngredient);
         RequestDispatcher dispatcher = request.getRequestDispatcher("description.jsp");
         dispatcher.forward(request, response);
     }

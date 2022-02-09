@@ -6,7 +6,7 @@
 package za.co.bigone.service;
 
 import za.co.bigone.DAO.RecipeDAO;
-import za.co.bigone.DAO.RecipeDAOImpl;
+//import za.co.bigone.DAO.RecipeDAOImpl;
 import za.co.bigone.manager.DBPoolManagerBasic;
 import za.co.bigone.model.Recipe;
 
@@ -18,9 +18,9 @@ public class RecipeServiceImplementation implements RecipeService {
 
     RecipeDAO recipeDAO;
 
-    public RecipeServiceImplementation(DBPoolManagerBasic dbm) {
-        this.recipeDAO = new RecipeDAOImpl(dbm);
-    }
+//    public RecipeServiceImplementation(DBPoolManagerBasic dbm) {
+//        this.recipeDAO = new RecipeDAOImpl(dbm);
+//    }
 
     @Override
     public Recipe viewRecipe(int recipeid) {

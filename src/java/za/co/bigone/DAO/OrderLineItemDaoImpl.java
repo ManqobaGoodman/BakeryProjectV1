@@ -117,27 +117,21 @@ public class OrderLineItemDaoImpl implements OrderLineItemDAO {
     }
 
     @Override
-    public int[] insertOrderLineItem(int orderid, List<OrderLineItem> orderLineIems) {
-        int[] insertOLI = new int [1];
+    public boolean insertOrderLineItem(int orderid, int productid, int quantity) {
+        boolean retVal = false;
 
         try {
-           
+            con = dbm.getConnection();
+            ps = con.prepareStatement("INSERT INTO orderlineitem (orderid, productid, quantity) VALUES (?,?,?);");
+            ps.setInt(1, orderid);
+            ps.setInt(2, productid);
+            ps.setInt(3, quantity);
 
-            for (OrderLineItem orderLineIem : orderLineIems) {
-                ps = con.prepareStatement(" INSERT INTO orderlineitem VALUES (null,?,?,?);  ");
-                ps.setInt(1, orderid);
-                ps.setInt(2, orderLineIem.getProduct().getProductId());
-                ps.setInt(3, orderLineIem.getQuantity());
-                ps.addBatch();
-            }
-
-            insertOLI = ps.executeBatch();
-            
+            retVal = ps.executeUpdate() > 0;
+            con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-
         }
-        return insertOLI;
-
+        return retVal;
     }
 }

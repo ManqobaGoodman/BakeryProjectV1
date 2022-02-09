@@ -7,7 +7,7 @@ package za.co.bigone.service;
 
 import java.util.ArrayList;
 import za.co.bigone.DAO.IngredientDAO;
-import za.co.bigone.DAO.IngredientDAOImpl;
+//import za.co.bigone.DAO.IngredientDAOImpl;
 import za.co.bigone.manager.DBPoolManagerBasic;
 import za.co.bigone.model.Ingredients;
 
@@ -19,9 +19,9 @@ public class IngredientsServiceImplementation implements IngredientsService  {
     
     IngredientDAO ingredientDAO;
 
-    public IngredientsServiceImplementation(DBPoolManagerBasic dbm) {
-        this.ingredientDAO = new IngredientDAOImpl(dbm);
-    }
+//    public IngredientsServiceImplementation(DBPoolManagerBasic dbm) {
+//        this.ingredientDAO = new IngredientDAOImpl(dbm);
+//    }
     
    
     

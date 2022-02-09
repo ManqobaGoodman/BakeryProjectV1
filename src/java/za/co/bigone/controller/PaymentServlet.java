@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import za.co.bigone.manager.DBPoolManagerBasic;
+import za.co.bigone.model.Card;
 import za.co.bigone.model.OrderLineItem;
 import za.co.bigone.model.Person;
 import za.co.bigone.service.AddressService;
@@ -40,11 +41,10 @@ public class PaymentServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**
@@ -63,30 +63,18 @@ public class PaymentServlet extends HttpServlet {
         PaymentService paymentService = new PaymentServceImp(dbpool);
         HttpSession session = request.getSession();
         Person person = (Person) session.getAttribute("person");
-        List<OrderLineItem> lineitems = (List<OrderLineItem>) (OrderLineItem) session.getAttribute("cart");
-        
-        String cardHolder = request.getParameter("");
-        int cvv = 0;
-        int cardNum =0;
-        
-        try {
-            cvv = Integer.parseInt(request.getParameter(""));
-            cardNum = Integer.parseInt(request.getParameter(""));
-        } catch (Exception e) {
-            System.out.println("Error: "+ e.getMessage());
+        List<OrderLineItem> lineitems = (List<OrderLineItem>) session.getAttribute("cart");
+        Card card = new Card(request.getParameter("owner"), request.getParameter("cvv"), request.getParameter("cardNumber"));
+        boolean isPayment = paymentService.confirmPayment(card, 8765);
+        if (isPayment) {
+            if(paymentService.createOrder(person,lineitems)){
+                //generate invoice
+                //email client order + invoice
+            }
         }
-        
-        boolean isPayment = paymentService.confirmPayment(person, lineitems);
-        
-        if (isPayment){
-            
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Login.jsp");
-            requestDispatcher.forward(request, response);
-        }
-        
-        
-        
-        
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Login.jsp");
+        requestDispatcher.forward(request, response);
+
     }
 
     /**
