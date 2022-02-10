@@ -1,8 +1,9 @@
 package za.co.bigone.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class OrderLineItem {
+public class OrderLineItem implements Serializable{
     private int orderlineid;
     private Product product;
     private int quantity;

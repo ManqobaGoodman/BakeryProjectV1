@@ -63,7 +63,7 @@ public class AddressDAOImpl implements AddressDAO {
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM Address where personid = ?");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM address where personid = ?");
             ps.setInt(1, personid);
             
             ResultSet rs = ps.executeQuery();

@@ -145,11 +145,11 @@ public class PersonDAOImpl implements PersonDAO {
             
             Connection con = dbm.getConnection();
             PreparedStatement ps = con.prepareStatement("SELECT firstname ,lastname,title,emailaddress,telephonenumber FROM person WHERE personid=?;");
-            
+            ps.setInt(1, personid);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 p = new Person();
-                p.setPersonId(rs.getInt("personid"));
+                p.setPersonId(personid);
                 p.setFirstname(rs.getString("firstname"));
                 p.setLastname(rs.getString("lastname"));
                 p.setTitle(rs.getString("title"));

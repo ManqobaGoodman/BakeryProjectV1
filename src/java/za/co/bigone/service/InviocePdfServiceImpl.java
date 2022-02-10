@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -72,14 +73,18 @@ public class InviocePdfServiceImpl implements InvoicePDFService {
         double price = 0;
         
         List<OrderLineItem> orderLineList = orderLineItemDAO.viewOrderLineItems(order.getOrderid());
-        Address address = addressDAO.viewAddress1(order.getAddressid());
+        Address address = addressDAO.viewAddress1(order.getPersonid());
+        Person person = personDAO.getPerson(order.getPersonid());
+        Invoice invoice = invoiceDAO.viewInvoice(oderId);
+        String ldate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String ltime = LocalDate.now().format(DateTimeFormatter.ISO_DATE);
 
         //get the page
         PDPage mypage = invc.getPage(0);
 
-        if (order.getOrderid() != 0) {
+        if (order.getOrderid() != 0 || address != null || person != null || invoice != null) {
             try {
-                PDImageXObject image = PDImageXObject.createFromFile("./img/brl_logo.jpg", invc);
+                PDImageXObject image = PDImageXObject.createFromFile("C:\\Users\\Student24\\Desktop\\BakeryProjectV1\\web\\img\\brl_logo.jpg", invc);
                 //Prepare Content Stream
                 PDPageContentStream cs = new PDPageContentStream(invc, mypage);
                 cs.beginText();
@@ -97,7 +102,7 @@ public class InviocePdfServiceImpl implements InvoicePDFService {
                 cs.showText("From");
                 cs.endText();
 
-                cs.drawXObject(image, 480,600,70,50);
+                cs.drawXObject(image, 480,660,70,50);
 
                 cs.beginText();
                 cs.setFont(PDType1Font.TIMES_ROMAN, 16);
@@ -118,8 +123,6 @@ public class InviocePdfServiceImpl implements InvoicePDFService {
                 cs.newLine();
                 cs.showText("Midrand");
                 cs.newLine();
-                cs.showText("South Africa");
-                cs.newLine();
                 cs.showText("1685");
                 cs.endText();
 
@@ -135,15 +138,15 @@ public class InviocePdfServiceImpl implements InvoicePDFService {
                 cs.setFont(PDType1Font.TIMES_ROMAN, 16);
                 cs.setLeading(20f);
                 cs.newLineAtOffset(350, 590);
-                cs.showText("Mr Manqoba Lubisi");
+                cs.showText(person.getTitle()+" "+person.getFirstname() + " "+ person.getLastname()+".");
                 cs.endText();
                 cs.beginText();
                 cs.setFont(PDType1Font.TIMES_ROMAN, 14);
                 cs.setLeading(20f);
                 cs.newLineAtOffset(350, 570);
-                cs.showText("manqoba@gmail.com");
+                cs.showText(person.getEmail());
                 cs.newLine();
-                cs.showText("07777777");
+                cs.showText(person.getTelephone());
                 cs.newLine();
                 cs.showText(address.getAddress1());
                 cs.newLine();
@@ -173,9 +176,9 @@ public class InviocePdfServiceImpl implements InvoicePDFService {
                 cs.setFont(PDType1Font.TIMES_ROMAN, 14);
                 cs.setLeading(20f);
                 cs.newLineAtOffset(150, 430);
-                cs.showText(": 0001");
+                cs.showText(": 000"+invoice.getInvoiceid());
                 cs.newLine();
-                cs.showText(": 04-02-2022");
+                cs.showText(": " +ltime+" "+ldate);
                 cs.endText();
 
                 //break line ------------------------------------------------------------------------
@@ -226,7 +229,7 @@ public class InviocePdfServiceImpl implements InvoicePDFService {
                 cs.newLineAtOffset(200, 340);
                 
                 for (OrderLineItem orderLineItem : orderLineList) {
-                    cs.showText(""+orderLineItem.getProduct().getProductId());
+                    cs.showText(""+orderLineItem.getProduct().getProductPrice());
                     cs.newLine();
                 }
                 
@@ -250,23 +253,35 @@ public class InviocePdfServiceImpl implements InvoicePDFService {
                 cs.newLineAtOffset(410, 340);
                 for (OrderLineItem orderLineItem : orderLineList) {
                     price =  orderLineItem.getProduct().getProductPrice() * orderLineItem.getQuantity();
-                    cs.showText(""+orderLineItem.getProduct().getProductId());
+                    total = total +price;
+                    cs.showText(""+price);
                     cs.newLine();
                 }
                 
                 cs.endText();
+                
+                cs.beginText();
+                cs.setFont(PDType1Font.TIMES_ROMAN, 14);
+                cs.newLineAtOffset(40, (340 - (20 * orderLineList.size())));
+                cs.showText("-------------------------------------------------------------------------------------------------------------");
+                cs.endText();
 
                 cs.beginText();
                 cs.setFont(PDType1Font.TIMES_ROMAN, 14);
-                cs.newLineAtOffset(310, (340 - (20 * orderLineList.size())));
+                cs.newLineAtOffset(310, (320 - (20 * orderLineList.size())));
                 cs.showText("Total : ");
                 cs.endText();
 
                 cs.beginText();
                 cs.setFont(PDType1Font.TIMES_ROMAN, 14);
                 //Calculating where total is to be written using number of products
-                cs.newLineAtOffset(410, (340 - (20 * orderLineList.size())));
+                cs.newLineAtOffset(410, (320 - (20 * orderLineList.size())));
                 cs.showText("R" + total);
+                cs.endText();
+                cs.beginText();
+                cs.setFont(PDType1Font.TIMES_ROMAN, 14);
+                cs.newLineAtOffset(40, (300 - (20 * orderLineList.size())));
+                cs.showText("-------------------------------------------------------------------------------------------------------------");
                 cs.endText();
 
                 //Close the content stream
@@ -274,13 +289,14 @@ public class InviocePdfServiceImpl implements InvoicePDFService {
                 
                 //create a path
                 String folder = LocalDate.now().toString();
-                Path path = Paths.get("C:\\Users\\Student24\\Desktop\\BakeryProjectV1\\invoicePdf\\"+folder+"\\");
+                Path path = Paths.get("C:\\Users\\Student24\\Desktop\\BakeryProjectV1\\invoicePdf\\"+folder);
                 Files.createDirectories(path);
                 String location = path.toString();
+                String pdfName = person.getFirstname()+"_"+person.getLastname()+"_000"+invoice.getInvoiceid();
                 
                 //Save the PDF
                 
-                invc.save(location+"test.pdf");
+                invc.save(location+"\\"+pdfName+".pdf");
                 isCreate = true;
                 invc.close();
             } catch (Exception e) {

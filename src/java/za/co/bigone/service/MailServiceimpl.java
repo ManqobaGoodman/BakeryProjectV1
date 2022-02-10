@@ -47,7 +47,7 @@ public class MailServiceimpl implements MailService {
 
     @Override
     public boolean sentMail(Person person,int order) {
-        
+        boolean isSent= false;
         Invoice invoice = invoiceDAO.viewInvoice(order);
 
         properties = new Properties();
@@ -108,12 +108,13 @@ public class MailServiceimpl implements MailService {
 
             // Part two is attachment
             String folder = LocalDate.now().toString();
-            Path path = Paths.get("C:\\Users\\Student24\\Desktop\\BakeryProjectV1\\invoicePdf\\" + folder + "\\");
-            Files.createDirectories(path);
-            String location = path.toString();
+                Path path = Paths.get("C:\\Users\\Student24\\Desktop\\BakeryProjectV1\\invoicePdf\\"+folder);
+                Files.createDirectories(path);
+                String location = path.toString();
+                String pdfName = person.getFirstname()+"_"+person.getLastname()+"_000"+invoice.getInvoiceid();
 
             messageBodyPart = new MimeBodyPart();
-            String filename = location+"test1.pdf";
+            String filename = location+"\\"+pdfName+".pdf";
             DataSource source = new FileDataSource(filename);
             messageBodyPart.setDataHandler(new DataHandler(source));
             messageBodyPart.setFileName(filename);
@@ -126,6 +127,7 @@ public class MailServiceimpl implements MailService {
             Transport.send(message);
 
             System.out.println("Sent message successfully....");
+            
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);

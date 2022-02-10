@@ -36,7 +36,8 @@ public class InvoiceDAOImpl implements InvoiceDAO {
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT * FROM invoice WHERE invoiceid = ? ");
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM invoice WHERE orderid = ? ");
+            ps.setInt(1, orderid);
 
             ResultSet rs = ps.executeQuery();
 

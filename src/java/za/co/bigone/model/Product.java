@@ -5,13 +5,14 @@
  */
 package za.co.bigone.model;
 
+import java.io.Serializable;
 import za.co.bigone.DAO.RecipeDAO;
 
 /**
  *
  * @author Student24
  */
-public class Product {
+public class Product implements Serializable{
 
     private int productId;
     private int productTypeid;
