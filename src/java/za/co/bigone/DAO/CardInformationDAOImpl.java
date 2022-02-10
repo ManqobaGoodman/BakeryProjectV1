@@ -27,13 +27,13 @@ public class CardInformationDAOImpl implements CardInformationDAO {
     }
 
     @Override
-    public Card viewCardInformation(int invoiceid) {
+    public Card viewCardInformation(int paymentid) {
         Card card1 = null;
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT (cardholder,cardnumber,cvv) FROM cardinformation where invoiceid = ?");
-            ps.setInt(1, invoiceid);
+            PreparedStatement ps = con.prepareStatement("SELECT cardholder,cardnumber,cvv FROM cardinformation where paymentid = ?");
+            ps.setInt(1,paymentid);
 
             ResultSet rs = ps.executeQuery();
 
@@ -53,14 +53,14 @@ public class CardInformationDAOImpl implements CardInformationDAO {
     }
 
     @Override
-    public Card insertCardInformation(int invoiceid, String cardholder, String cardnumber, String cvv) {
+    public Card insertCardInformation(int paymentid, String cardholder, String cardnumber, String cvv) {
         Card card1 = new Card();
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO cardinformation (invoiceid,cardholder,cardnumber,cvv) VALUE (?,?,?,? )");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO cardinformation (paymentid,cardholder,cardnumber,cvv) VALUE (?,?,?,? )");
 
-            ps.setInt(1, invoiceid);
+            ps.setInt(1,paymentid);
             ps.setString(2, "cardholder");
             ps.setString(3, "cardnumber");
             ps.setString(4, "cvv");

@@ -12,6 +12,6 @@ import za.co.bigone.model.Card;
  * @author student02
  */
 public interface CardInformationDAO {
-    Card viewCardInformation(int invoiceid);
-    Card insertCardInformation(int invoiceid, String cardholder,String cardnumber,String cvv );
+    Card viewCardInformation(int paymentid);
+    Card insertCardInformation(int paymentid, String cardholder,String cardnumber,String cvv );
 }
