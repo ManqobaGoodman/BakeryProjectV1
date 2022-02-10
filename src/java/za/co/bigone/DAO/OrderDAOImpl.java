@@ -141,7 +141,7 @@ public class OrderDAOImpl implements OrderDAO {
         try {
             
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT orderid,addressid ,personid,orderdate,delivered FROM order WHERE orderid=?;");
+            PreparedStatement ps = con.prepareStatement("SELECT orderid,addressid ,personid,orderdate,delivered FROM ordertable WHERE orderid=?;");
             
             ps.setInt(1, orderid);
             
@@ -167,7 +167,7 @@ public class OrderDAOImpl implements OrderDAO {
         try {
             
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT orderid,addressid ,personid,orderdate,delivered FROM order WHERE personid=?;");
+            PreparedStatement ps = con.prepareStatement("SELECT orderid,addressid ,personid,orderdate,delivered FROM ordertable WHERE personid=?;");
             
             ps.setInt(1, personid);
             
