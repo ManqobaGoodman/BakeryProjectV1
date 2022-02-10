@@ -24,6 +24,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import za.co.bigone.DAO.EmailInvoiceDAO;
+import za.co.bigone.DAO.EmailInvoiceDAOImpl;
 import za.co.bigone.DAO.InvoiceDAO;
 import za.co.bigone.DAO.InvoiceDAOImpl;
 import za.co.bigone.manager.DBPoolManagerBasic;
@@ -39,8 +41,10 @@ public class MailServiceimpl implements MailService {
     private Properties properties;
     InvoiceDAO invoiceDAO;
      DBPoolManagerBasic dbm;
+     EmailInvoiceDAO emailInvoiceDAO;
     public MailServiceimpl( DBPoolManagerBasic dbm) {
         this.invoiceDAO = new InvoiceDAOImpl(dbm);
+        this.emailInvoiceDAO = new EmailInvoiceDAOImpl(dbm);
     }
     
     
@@ -88,17 +92,17 @@ public class MailServiceimpl implements MailService {
                     InternetAddress.parse(toEmail));
 
             // Set Subject: header field
-            message.setSubject("Testing Subject");
+            message.setSubject("Invoice");
 
             // Create the message part
             BodyPart messageBodyPart = new MimeBodyPart();
 
             // Now set the actual message
-            messageBodyPart.setText("<html><body><h2>Good Day " + person.getTitle() + " " + person.getFirstname() + " " + person.getLastname() + "</h2><br>"
-                    + "<p> Thank you for your support ,your order will be sent to you soon.</p><br>"
-                    + "<p>Your Invoice No. " + invoice.getInvoiceid() + "</p><br>"
-                    + "<p>Please find the attached invoice."
-                    + "</body></html>");
+            String mailMes = "Good Day " + person.getTitle() + " " + person.getFirstname() + " " + person.getLastname() + "\n"
+                    + "Thank you for your support ,your order will be sent to you soon.\n"
+                    + "Your Invoice No. " + invoice.getInvoiceid() + "\n"
+                    + "Please find the attached invoice.";
+            messageBodyPart.setText(mailMes);
 
             // Create a multipar message
             Multipart multipart = new MimeMultipart();
@@ -125,9 +129,9 @@ public class MailServiceimpl implements MailService {
 
             // Send message
             Transport.send(message);
-
             System.out.println("Sent message successfully....");
             
+            isSent = sendEmail(person.getPersonId(), mailMes);
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
@@ -136,6 +140,10 @@ public class MailServiceimpl implements MailService {
             System.out.println(e.getMessage());
         }
         return false;
+    }
+    
+    private boolean sendEmail(int persosId, String megs){
+        return emailInvoiceDAO.insert(persosId, megs);
     }
 
 }

@@ -26,12 +26,12 @@ public class AddressServiceImplement  implements AddressService{
     }
 
     @Override
-    public Address insertAddress1(int peronId, String address1,String town, int postalCode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean insertAddress1(int peronId, String address1,String town, int postalCode) {
+        return addressDAO.insertAddress1(peronId, address1, town, postalCode);
     }
 
     @Override
-    public Address updateAddress1() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean updateAddress1(int peronId, String address1,String town, int postalCode) {
+        return addressDAO.updateAddress1(peronId, address1, town, postalCode);
     }
 }

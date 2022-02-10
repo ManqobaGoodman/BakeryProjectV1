@@ -100,4 +100,30 @@ public class EmailInvoiceDAOImpl implements EmailInvoiceDAO {
         return emsg;
     }
 
+    @Override
+    public boolean insert(int personid, String emailmessage) {
+         boolean inv = false;
+
+        try {
+            Connection con = dbm.getConnection();
+            PreparedStatement ps = con.prepareStatement("INSERT INTO emailtable (personid,emailmessage) VALUE (?,?)");
+            
+            ps.setInt(1, personid);
+            ps.setString(2, emailmessage);
+            
+            inv = ps.executeUpdate() >0;
+            
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(InvoiceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       return inv;
+    }
+
 }

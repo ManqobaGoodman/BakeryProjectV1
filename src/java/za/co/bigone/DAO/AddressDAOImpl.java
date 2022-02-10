@@ -90,51 +90,49 @@ public class AddressDAOImpl implements AddressDAO {
        
 
     @Override
-    public Address insertAddress1(int peronId, String address1,String town, int postalCode) {
-         Address Addr1 = new Address();
+    public boolean insertAddress1(int personId, String address1,String town, int postalCode) {
+          boolean retVal = false;
          
         
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO address (addressid,personid,addr1,town,postalcode) VALUE (null,?,?,?,? )");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO address (addressid,personid,address1,town,postalcode) VALUE (null,?,?,?,?)");
             
-            ps.setInt(1, peronId);
+            ps.setInt(1, personId);
             ps.setString(2, address1);
             ps.setString(3, town);
             ps.setInt(4, postalCode);
-            ps.executeUpdate();
+            
+            retVal = ps.executeUpdate() > 0;
             
             con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return Addr1;
+        return retVal;
     }
          //--------------Edit adddress---------------
     @Override
-    public Address updateAddress1() {
-         Address Addr1 = new Address();
+    public boolean updateAddress1(int personId,String address1,String town, int postalCode) {
+          boolean retVal = false;
         
 
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("UPDATE address SET (?,?,?,?,?,?) WHERE (?,?,?,?,?,?)");
-
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                Addr1.setAddress1(rs.getString("Address1"));
-                Addr1.setAddressId(rs.getInt("AddressId"));
-                Addr1.setPostalCode(rs.getInt("PostalCode"));
-                Addr1.setTown(rs.getString("Town"));
-                
-            }
+            PreparedStatement ps = con.prepareStatement("UPDATE address SET address1= ?, town= ?, postalcode=? WHERE personid=?");
+            ps.setString(1, address1);
+            ps.setString(2, town);
+             ps.setInt(3, postalCode);
+             ps.setInt(4, personId);
+             
+             retVal = ps.executeUpdate() > 0;
+           
             con.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return Addr1;
+        return retVal;
     }
     
 }

@@ -72,9 +72,9 @@
         </header>
         <div class="container-fluid mt-5">
             <section class="bod">
-                <div class="form-container">
+                <div  class="form-container">
                     <h2 class="form-title">Payment details</h2>
-                    <form action="payment.jsp" class="checkout-form">
+                    <form method="POST" action="Confirmation2Servlet" class="checkout-form">
                         <div class="input-line">
                             <label for="name">Name</label>
                             <input type="text" name="name" id="name" value="<%= person.getFirstname() + " " + person.getLastname()%>" disabled>
@@ -133,7 +133,9 @@
                         <%
                             }
                         %>
-
+                         <div class="boton">
+                <button>Complete-Payment</button>
+            </div>
                     </form>
             </section>
             <div class="row justify-content-center">
@@ -191,11 +193,9 @@
 
 
             </tfoot>
-            <tr>
+          
 
-            <div class="boton">
-                <button>Complete-Payment</button>
-            </div>
+           
 
         </table>
 

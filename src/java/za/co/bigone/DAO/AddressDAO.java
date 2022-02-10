@@ -15,7 +15,7 @@ import za.co.bigone.model.Address;
 public interface AddressDAO {
     List<Address> viewAddress ();
     Address viewAddress1(int personId);
-    Address insertAddress1(int peronId, String address1,String town, int postalCode);
-    Address updateAddress1();
+    boolean insertAddress1(int peronId, String address1,String town, int postalCode);
+    boolean updateAddress1(int personId,String address1,String town, int postalCode);
     
 }

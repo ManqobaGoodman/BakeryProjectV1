@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +78,7 @@ public class InviocePdfServiceImpl implements InvoicePDFService {
         Person person = personDAO.getPerson(order.getPersonid());
         Invoice invoice = invoiceDAO.viewInvoice(oderId);
         String ldate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        String ltime = LocalDate.now().format(DateTimeFormatter.ISO_DATE);
+        String ltime = LocalTime.now().format(DateTimeFormatter.ISO_TIME);
 
         //get the page
         PDPage mypage = invc.getPage(0);
@@ -178,7 +179,7 @@ public class InviocePdfServiceImpl implements InvoicePDFService {
                 cs.newLineAtOffset(150, 430);
                 cs.showText(": 000"+invoice.getInvoiceid());
                 cs.newLine();
-                cs.showText(": " +ltime+" "+ldate);
+                cs.showText(": " +ltime+" -- "+ldate);
                 cs.endText();
 
                 //break line ------------------------------------------------------------------------

@@ -15,5 +15,6 @@ public interface EmailInvoiceDAO {
     
     EmailInvoice getPerson(int personid);
     EmailInvoice getEmailmessage(String emailmessage);
+    boolean insert(int personid,String emailmessage);
     
 }
