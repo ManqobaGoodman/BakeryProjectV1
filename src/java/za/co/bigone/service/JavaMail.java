@@ -1,19 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package za.co.bigone.service;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDate;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Date;
+import java.util.Enumeration;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
+import javax.mail.Address;
+import javax.mail.Authenticator;
 import javax.mail.BodyPart;
+import javax.mail.Flags;
+import javax.mail.Header;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -24,40 +28,17 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import za.co.bigone.DAO.InvoiceDAO;
-import za.co.bigone.DAO.InvoiceDAOImpl;
-import za.co.bigone.manager.DBPoolManagerBasic;
-import za.co.bigone.model.Invoice;
-import za.co.bigone.model.Person;
+import org.apache.catalina.ant.SessionsTask;
 
 /**
  *
- * @author Student24
+ * @author Adrian Koekemoer
  */
-public class MailServiceimpl implements MailService {
+public class JavaMail {
 
-    private Properties properties;
-    InvoiceDAO invoiceDAO;
-     DBPoolManagerBasic dbm;
-    public MailServiceimpl( DBPoolManagerBasic dbm) {
-        this.invoiceDAO = new InvoiceDAOImpl(dbm);
-    }
-    
-    
+    public static void sendMail(String recipient) throws Exception {
 
-    @Override
-    public boolean sentMail(Person person,int order) {
-        
-        Invoice invoice = invoiceDAO.viewInvoice(order);
-
-        properties = new Properties();
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.startls.enable", "true");
-
-        String toEmail = person.getEmail();
+         String to = "goodlubisi@gmail.com";
 
         // Sender's email ID needs to be mentioned
         String from = "manqobamilk@gmail.com";
@@ -67,6 +48,13 @@ public class MailServiceimpl implements MailService {
 
         // Assuming you are sending email through relay.jangosmtp.net
         String host = "relay.jangosmtp.net";
+
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.startls.enable", "true");
 
         // Get the Session object.
         Session session = Session.getInstance(properties,
@@ -85,7 +73,7 @@ public class MailServiceimpl implements MailService {
 
             // Set To: header field of the header.
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(toEmail));
+                    InternetAddress.parse(to));
 
             // Set Subject: header field
             message.setSubject("Testing Subject");
@@ -94,11 +82,7 @@ public class MailServiceimpl implements MailService {
             BodyPart messageBodyPart = new MimeBodyPart();
 
             // Now set the actual message
-            messageBodyPart.setText("<html><body><h2>Good Day " + person.getTitle() + " " + person.getFirstname() + " " + person.getLastname() + "</h2><br>"
-                    + "<p> Thank you for your support ,your order will be sent to you soon.</p><br>"
-                    + "<p>Your Invoice No. " + invoice.getInvoiceid() + "</p><br>"
-                    + "<p>Please find the attached invoice."
-                    + "</body></html>");
+            messageBodyPart.setText("<html><body>This is message body</body></html>");
 
             // Create a multipar message
             Multipart multipart = new MimeMultipart();
@@ -107,13 +91,8 @@ public class MailServiceimpl implements MailService {
             multipart.addBodyPart(messageBodyPart);
 
             // Part two is attachment
-            String folder = LocalDate.now().toString();
-            Path path = Paths.get("C:\\Users\\Student24\\Desktop\\BakeryProjectV1\\invoicePdf\\" + folder + "\\");
-            Files.createDirectories(path);
-            String location = path.toString();
-
             messageBodyPart = new MimeBodyPart();
-            String filename = location+"test1.pdf";
+            String filename = "C:\\MyProgs\\BakeryProjectV1\\test1.pdf";
             DataSource source = new FileDataSource(filename);
             messageBodyPart.setDataHandler(new DataHandler(source));
             messageBodyPart.setFileName(filename);
@@ -130,10 +109,46 @@ public class MailServiceimpl implements MailService {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return false;
     }
 
+     
+//        Message message = prepareMessage(session, myAccountEmail, recipient,filename);
+//        try{
+//        Transport.send(message);
+//        } catch(Exception ex){
+//            System.out.println(ex.getMessage());
+//        }
+//        
+//    }
+//
+//    private static Message prepareMessage(Session session, String myAccountEmail, String recipient, String filename) {
+//
+//        try {
+//            Message message = new MimeMessage(session);
+//            message.setFrom(new InternetAddress(myAccountEmail));
+//            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+//            message.setSubject("test 1");
+//
+//            BodyPart messageBodyPart = new MimeBodyPart();
+//            messageBodyPart.setText("Hello My boi Please Check my invoice PDf");
+//            Multipart multipart = new MimeMultipart();
+//            multipart.addBodyPart(messageBodyPart);
+//            messageBodyPart = new MimeBodyPart();
+//
+//            messageBodyPart = new MimeBodyPart();
+//            
+//            DataSource source = new FileDataSource(filename);
+//            messageBodyPart.setDataHandler(new DataHandler(source));
+//            messageBodyPart.setFileName(filename);
+//            multipart.addBodyPart(messageBodyPart);
+//            
+//            message.setContent(multipart);
+//            
+//            return message;
+//        } catch (Exception ex) {
+//            System.out.println("ERROR: " + ex.getMessage());
+//        }
+//
+//        return null;
+    
 }

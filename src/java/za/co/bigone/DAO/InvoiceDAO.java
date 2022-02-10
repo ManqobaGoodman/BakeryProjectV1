@@ -20,7 +20,7 @@ public interface InvoiceDAO {
 
     boolean createInvoice(int invoiceid, int orderid);
 
-    public boolean updateLastOrderId(int invoiceId);
+    public boolean updateLastInvoiceId(int invoiceId);
     
     int lastInvoiceId();
 

@@ -5,10 +5,12 @@
  */
 package za.co.bigone.service;
 
+import za.co.bigone.model.Order;
+
 /**
  *
  * @author Student24
  */
 public interface InvoicePDFService {
-    
+    boolean createpdf(int orderId);
 }

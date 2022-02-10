@@ -5,10 +5,13 @@
  */
 package za.co.bigone.service;
 
+import za.co.bigone.model.Invoice;
+import za.co.bigone.model.Person;
+
 /**
  *
  * @author Student24
  */
 public interface MailService {
-    
+    boolean sentMail(Person person,int order);
 }

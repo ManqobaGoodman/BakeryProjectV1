@@ -60,12 +60,10 @@ public class InvoiceDAOImpl implements InvoiceDAO {
         int lastid = 0;
         try {
             Connection con = dbm.getConnection();
-            PreparedStatement ps = con.prepareStatement("SELECT lastid FROM lastinvoiceid WHERE keyid = invoiceid");
+            PreparedStatement ps = con.prepareStatement("SELECT lastid FROM lastidtable WHERE keyid = 'invoiceid';");
             ResultSet rs = ps.executeQuery();
-
             if (rs.next()) {
                 lastid = rs.getInt("lastid");
-
             }
             con.close();
         } catch (SQLException ex) {
@@ -86,16 +84,22 @@ public class InvoiceDAOImpl implements InvoiceDAO {
             ps.setInt(2, orderid);
             
             inv = ps.executeUpdate() >0;
-            con.close();
+            
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        }finally{
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(InvoiceDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        return inv;
     }
 
     @Override
-    public boolean updateLastOrderId(int invoiceId) {
+    public boolean updateLastInvoiceId(int invoiceId) {
          boolean retVal = false;
         try {
             con = dbm.getConnection();

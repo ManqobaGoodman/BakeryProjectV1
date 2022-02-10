@@ -8,6 +8,8 @@ package za.co.bigone.service;
 import java.util.List;
 import za.co.bigone.DAO.AddressDAO;
 import za.co.bigone.DAO.AddressDAOImpl;
+import za.co.bigone.DAO.InvoiceDAO;
+import za.co.bigone.DAO.InvoiceDAOImpl;
 import za.co.bigone.DAO.OrderDAO;
 import za.co.bigone.DAO.OrderDAOImpl;
 import za.co.bigone.DAO.OrderLineItemDAO;
@@ -30,12 +32,14 @@ public class PaymentServceImp implements PaymentService{
     OrderDAO orderDAO;
     AddressDAO addressDAO;
     OrderLineItemDAO orderLineItemDAO;
+    InvoiceDAO invoiceDAO;
     DBPoolManagerBasic dbm;
 
     public PaymentServceImp(DBPoolManagerBasic dbm) {
         this.orderDAO = new OrderDAOImpl(dbm);
         this.addressDAO = new AddressDAOImpl(dbm);
         this.orderLineItemDAO = new OrderLineItemDaoImpl(dbm);
+        this.invoiceDAO = new InvoiceDAOImpl(dbm);
         this.dbm=dbm;
     }
     
@@ -49,21 +53,25 @@ public class PaymentServceImp implements PaymentService{
      return true;
     }
     
-    public boolean createOrder(Person person, List<OrderLineItem> lineitems){
-        boolean retVal=false;
+    public int createOrder(Person person, List<OrderLineItem> lineitems){
+        int retVal=0;
         int lastid = orderDAO.lastOderId();
         Address address = addressDAO.viewAddress1(person.getPersonId());
         lastid+=1;
         orderDAO.updateLastOrderId(lastid);
+        int lastInvoiceId = invoiceDAO.lastInvoiceID();
+        lastInvoiceId+=1;
+        invoiceDAO.updateLastInvoiceId(lastInvoiceId);
+        
         if(orderDAO.createOrder(lastid,address.getAddressId(), person.getPersonId())){
             OrderLineItemDAO olidao=new OrderLineItemDaoImpl(dbm);
-            
-            
-            
             for (OrderLineItem lineitem : lineitems) {
              olidao.insertOrderLineItem(lastid, lineitem.getProduct().getProductId(), lineitem.getQuantity());
             }
-            retVal=true;
+            if(invoiceDAO.createInvoice(lastInvoiceId, lastid)){
+                    retVal=lastid;
+            }
+            
         }
         return retVal;
     } 

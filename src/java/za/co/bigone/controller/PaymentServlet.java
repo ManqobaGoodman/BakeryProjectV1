@@ -22,6 +22,10 @@ import za.co.bigone.model.OrderLineItem;
 import za.co.bigone.model.Person;
 import za.co.bigone.service.AddressService;
 import za.co.bigone.service.AddressServiceImplement;
+import za.co.bigone.service.InviocePdfServiceImpl;
+import za.co.bigone.service.InvoicePDFService;
+import za.co.bigone.service.MailService;
+import za.co.bigone.service.MailServiceimpl;
 import za.co.bigone.service.PaymentServceImp;
 import za.co.bigone.service.PaymentService;
 
@@ -61,15 +65,25 @@ public class PaymentServlet extends HttpServlet {
         ServletContext context = request.getServletContext();
         DBPoolManagerBasic dbpool = (DBPoolManagerBasic) context.getAttribute("dbconn");
         PaymentService paymentService = new PaymentServceImp(dbpool);
+        InvoicePDFService invoicePDFService = new InviocePdfServiceImpl(dbpool);
+        MailService mailService = new MailServiceimpl(dbpool);
+        
         HttpSession session = request.getSession();
         Person person = (Person) session.getAttribute("person");
         List<OrderLineItem> lineitems = (List<OrderLineItem>) session.getAttribute("cart");
         Card card = new Card(request.getParameter("owner"), request.getParameter("cvv"), request.getParameter("cardNumber"));
         boolean isPayment = paymentService.confirmPayment(card, 8765);
+        
         if (isPayment) {
-            if(paymentService.createOrder(person,lineitems)){
+            int orderId = paymentService.createOrder(person,lineitems);
+            if(orderId > 0){
                 //generate invoice
+                if(invoicePDFService.createpdf(orderId)){
                 //email client order + invoice
+                    if(mailService.sentMail(person, orderId)){
+                        System.out.println("Passed");
+                    }
+                }
             }
         }
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Login.jsp");

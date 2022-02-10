@@ -9,5 +9,5 @@ public interface PaymentService {
 
     public boolean confirmPayment(Card card, int amount);
 
-    public boolean createOrder(Person person, List<OrderLineItem> lineitems);
+    public int createOrder(Person person, List<OrderLineItem> lineitems);
 }
