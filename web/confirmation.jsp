@@ -133,9 +133,7 @@
                         <%
                             }
                         %>
-                        <div class="boton">
-                            <button>Complete-Payment</button>
-                        </div>
+
                     </form>
             </section>
             <div class="row justify-content-center">
@@ -190,8 +188,18 @@
 
                     </td>
                 </tr>
+
+
             </tfoot>
+            <tr>
+
+            <div class="boton">
+                <button>Complete-Payment</button>
+            </div>
+
         </table>
+
+
         <footer  id="Foot">
             <div class="footer">
                 <h2>Hours : </h2>

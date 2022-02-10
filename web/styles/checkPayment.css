@@ -283,7 +283,9 @@ input[type="button"]{
 
 }
 input[type="button"]:hover{
-    background-color: rgb(4 , 88 ,167)
+    background-color: rgb(4 , 88 ,167);
+    
+      
 }
 .inp{
     margin-top: 70px;
