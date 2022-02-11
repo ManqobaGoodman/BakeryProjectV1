@@ -141,7 +141,15 @@ header a:hover{
 }
 
 
-
+.order{
+    font-size: 40px;
+    margin-left: 340px;
+    margin-bottom: -40px;
+    margin-top: 20px;
+}
+.color{
+    color: #e8491d;
+}
 
 .bod{
     margin: 20px auto;
@@ -288,6 +296,9 @@ input[type="button"]:hover{
     
       
 }
+
+
+
 .inp{
     margin-top: 70px;
     margin-right: 5px;

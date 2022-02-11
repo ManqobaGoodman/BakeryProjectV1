@@ -70,6 +70,9 @@
 
             </div>
         </header>
+                    <div class="order">
+            <h1>Order <span class="color">Details</span></h1>
+        </div>
         <table id="myTable" class="table">
             <thead>
                 <tr>
@@ -119,7 +122,7 @@
         <div class="container-fluid mt-5">
             <section class="bod">
                 <div  class="form-container">
-                    <h2 class="form-title">Payment details</h2>
+                    <h2 class="form-title">Personal <span class="color">details</span></h2>
                     <form method="POST" action="Confirmation2Servlet" class="checkout-form">
                         <div class="input-line">
                             <label for="name">Name</label>
