@@ -93,7 +93,7 @@
 
                     <div class="button-container">
                         <button class="cart-qty-plus" type="button" value="+">+</button>
-                        <input type="text" name="quantity" min="0" max="10" class="qty form-control"/>
+                        <input type="text" name="quantity" min="0"  max="10" class="qty form-control"  value="0"/>
                         <button class="cart-qty-minus" type="button" value="+">-</button>
                     </div>
 
