@@ -1,13 +1,16 @@
-
 package za.co.bigone.model;
-
 
 public class Card {
 
     private String cardHolder;
     private String cvv;
     private String cardNum;
-    private int paymentid; 
+    private int paymentid;
+    
+    
+     public Card() {
+    }
+   
 
     /**
      * @return the cardHolder
@@ -50,6 +53,19 @@ public class Card {
     public void setCardNum(String cardNum) {
         this.cardNum = cardNum;
     }
+        /**
+     * @return the paymentid
+     */
+    public int getPaymentid() {
+        return paymentid;
+    }
+
+    /**
+     * @param paymentid the paymentid to set
+     */
+    public void setPaymentid(int paymentid) {
+        this.paymentid = paymentid;
+    }
 
     public Card(String cardHolder, String cvv, String cardNum) {
         this.cardHolder = cardHolder;
@@ -57,22 +73,11 @@ public class Card {
         this.cardNum = cardNum;
     }
 
-    public int getInvoiceId() {
-        return paymentid;
-    }
 
-    public void setInvoiceId(int paymentid) {
-        this.paymentid = paymentid;
-    }
-     
-
-    public Card() {
-    }
-
-    @Override
     public String toString() {
         return "Card{" + "cardHolder=" + cardHolder + ", cvv=" + cvv + ", cardNum=" + cardNum + '}';
     }
-    
-    
+
+
+
 }
