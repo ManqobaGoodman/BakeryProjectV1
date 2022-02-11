@@ -70,6 +70,52 @@
 
             </div>
         </header>
+        <table id="myTable" class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th class="text-right"><span id="amount" class="amount">Amount</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                    for (OrderLineItem orderLineItem : orderLineItemList) {
+
+                %>
+                <tr>
+                    <td>
+                        <p><%= orderLineItem.getProduct().getNameOfProduct()%></p>
+                    </td>
+                    <td>
+                        <div class="button-container">
+
+                            <input type="text" name="qty" min="0" max="5" class="qty form-control" value="<%= orderLineItem.getQuantity()%>" disabled/>
+
+                        </div>
+                    </td>
+                    <td>
+                        <input style="margin-bottom: 48px;"type="text" value="<%= orderLineItem.getProduct().getProductPrice()%>" class="price form-control" disabled>
+                    </td>
+                    <td align="right">R <span id="amount" class="amount">0</span>
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"></td>
+                    <td align="right">
+                        <strong>Total = R <span id="total" class="total">0</span>
+                        </strong>
+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
         <div class="container-fluid mt-5">
             <section class="bod">
                 <div  class="form-container">
@@ -133,9 +179,9 @@
                         <%
                             }
                         %>
-                         <div class="boton">
-                <button>Complete-Payment</button>
-            </div>
+                        <div class="boton">
+                            <button>Complete-Payment</button>
+                        </div>
                     </form>
             </section>
             <div class="row justify-content-center">
@@ -146,58 +192,7 @@
                 </div>
             </div>
         </div>
-        <table id="myTable" class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Qty</th>
-                    <th>Price</th>
-                    <th class="text-right"><span id="amount" class="amount">Amount</span></th>
-                </tr>
-            </thead>
-            <tbody>
-                <%
-                    for (OrderLineItem orderLineItem : orderLineItemList) {
 
-                %>
-                <tr>
-                    <td>
-                        <p><%= orderLineItem.getProduct().getNameOfProduct()%></p>
-                    </td>
-                    <td>
-                        <div class="button-container">
-
-                            <input type="text" name="qty" min="0" max="5" class="qty form-control" value="<%= orderLineItem.getQuantity()%>" disabled/>
-
-                        </div>
-                    </td>
-                    <td>
-                        <input style="margin-bottom: 48px;"type="text" value="<%= orderLineItem.getProduct().getProductPrice()%>" class="price form-control" disabled>
-                    </td>
-                    <td align="right">R <span id="amount" class="amount">0</span>
-                    </td>
-                </tr>
-                <%
-                    }
-                %>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3"></td>
-                    <td align="right">
-                        <strong>Total = R <span id="total" class="total">0</span>
-                        </strong>
-
-                    </td>
-                </tr>
-
-
-            </tfoot>
-          
-
-           
-
-        </table>
 
 
         <footer  id="Foot">

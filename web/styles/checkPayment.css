@@ -152,7 +152,8 @@ header a:hover{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 0 2%
+    padding: 0 2%;
+    margin-top: -100px;
 }
 
 .progress-checkout-container{
@@ -373,7 +374,7 @@ button:focus,
     letter-spacing: 3px;
     border-radius: 5px;
     margin-right: 328px;
-    margin-top: 300px;
+    margin-top: 20px;
    
 }
 
@@ -388,7 +389,7 @@ button:focus,
 
 #Foot{
 
-    margin-top: 90px;
+    margin-top: 130px;
     background-color: #35424a;
     padding-top: 30px;
     min-height: 70px;
@@ -409,13 +410,4 @@ button:focus,
 #Foot .highlight{
     color: #e8491d;
 }
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 04 Feb 2022, 10:57:41 AM
-    Author     : Student24
-*/
 
