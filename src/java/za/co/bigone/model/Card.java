@@ -7,7 +7,7 @@ public class Card {
     private String cardHolder;
     private String cvv;
     private String cardNum;
-    private int invoiceId; 
+    private int paymentid; 
 
     /**
      * @return the cardHolder
@@ -58,11 +58,11 @@ public class Card {
     }
 
     public int getInvoiceId() {
-        return invoiceId;
+        return paymentid;
     }
 
-    public void setInvoiceId(int invoiceId) {
-        this.invoiceId = invoiceId;
+    public void setInvoiceId(int paymentid) {
+        this.paymentid = paymentid;
     }
      
 

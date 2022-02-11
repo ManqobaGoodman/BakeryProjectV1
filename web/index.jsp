@@ -6,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width">
+        <meta http-equiv="refresh" content="10  Login.jsp">
         <title>Home-Page</title>
         <link rel="stylesheet"  href="./styles/style.css"> 
 

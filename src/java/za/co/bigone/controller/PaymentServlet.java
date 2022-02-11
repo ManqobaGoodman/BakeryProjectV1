@@ -78,15 +78,18 @@ public class PaymentServlet extends HttpServlet {
             int orderId = paymentService.createOrder(person,lineitems);
             if(orderId > 0){
                 //generate invoice
+               
                 if(invoicePDFService.createpdf(orderId)){
                 //email client order + invoice
                     if(mailService.sentMail(person, orderId)){
                         System.out.println("Passed");
+                        
                     }
+                
                 }
             }
         }
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Login.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
         requestDispatcher.forward(request, response);
 
     }
