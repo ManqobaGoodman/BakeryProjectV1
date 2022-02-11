@@ -8,6 +8,7 @@ package za.co.bigone.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -36,6 +37,63 @@ public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ServletContext context = request.getServletContext();
+        DBPoolManagerBasic dbpool = (DBPoolManagerBasic) context.getAttribute("dbconn");
+        ProductService productService = new ProductServiceImplementation(dbpool);
+
+        int productId = 0;
+        int productTypeId = 0;
+        int quantity = 1;
+
+        String function = request.getParameter("function");
+        System.out.println(function);
+
+        if (function != null) {
+
+            if (function.equalsIgnoreCase("delete")) {
+                try {
+                    productId = Integer.parseInt(request.getParameter("productId"));
+                    //    productTypeId = Integer.parseInt(request.getParameter("productTypeId"));
+
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+
+                CartService cartService = new CartServiceImpl(dbpool);
+                Product p = cartService.getProductForOrderLineItem(productId);
+
+                List<OrderLineItem> orderLineItemList = (List<OrderLineItem>) request.getSession().getAttribute("cart");
+
+//                Iterator<OrderLineItem> it=orderLineItemList.iterator();
+//                while(it.hasNext()){
+//                    OrderLineItem oli=it.next();
+//                   if (oli.getProduct().getProductId() == p.getProductId()) {
+//                        orderLineItemList.remove(oli);
+//                        break;
+//                    }
+//                }
+                for (OrderLineItem oli : orderLineItemList) {
+                    if (oli.getProduct().getProductId() == p.getProductId()) {
+                        orderLineItemList.remove(oli);
+                        break;
+                    }
+                }
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("Error.jsp");
+
+                dispatcher.forward(request, response);
+            }
+        } else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Error.jsp");
+
+            dispatcher.forward(request, response);
+        }
+    }
+
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) {
 
     }
 
@@ -58,6 +116,9 @@ public class CartServlet extends HttpServlet {
         int productTypeId = 0;
         int quantity = 1;
 
+        String function = request.getParameter("function");
+        System.out.println(function);
+
         try {
             productId = Integer.parseInt(request.getParameter("productId"));
             productTypeId = Integer.parseInt(request.getParameter("productTypeId"));
@@ -69,33 +130,46 @@ public class CartServlet extends HttpServlet {
         Product p = cartService.getProductForOrderLineItem(productId);
 
         HttpSession session = request.getSession();
+        if (function != null) {
 
-        List<OrderLineItem> orderLineItemList = (List<OrderLineItem>) session.getAttribute("cart");
-        if (orderLineItemList == null) {
-            orderLineItemList = new ArrayList<>();
-            session.setAttribute("cart", orderLineItemList);
-        }
-        boolean updated = false;
-        for (OrderLineItem orderLineItem : orderLineItemList) {
-            if (orderLineItem.getProduct().getProductId() == productId) {
-                orderLineItem.setQuantity(orderLineItem.getQuantity() + 1);
-                updated = true;
-                break;
+            if (function.equalsIgnoreCase("addToCart")) {
+                List<OrderLineItem> orderLineItemList = (List<OrderLineItem>) session.getAttribute("cart");
+                if (orderLineItemList == null) {
+                    orderLineItemList = new ArrayList<>();
+                    session.setAttribute("cart", orderLineItemList);
+                }
+                boolean updated = false;
+                for (OrderLineItem orderLineItem : orderLineItemList) {
+                    if (orderLineItem.getProduct().getProductId() == productId) {
+                        orderLineItem.setQuantity(orderLineItem.getQuantity() + 1);
+                        updated = true;
+                        break;
+                    }
+                }
+
+                if (!updated) {
+                    orderLineItemList.add(new OrderLineItem(p, quantity));
+                }
+                System.out.print(orderLineItemList);
+                List<Product> productList = productService.viewProducts(productTypeId);
+                Producttype producttype = productService.getProducttype(productTypeId);
+
+                // request.setAttribute("product", product);
+                request.setAttribute("products", productList);
+                request.setAttribute("producttype", producttype);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("productCat.jsp");
+
+                dispatcher.forward(request, response);
+            } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("Error.jsp");
+
+                dispatcher.forward(request, response);
             }
-        }
-        if (!updated) {
-            orderLineItemList.add(new OrderLineItem(p, quantity));
-        }
-        System.out.print(orderLineItemList);
-        List<Product> productList = productService.viewProducts(productTypeId);
-        Producttype producttype = productService.getProducttype(productTypeId);
-        // request.setAttribute("product", product);
+        } else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Error.jsp");
 
-        request.setAttribute("products", productList);
-        request.setAttribute("producttype", producttype);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("productCat.jsp");
-
-        dispatcher.forward(request, response);
+            dispatcher.forward(request, response);
+        }
     }
 
     /**

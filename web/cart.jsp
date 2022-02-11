@@ -126,7 +126,7 @@
                                         </td>
 
                                         <td class="src">
-                                            <a href="#"><img src="./img/bin.jpg" width="8%" style="float: right; margin-right: 18px;"></a>
+                                            <a href="http://localhost:8080/BakeryProjectV1/CartServlet?productId=<%= orderLineItem.getProduct().getProductId() %>&function=delete"><img src="./img/bin.jpg" width="8%" style="float: right; margin-right: 18px;"></a>
                                         </td>
                                     </tr>
                                     <% }

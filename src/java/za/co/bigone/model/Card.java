@@ -7,11 +7,9 @@ public class Card {
     private String cardNum;
     private int paymentid;
     
-    
-     public Card() {
+    public Card(){
+        
     }
-   
-
     /**
      * @return the cardHolder
      */
@@ -77,7 +75,6 @@ public class Card {
     public String toString() {
         return "Card{" + "cardHolder=" + cardHolder + ", cvv=" + cvv + ", cardNum=" + cardNum + '}';
     }
-
 
 
 }

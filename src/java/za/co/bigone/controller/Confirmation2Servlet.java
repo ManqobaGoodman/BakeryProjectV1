@@ -78,8 +78,12 @@ public class Confirmation2Servlet extends HttpServlet {
                      page = "/payment.jsp";
                 } 
             }
+            else{
+                page ="/Error.jsp";
+            }
             
         }
+        
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);
         requestDispatcher.forward(request, response);
         

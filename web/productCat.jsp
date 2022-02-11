@@ -99,6 +99,7 @@
                         </div>
                         <input type="hidden" value=<%= viewProduct.getProductId()%> name="productId" />
                         <input type="hidden" value=<%= viewProduct.getProductTypeid()%> name="productTypeId" />
+                        <input type="hidden" value="addToCart" name="function" />
 
                     </form>
 
